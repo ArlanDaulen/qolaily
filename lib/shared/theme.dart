@@ -23,8 +23,14 @@ class AppColors {
 }
 
 class AppSvgImages {
-
-  // static const String filter_ic = 'assets/images/svg/filter_ic.svg';
+  static const String person = 'assets/icons/svg/person.svg';
+  static const String kassa = 'assets/icons/svg/kassa.svg';
+  static const String catalog = 'assets/icons/svg/catalog.svg';
+  static const String goodAccept = 'assets/icons/svg/good_accept.svg';
+  static const String revision = 'assets/icons/svg/revision.svg';
+  static const String categories = 'assets/icons/svg/categories.svg';
+  static const String partners = 'assets/icons/svg/partners.svg';
+  static const String home = 'assets/icons/svg/home.svg';
 }
 
 class AppPngImages {

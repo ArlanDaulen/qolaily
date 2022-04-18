@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:qolaily/base/base_provider.dart';
-import 'package:qolaily/pages/auth/provider/login_provider.dart';
-import 'package:qolaily/pages/index/ui/index_page.dart';
-import 'package:qolaily/shared/default_button.dart';
-import 'package:qolaily/shared/size_config.dart';
+import 'package:qolaily/pages/auth/provider/signup_provider.dart';
 
+import '../../../base/base_provider.dart';
+import '../../../shared/default_button.dart';
 import '../../../shared/default_text.dart';
+import '../../../shared/size_config.dart';
 import '../../../shared/theme.dart';
+import '../../index/ui/index_page.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BaseProvider<LoginProvider>(
+    return BaseProvider<SignUpProvider>(
       onReady: (p0) => p0.init(context),
-      model: LoginProvider(),
+      model: SignUpProvider(),
       builder: (context, model, child) {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -73,7 +73,7 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     DefaultText(
-                      text: 'Добро пожаловать!'.toUpperCase(),
+                      text: 'Регистрация',
                       fontSize: 24,
                       fontWeight: FontWeight.w300,
                     ),
@@ -81,7 +81,7 @@ class LoginPage extends StatelessWidget {
                       height: getProportionateScreenHeight(8),
                     ),
                     DefaultText(
-                      text: 'Войдите, чтобы начать работу',
+                      text: 'Чтобы Вы могли начать работу',
                       fontWeight: FontWeight.w300,
                     ),
                     SizedBox(
@@ -93,7 +93,7 @@ class LoginPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           DefaultText(
-                            text: 'E-mail',
+                            text: 'Фамилия и Имя',
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
                           ),
@@ -101,7 +101,7 @@ class LoginPage extends StatelessWidget {
                             height: getProportionateScreenHeight(6),
                           ),
                           TextFormField(
-                            controller: model.emailController,
+                            controller: model.userNameController,
                             cursorColor: AppColors.systemBlackColor,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.symmetric(
@@ -123,10 +123,10 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: getProportionateScreenHeight(20),
+                            height: getProportionateScreenHeight(16),
                           ),
                           DefaultText(
-                            text: 'Пароль',
+                            text: 'Наименование компании',
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
                           ),
@@ -134,7 +134,40 @@ class LoginPage extends StatelessWidget {
                             height: getProportionateScreenHeight(6),
                           ),
                           TextFormField(
-                            controller: model.passwordController,
+                            controller: model.companyNameController,
+                            cursorColor: AppColors.systemBlackColor,
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 0,
+                                horizontal: getProportionateScreenWidth(10),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: AppColors.greyColor,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: AppColors.greyColor,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(16),
+                          ),
+                          DefaultText(
+                            text: 'БИН компании',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(6),
+                          ),
+                          TextFormField(
+                            controller: model.companyBINController,
                             cursorColor: AppColors.systemBlackColor,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.symmetric(
@@ -164,7 +197,7 @@ class LoginPage extends StatelessWidget {
                     DefaultButton(
                       text: 'Войти в систему',
                       width: getProportionateScreenWidth(214),
-                      press: () => Navigator.push(
+                       press: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (_) => IndexPage(),

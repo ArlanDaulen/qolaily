@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:qolaily/pages/auth/ui/login_page.dart';
+import 'package:qolaily/pages/auth/ui/signup_page.dart';
 import 'package:qolaily/shared/default_button.dart';
 import 'package:qolaily/shared/default_text.dart';
 import 'package:qolaily/shared/size_config.dart';
@@ -39,7 +41,12 @@ class OnboardingPage extends StatelessWidget {
             Expanded(
               child: DefaultButton(
                 text: 'Регистрация'.toUpperCase(),
-                press: () {},
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => SignUpPage(),
+                  ),
+                ),
                 color: AppColors.whiteColor,
                 textColor: AppColors.systemBlackColor,
               ),
@@ -52,16 +59,25 @@ class OnboardingPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            DefaultText(
-              text: 'Qolaily',
-              color: AppColors.whiteColor,
-              fontSize: 50,
-              fontWeight: FontWeight.bold,
+            Text(
+              'Qolaily',
+              style: GoogleFonts.yesevaOne(
+                textStyle: TextStyle(
+                  color: AppColors.whiteColor,
+                  fontSize: getProportionateScreenHeight(50),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-            DefaultText(
-              text: 'online-kassa',
-              color: AppColors.whiteColor,
-              fontSize: 18,
+            Text(
+              'online-kassa',
+              style: GoogleFonts.yesevaOne(
+                textStyle: TextStyle(
+                  color: AppColors.whiteColor,
+                  fontSize: getProportionateScreenHeight(18),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),

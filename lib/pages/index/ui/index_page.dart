@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:qolaily/base/base_provider.dart';
+import 'package:qolaily/pages/catalog/ui/catalog_page.dart';
+import 'package:qolaily/pages/categories/ui/categories_page.dart';
+import 'package:qolaily/pages/good_accept/ui/good_accept_page.dart';
+import 'package:qolaily/pages/home/ui/home_page.dart';
 import 'package:qolaily/pages/index/provider/index_provider.dart';
+import 'package:qolaily/pages/index/ui/drawer.dart';
+import 'package:qolaily/pages/kassa/ui/kassa_page.dart';
+import 'package:qolaily/pages/partners/ui/partners_page.dart';
+import 'package:qolaily/pages/revision/ui/revision_page.dart';
 
 import '../../../shared/default_text.dart';
 import '../../../shared/size_config.dart';
 import '../../../shared/theme.dart';
 
 class IndexPage extends StatelessWidget {
-  const IndexPage({Key? key}) : super(key: key);
+  IndexPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +24,7 @@ class IndexPage extends StatelessWidget {
       model: IndexProvider(),
       builder: (context, model, child) {
         return Scaffold(
+          backgroundColor: AppColors.defaultBackgroundColor,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(
               getProportionateScreenHeight(130),
@@ -48,14 +57,15 @@ class IndexPage extends StatelessWidget {
                   Row(
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () =>
+                            model.globalKey.currentState!.openDrawer(),
                         icon: const Icon(
                           Icons.menu,
                           color: AppColors.whiteColor,
                         ),
                       ),
                       DefaultText(
-                        text: 'Главная',
+                        text: model.currentTitle,
                         color: AppColors.whiteColor,
                         fontWeight: FontWeight.w400,
                       ),
@@ -65,8 +75,119 @@ class IndexPage extends StatelessWidget {
               ),
             ),
           ),
+          key: model.globalKey,
+          drawer: CustomDrawer(
+            indexModel: model,
+          ),
+          body: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: getProportionateScreenHeight(15),
+                  horizontal: getProportionateScreenWidth(15),
+                ),
+                decoration: const BoxDecoration(
+                  color: AppColors.whiteColor,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        DefaultText(
+                          text: 'ТОО IT COMMUNICATION',
+                          fontWeight: FontWeight.w500,
+                        ),
+                        DefaultText(
+                          text: 'ИИН/БИН 1234567891011',
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: getProportionateScreenWidth(54),
+                          padding: EdgeInsets.symmetric(
+                            vertical: getProportionateScreenHeight(10),
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: AppColors.defaultBackgroundColor,
+                          ),
+                          child: Column(
+                            children: [
+                              DefaultText(
+                                text: '12 345',
+                                fontSize: 7,
+                              ),
+                              DefaultText(
+                                text: 'Баланс',
+                                color: const Color(0xffA8A8A8),
+                                fontSize: 8,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: getProportionateScreenWidth(15),
+                        ),
+                        Container(
+                          width: getProportionateScreenWidth(54),
+                          padding: EdgeInsets.symmetric(
+                            vertical: getProportionateScreenHeight(10),
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: AppColors.defaultBackgroundColor,
+                          ),
+                          child: Column(
+                            children: [
+                              DefaultText(
+                                text: '5',
+                                fontSize: 7,
+                              ),
+                              DefaultText(
+                                text: 'Сотрудники',
+                                color: const Color(0xffA8A8A8),
+                                fontSize: 8,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: getProportionateScreenHeight(24),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(24),
+                  ),
+                  child: _body[model.navIndex],
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
   }
+
+  List<Widget> _body = [
+    HomePage(),
+    KassaPage(),
+    CatalogPage(),
+    CategoriesPage(),
+    GoodsAcceptPage(),
+    RevisionPage(),
+    PartnersPage(),
+  ];
 }
