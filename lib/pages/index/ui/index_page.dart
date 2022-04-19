@@ -176,16 +176,8 @@ class IndexPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: getProportionateScreenHeight(24),
-                ),
                 Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(24),
-                    ),
-                    child: _body[model.navIndex],
-                  ),
+                  child: _body[model.navIndex],
                 ),
               ],
             ),
