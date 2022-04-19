@@ -142,7 +142,7 @@ class CustomDrawer extends StatelessWidget {
                 SizedBox(
                   height: getProportionateScreenHeight(16),
                 ),
-                _buildMenuItem(context, model, 4, AppSvgImages.goodAccept,
+                _buildMenuItem(context, indexModel, 4, AppSvgImages.goodAccept,
                     'Прием товаров'),
                 SizedBox(
                   height: getProportionateScreenHeight(16),
@@ -152,16 +152,16 @@ class CustomDrawer extends StatelessWidget {
                 SizedBox(
                   height: getProportionateScreenHeight(26),
                 ),
-                DefaultText(
-                  text: 'Администрирование',
-                  color: AppColors.whiteColor,
-                  fontSize: 16,
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(16),
-                ),
-                _buildMenuItem(
-                    context, indexModel, 6, AppSvgImages.partners, 'Партнеры'),
+                // DefaultText(
+                //   text: 'Администрирование',
+                //   color: AppColors.whiteColor,
+                //   fontSize: 16,
+                // ),
+                // SizedBox(
+                //   height: getProportionateScreenHeight(16),
+                // ),
+                // _buildMenuItem(
+                //     context, indexModel, 6, AppSvgImages.partners, 'Партнеры'),
                 const Spacer(
                   flex: 3,
                 ),

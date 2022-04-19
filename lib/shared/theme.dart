@@ -31,6 +31,8 @@ class AppSvgImages {
   static const String categories = 'assets/icons/svg/categories.svg';
   static const String partners = 'assets/icons/svg/partners.svg';
   static const String home = 'assets/icons/svg/home.svg';
+  static const String email = 'assets/icons/svg/email.svg';
+  static const String password = 'assets/icons/svg/password.svg';
 }
 
 class AppPngImages {

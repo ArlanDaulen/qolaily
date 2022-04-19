@@ -16,14 +16,6 @@ class HomePage extends StatelessWidget {
       builder: (context, model, child) {
         return Column(
           children: [
-            Container(
-              width: double.maxFinite,
-              height: getProportionateScreenHeight(114),
-              decoration: const BoxDecoration(
-                color: AppColors.whiteColor,
-              ),
-            ),
-            Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -39,6 +31,69 @@ class HomePage extends StatelessWidget {
                       DefaultText(
                         text: '0',
                         fontSize: 25,
+                      ),
+                      SizedBox(
+                        height: getProportionateScreenHeight(10),
+                      ),
+                      const Divider(
+                        color: Colors.grey,
+                      ),
+                      DefaultText(
+                        text: 'Сумма продаж',
+                        fontSize: 10,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: getProportionateScreenWidth(152),
+                  padding: EdgeInsets.only(
+                    top: getProportionateScreenHeight(30),
+                    bottom: getProportionateScreenHeight(13),
+                  ),
+                  color: AppColors.whiteColor,
+                  child: Column(
+                    children: [
+                      DefaultText(
+                        text: '0',
+                        fontSize: 25,
+                      ),
+                      SizedBox(
+                        height: getProportionateScreenHeight(10),
+                      ),
+                      const Divider(
+                        color: Colors.grey,
+                      ),
+                      DefaultText(
+                        text: 'Кол-во продаж',
+                        fontSize: 10,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: getProportionateScreenWidth(152),
+                  padding: EdgeInsets.only(
+                    top: getProportionateScreenHeight(30),
+                    bottom: getProportionateScreenHeight(13),
+                  ),
+                  color: AppColors.whiteColor,
+                  child: Column(
+                    children: [
+                      DefaultText(
+                        text: '0',
+                        fontSize: 25,
+                      ),
+                      SizedBox(
+                        height: getProportionateScreenHeight(10),
                       ),
                       const Divider(
                         color: Colors.grey,
@@ -64,6 +119,9 @@ class HomePage extends StatelessWidget {
                         text: '0',
                         fontSize: 25,
                       ),
+                      SizedBox(
+                        height: getProportionateScreenHeight(10),
+                      ),
                       const Divider(
                         color: Colors.grey,
                       ),
@@ -77,7 +135,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
                 return Container(
@@ -96,6 +154,7 @@ class HomePage extends StatelessWidget {
                       horizontal: getProportionateScreenWidth(24),
                       vertical: getProportionateScreenHeight(10),
                     ),
+                    alignment: Alignment.topLeft,
                     child: DefaultText(
                       text: 'Прибыль',
                       color: AppColors.whiteColor,
@@ -104,7 +163,7 @@ class HomePage extends StatelessWidget {
                 );
               },
             ),
-            Spacer(),
+            const Spacer(),
             LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
                 return Container(
@@ -123,6 +182,7 @@ class HomePage extends StatelessWidget {
                       horizontal: getProportionateScreenWidth(24),
                       vertical: getProportionateScreenHeight(10),
                     ),
+                    alignment: Alignment.topLeft,
                     child: DefaultText(
                       text: 'Расходы',
                       color: AppColors.whiteColor,

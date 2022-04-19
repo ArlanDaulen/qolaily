@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:qolaily/base/base_provider.dart';
 import 'package:qolaily/pages/catalog/ui/catalog_page.dart';
 import 'package:qolaily/pages/categories/ui/categories_page.dart';
@@ -23,158 +24,171 @@ class IndexPage extends StatelessWidget {
       onReady: (p0) => p0.init(context),
       model: IndexProvider(),
       builder: (context, model, child) {
-        return Scaffold(
-          backgroundColor: AppColors.defaultBackgroundColor,
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(
-              getProportionateScreenHeight(130),
-            ),
-            child: Container(
-              color: AppColors.primaryColor,
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: getProportionateScreenHeight(50),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      DefaultText(
-                        text: 'Qolaily',
-                        color: AppColors.whiteColor,
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      DefaultText(
-                        text: 'online-kassa',
-                        color: AppColors.whiteColor,
-                        fontSize: 14,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () =>
-                            model.globalKey.currentState!.openDrawer(),
-                        icon: const Icon(
-                          Icons.menu,
-                          color: AppColors.whiteColor,
-                        ),
-                      ),
-                      DefaultText(
-                        text: model.currentTitle,
-                        color: AppColors.whiteColor,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ],
-                  )
-                ],
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            backgroundColor: AppColors.defaultBackgroundColor,
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(
+                getProportionateScreenHeight(125),
               ),
-            ),
-          ),
-          key: model.globalKey,
-          drawer: CustomDrawer(
-            indexModel: model,
-          ),
-          body: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: getProportionateScreenHeight(15),
-                  horizontal: getProportionateScreenWidth(15),
-                ),
-                decoration: const BoxDecoration(
-                  color: AppColors.whiteColor,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Container(
+                color: AppColors.primaryColor,
+                alignment: Alignment.center,
+                child: Column(
                   children: [
+                    SizedBox(
+                      height: getProportionateScreenHeight(50),
+                    ),
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        DefaultText(
-                          text: 'ТОО IT COMMUNICATION',
-                          fontWeight: FontWeight.w500,
+                        Text(
+                          'Qolaily',
+                          style: GoogleFonts.yesevaOne(
+                            textStyle: TextStyle(
+                              color: AppColors.whiteColor,
+                              fontSize: getProportionateScreenHeight(36),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                        DefaultText(
-                          text: 'ИИН/БИН 1234567891011',
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
+                        Text(
+                          'online-kassa',
+                          style: GoogleFonts.yesevaOne(
+                            textStyle: TextStyle(
+                              color: AppColors.whiteColor,
+                              fontSize: getProportionateScreenHeight(14),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ],
                     ),
                     Row(
                       children: [
-                        Container(
-                          width: getProportionateScreenWidth(54),
-                          padding: EdgeInsets.symmetric(
-                            vertical: getProportionateScreenHeight(10),
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: AppColors.defaultBackgroundColor,
-                          ),
-                          child: Column(
-                            children: [
-                              DefaultText(
-                                text: '12 345',
-                                fontSize: 7,
-                              ),
-                              DefaultText(
-                                text: 'Баланс',
-                                color: const Color(0xffA8A8A8),
-                                fontSize: 8,
-                              ),
-                            ],
+                        IconButton(
+                          onPressed: () =>
+                              model.globalKey.currentState!.openDrawer(),
+                          icon: const Icon(
+                            Icons.menu,
+                            color: AppColors.whiteColor,
                           ),
                         ),
-                        SizedBox(
-                          width: getProportionateScreenWidth(15),
-                        ),
-                        Container(
-                          width: getProportionateScreenWidth(54),
-                          padding: EdgeInsets.symmetric(
-                            vertical: getProportionateScreenHeight(10),
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: AppColors.defaultBackgroundColor,
-                          ),
-                          child: Column(
-                            children: [
-                              DefaultText(
-                                text: '5',
-                                fontSize: 7,
-                              ),
-                              DefaultText(
-                                text: 'Сотрудники',
-                                color: const Color(0xffA8A8A8),
-                                fontSize: 8,
-                              ),
-                            ],
-                          ),
+                        DefaultText(
+                          text: model.currentTitle,
+                          color: AppColors.whiteColor,
+                          fontWeight: FontWeight.w400,
                         ),
                       ],
-                    ),
-                    const SizedBox(),
+                    )
                   ],
                 ),
               ),
-              SizedBox(
-                height: getProportionateScreenHeight(24),
-              ),
-              Expanded(
-                child: Padding(
+            ),
+            key: model.globalKey,
+            drawer: CustomDrawer(
+              indexModel: model,
+            ),
+            body: Column(
+              children: [
+                Container(
                   padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(24),
+                    vertical: getProportionateScreenHeight(15),
+                    horizontal: getProportionateScreenWidth(15),
                   ),
-                  child: _body[model.navIndex],
+                  decoration: const BoxDecoration(
+                    color: AppColors.whiteColor,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          DefaultText(
+                            text: 'ТОО IT COMMUNICATION',
+                            fontWeight: FontWeight.w500,
+                          ),
+                          DefaultText(
+                            text: 'ИИН/БИН 1234567891011',
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ],
+                      ),
+                      // Row(
+                      //   children: [
+                      //     Container(
+                      //       width: getProportionateScreenWidth(54),
+                      //       padding: EdgeInsets.symmetric(
+                      //         vertical: getProportionateScreenHeight(10),
+                      //       ),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         color: AppColors.defaultBackgroundColor,
+                      //       ),
+                      //       child: Column(
+                      //         children: [
+                      //           DefaultText(
+                      //             text: '12 345',
+                      //             fontSize: 7,
+                      //           ),
+                      //           DefaultText(
+                      //             text: 'Баланс',
+                      //             color: const Color(0xffA8A8A8),
+                      //             fontSize: 8,
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ),
+                      //     SizedBox(
+                      //       width: getProportionateScreenWidth(15),
+                      //     ),
+                      //     Container(
+                      //       width: getProportionateScreenWidth(54),
+                      //       padding: EdgeInsets.symmetric(
+                      //         vertical: getProportionateScreenHeight(10),
+                      //       ),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         color: AppColors.defaultBackgroundColor,
+                      //       ),
+                      //       child: Column(
+                      //         children: [
+                      //           DefaultText(
+                      //             text: '5',
+                      //             fontSize: 7,
+                      //           ),
+                      //           DefaultText(
+                      //             text: 'Сотрудники',
+                      //             color: const Color(0xffA8A8A8),
+                      //             fontSize: 8,
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      const SizedBox(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: getProportionateScreenHeight(24),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(24),
+                    ),
+                    child: _body[model.navIndex],
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -188,6 +202,6 @@ class IndexPage extends StatelessWidget {
     CategoriesPage(),
     GoodsAcceptPage(),
     RevisionPage(),
-    PartnersPage(),
+    // PartnersPage(),
   ];
 }
