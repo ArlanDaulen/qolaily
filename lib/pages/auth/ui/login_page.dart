@@ -6,6 +6,7 @@ import 'package:qolaily/base/base_provider.dart';
 import 'package:qolaily/pages/auth/provider/login_provider.dart';
 import 'package:qolaily/pages/index/ui/index_page.dart';
 import 'package:qolaily/shared/default_button.dart';
+import 'package:qolaily/shared/loading_view.dart';
 import 'package:qolaily/shared/size_config.dart';
 
 import '../../../shared/default_text.dart';
@@ -23,6 +24,7 @@ class LoginPage extends StatelessWidget {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
+            resizeToAvoidBottomInset: false,
             backgroundColor: AppColors.primaryColor,
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(
@@ -66,190 +68,193 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Spacer(),
-                Container(
-                  margin: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(24),
-                  ),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(38),
-                    vertical: getProportionateScreenHeight(30),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
+            body: model.isLoading
+                ? const LoadingView(
                     color: AppColors.whiteColor,
-                  ),
-                  height: getProportionateScreenHeight(260),
-                  child: Form(
-                    key: model.formKey,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        DefaultText(
-                          text: 'ВОЙДИТЕ, ЧТОБЫ НАЧАТЬ РАБОТУ',
-                          fontWeight: FontWeight.w400,
-                          fontSize: 15,
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(),
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(24),
                         ),
-                        const Spacer(
-                          flex: 2,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(38),
+                          vertical: getProportionateScreenHeight(30),
                         ),
-                        Expanded(
-                          flex: 4,
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: getProportionateScreenWidth(15),
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: AppColors.greyColor,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
-                                  AppSvgImages.email,
-                                ),
-                                SizedBox(
-                                  width: getProportionateScreenWidth(8),
-                                ),
-                                const VerticalDivider(
-                                  color: AppColors.greyColor,
-                                ),
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: model.emailController,
-                                    cursorColor: AppColors.systemBlackColor,
-                                    style: GoogleFonts.roboto(
-                                      textStyle: const TextStyle(
-                                        color: AppColors.systemBlackColor,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                    decoration: const InputDecoration(
-                                      // contentPadding: EdgeInsets.symmetric(
-                                      //   vertical: 0,
-                                      //   horizontal: getProportionateScreenWidth(10),
-                                      // ),
-                                      border: InputBorder.none,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: AppColors.whiteColor,
                         ),
-                        const Spacer(
-                          flex: 2,
-                        ),
-                        Expanded(
-                          flex: 4,
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: getProportionateScreenWidth(15),
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: AppColors.greyColor,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
-                                  AppSvgImages.password,
-                                ),
-                                SizedBox(
-                                  width: getProportionateScreenWidth(8),
-                                ),
-                                const VerticalDivider(
-                                  color: AppColors.greyColor,
-                                ),
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: model.passwordController,
-                                    cursorColor: AppColors.systemBlackColor,
-                                    style: GoogleFonts.roboto(
-                                      textStyle: const TextStyle(
-                                        color: AppColors.systemBlackColor,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                    decoration: const InputDecoration(
-                                      // contentPadding: EdgeInsets.symmetric(
-                                      //   vertical: 0,
-                                      //   horizontal: getProportionateScreenWidth(10),
-                                      // ),
-                                      border: InputBorder.none,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const Spacer(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            DefaultText(
-                              text: 'Регистрация',
-                              fontWeight: FontWeight.w300,
-                              fontSize: 10,
-                            ),
-                            DefaultText(
-                              text: 'Забыли пароль?',
-                              fontWeight: FontWeight.w300,
-                              fontSize: 10,
-                            ),
-                          ],
-                        ),
-                        const Spacer(
-                          flex: 2,
-                        ),
-                        Expanded(
-                          flex: 5,
-                          child: GestureDetector(
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => IndexPage(),
-                              ),
-                            ),
-                            child: Container(
-                              alignment: Alignment.center,
-                              width: getProportionateScreenWidth(150),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: AppColors.primaryColor,
-                                  width: 2,
-                                ),
-                                color: AppColors.primaryColor.withOpacity(0),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: DefaultText(
-                                text: 'ВХОД В СИСТЕМУ',
+                        height: getProportionateScreenHeight(260),
+                        child: Form(
+                          key: model.formKey,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              DefaultText(
+                                text: 'ВОЙДИТЕ, ЧТОБЫ НАЧАТЬ РАБОТУ',
                                 fontWeight: FontWeight.w400,
-                                fontSize: 11,
+                                fontSize: 15,
                               ),
-                            ),
+                              const Spacer(
+                                flex: 2,
+                              ),
+                              Expanded(
+                                flex: 4,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: getProportionateScreenWidth(15),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: AppColors.greyColor,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        AppSvgImages.email,
+                                      ),
+                                      SizedBox(
+                                        width: getProportionateScreenWidth(8),
+                                      ),
+                                      const VerticalDivider(
+                                        color: AppColors.greyColor,
+                                      ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          controller: model.emailController,
+                                          cursorColor:
+                                              AppColors.systemBlackColor,
+                                          style: GoogleFonts.roboto(
+                                            textStyle: const TextStyle(
+                                              color: AppColors.systemBlackColor,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 13,
+                                            ),
+                                          ),
+                                          decoration: const InputDecoration(
+                                            // contentPadding: EdgeInsets.symmetric(
+                                            //   vertical: 0,
+                                            //   horizontal: getProportionateScreenWidth(10),
+                                            // ),
+                                            border: InputBorder.none,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const Spacer(
+                                flex: 2,
+                              ),
+                              Expanded(
+                                flex: 4,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: getProportionateScreenWidth(15),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: AppColors.greyColor,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        AppSvgImages.password,
+                                      ),
+                                      SizedBox(
+                                        width: getProportionateScreenWidth(8),
+                                      ),
+                                      const VerticalDivider(
+                                        color: AppColors.greyColor,
+                                      ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          controller: model.passwordController,
+                                          cursorColor:
+                                              AppColors.systemBlackColor,
+                                          style: GoogleFonts.roboto(
+                                            textStyle: const TextStyle(
+                                              color: AppColors.systemBlackColor,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 13,
+                                            ),
+                                          ),
+                                          decoration: const InputDecoration(
+                                            // contentPadding: EdgeInsets.symmetric(
+                                            //   vertical: 0,
+                                            //   horizontal: getProportionateScreenWidth(10),
+                                            // ),
+                                            border: InputBorder.none,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const Spacer(),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  DefaultText(
+                                    text: 'Регистрация',
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 10,
+                                  ),
+                                  DefaultText(
+                                    text: 'Забыли пароль?',
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 10,
+                                  ),
+                                ],
+                              ),
+                              const Spacer(
+                                flex: 2,
+                              ),
+                              Expanded(
+                                flex: 5,
+                                child: GestureDetector(
+                                  onTap: () => model.login(context),
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    width: getProportionateScreenWidth(150),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: AppColors.primaryColor,
+                                        width: 2,
+                                      ),
+                                      color:
+                                          AppColors.primaryColor.withOpacity(0),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: DefaultText(
+                                      text: 'ВХОД В СИСТЕМУ',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 11,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                      const Spacer(
+                        flex: 2,
+                      ),
+                    ],
                   ),
-                ),
-                const Spacer(
-                  flex: 2,
-                ),
-              ],
-            ),
           ),
         );
       },

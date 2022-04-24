@@ -55,7 +55,7 @@ class MyAppModel extends BaseBloc {
     // } else {
     //   return const LoginPage();
     // if (isAuthenticated) {
-    return LoginPage();
+    return OnboardingPage();
     // } else {
     //   return const AuthPage();
     // }
