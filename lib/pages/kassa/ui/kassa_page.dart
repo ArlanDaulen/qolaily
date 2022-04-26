@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qolaily/base/base_provider.dart';
@@ -12,403 +13,315 @@ class KassaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color greyColor = const Color(0xffD6D6D6);
     return BaseProvider<KassaProvider>(
       onReady: (p0) => p0.init(context),
       model: KassaProvider(),
       builder: (context, model, child) {
-        return Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: getProportionateScreenWidth(24),
+        return Container(
+          padding: EdgeInsets.only(
+            top: getProportionateScreenHeight(10),
+          ),
+          margin: EdgeInsets.only(
+            top: getProportionateScreenHeight(24),
+            right: getProportionateScreenWidth(24),
+            left: getProportionateScreenWidth(24),
+          ),
+          // alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+            color: AppColors.whiteColor,
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.shadowColor,
+                offset: const Offset(0, 4),
+                blurRadius: 1,
+              ),
+            ],
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                height: getProportionateScreenHeight(24),
+              Row(
+                children: [
+                  Expanded(
+                    child: DefaultText(
+                      text: 'Наименование',
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  Expanded(
+                    child: DefaultText(
+                      text: 'Кол-во',
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  Expanded(
+                    child: DefaultText(
+                      text: 'ЦЕНА',
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ],
               ),
-              Expanded(
-                flex: 4,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    vertical: getProportionateScreenHeight(8),
-                  ),
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    color: AppColors.whiteColor,
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.shadowColor,
-                        offset: const Offset(0, 4),
-                        blurRadius: 1,
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: DefaultText(
-                              text: 'Наименование',
+              SizedBox(
+                height: getProportionateScreenHeight(80),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          left: getProportionateScreenWidth(20),
+                        ),
+                        color: greyColor,
+                        alignment: Alignment.centerLeft,
+                        child: TextField(
+                          controller: model.controller,
+                          cursorColor: AppColors.systemBlackColor,
+                          maxLines: 2,
+                          style: GoogleFonts.roboto(
+                            textStyle: const TextStyle(
+                              color: AppColors.systemBlackColor,
                               fontWeight: FontWeight.w300,
+                              fontSize: 14,
                             ),
                           ),
-                          Expanded(
-                            flex: 2,
-                            child: DefaultText(
-                              text: 'ЦЕНА',
-                              fontWeight: FontWeight.w300,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: getProportionateScreenHeight(7),
                             ),
+                            isDense: true,
                           ),
-                        ],
+                        ),
                       ),
-                      const Spacer(),
-                      Expanded(
-                        flex: 6,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                  left: getProportionateScreenWidth(20),
+                    ),
+                    const SizedBox(
+                      width: 1,
+                    ),
+                    Expanded(
+                      child: Container(
+                          color: greyColor,
+                          alignment: Alignment.center,
+                          child: Row(
+                            children: [
+                              const Spacer(),
+                              Expanded(
+                                flex: 4,
+                                child: GestureDetector(
+                                  onTap: () => model.decreaseCount(),
+                                  child: Container(
+                                    width: getProportionateScreenWidth(30),
+                                    height: getProportionateScreenHeight(30),
+                                    alignment: Alignment.center,
+                                    margin: EdgeInsets.only(
+                                      right: getProportionateScreenWidth(10),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xffA8ABB2)
+                                          .withOpacity(0.64),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: const Icon(
+                                      CupertinoIcons.minus,
+                                      color: AppColors.systemBlackColor,
+                                      size: 16,
+                                    ),
+                                  ),
                                 ),
-                                color: Colors.grey,
-                                alignment: Alignment.centerLeft,
+                              ),
+                              Expanded(
+                                flex: 2,
                                 child: DefaultText(
-                                  text: 'Чудо творожок',
+                                  text: model.count.toString(),
                                   fontWeight: FontWeight.w300,
                                   fontSize: 13,
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 1,
-                            ),
-                            Expanded(
-                              flex: 4,
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                  right: getProportionateScreenWidth(20),
-                                ),
-                                color: Colors.grey,
-                                alignment: Alignment.centerRight,
-                                child: DefaultText(
-                                  text: '480.00',
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 24,
+                              Expanded(
+                                flex: 4,
+                                child: GestureDetector(
+                                  onTap: () => model.increaseCount(),
+                                  child: Container(
+                                    width: getProportionateScreenWidth(30),
+                                    height: getProportionateScreenHeight(30),
+                                    alignment: Alignment.center,
+                                    margin: EdgeInsets.only(
+                                      left: getProportionateScreenWidth(10),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xffA8ABB2)
+                                          .withOpacity(0.64),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: const Icon(
+                                      CupertinoIcons.add,
+                                      color: AppColors.systemBlackColor,
+                                      size: 16,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                              const Spacer(),
+                            ],
+                          )),
+                    ),
+                    const SizedBox(
+                      width: 1,
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          right: getProportionateScreenWidth(20),
+                        ),
+                        color: greyColor,
+                        alignment: Alignment.centerRight,
+                        child: DefaultText(
+                          text: '250.00',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 24,
                         ),
                       ),
-                      const Spacer(),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: DefaultText(
-                              text: 'Наименование',
-                              fontWeight: FontWeight.w300,
-                              fontSize: 10,
-                            ),
-                          ),
-                          Expanded(
-                            child: DefaultText(
-                              text: 'Кол-во',
-                              fontWeight: FontWeight.w300,
-                              fontSize: 10,
-                            ),
-                          ),
-                          Expanded(
-                            child: DefaultText(
-                              text: 'Стоимость',
-                              fontWeight: FontWeight.w300,
-                              fontSize: 10,
-                            ),
-                          ),
-                        ],
+                    ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  onTap: () => model.addProduct(),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.3,
+                    padding: EdgeInsets.symmetric(
+                      vertical: getProportionateScreenHeight(10),
+                    ),
+                    margin: EdgeInsets.symmetric(
+                      vertical: getProportionateScreenHeight(10),
+                      horizontal: getProportionateScreenWidth(10),
+                    ),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: AppColors.greenColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: DefaultText(
+                      text: 'Добавить',
+                      fontSize: 10,
+                      color: AppColors.whiteColor,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                width: double.maxFinite,
+                height: 1,
+                color: greyColor,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: DefaultText(
+                      text: 'Наименование',
+                      fontWeight: FontWeight.w300,
+                      fontSize: 10,
+                    ),
+                  ),
+                  Container(
+                    width: 1,
+                    height: getProportionateScreenHeight(25),
+                    color: greyColor,
+                  ),
+                  Expanded(
+                    child: DefaultText(
+                      text: 'Кол-во',
+                      fontWeight: FontWeight.w300,
+                      fontSize: 10,
+                    ),
+                  ),
+                  Container(
+                    width: 1,
+                    height: getProportionateScreenHeight(25),
+                    color: greyColor,
+                  ),
+                  Expanded(
+                    child: DefaultText(
+                      text: 'Стоимость',
+                      fontWeight: FontWeight.w300,
+                      fontSize: 10,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                width: double.maxFinite,
+                height: 1,
+                color: greyColor,
+              ),
+              Flexible(
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  // physics: const NeverScrollableScrollPhysics(),
+                  itemCount: model.products.length,
+                  separatorBuilder: (_, index) => Container(
+                    width: double.maxFinite,
+                    height: 1,
+                    color: greyColor,
+                  ),
+                  itemBuilder: (_, index) => Row(
+                    children: [
+                      Expanded(
+                        child: DefaultText(
+                          text: model.products[index].name,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 10,
+                        ),
                       ),
-                      const Divider(
-                        color: Colors.grey,
+                      Container(
+                        width: 1,
+                        height: getProportionateScreenHeight(25),
+                        color: greyColor,
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: DefaultText(
-                              text: 'Сок Мое, 200мл',
+                      Expanded(
+                        child: DefaultText(
+                          text: model.products[index].count.toString(),
+                          fontWeight: FontWeight.w300,
+                          fontSize: 10,
+                        ),
+                      ),
+                      Container(
+                        width: 1,
+                        height: getProportionateScreenHeight(25),
+                        color: greyColor,
+                      ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            const Spacer(
+                              flex: 4,
+                            ),
+                            DefaultText(
+                              text: model.products[index].price.toString(),
                               fontWeight: FontWeight.w300,
                               fontSize: 10,
                             ),
-                          ),
-                          Expanded(
-                            child: DefaultText(
-                              text: '1',
-                              fontWeight: FontWeight.w300,
-                              fontSize: 10,
+                            const Spacer(
+                              flex: 4,
                             ),
-                          ),
-                          Expanded(
-                            child: DefaultText(
-                              text: '250',
-                              fontWeight: FontWeight.w300,
-                              fontSize: 10,
+                            GestureDetector(
+                              onTap: () => model.deleteProduct(index),
+                              child: const Icon(
+                                CupertinoIcons.trash,
+                                color: Colors.grey,
+                                size: 14,
+                              ),
                             ),
-                          ),
-                        ],
+                            Spacer(),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              const Spacer(),
-              Expanded(
-                flex: 10,
-                child: LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      padding: EdgeInsets.only(
-                        top: getProportionateScreenHeight(8),
-                        bottom: getProportionateScreenHeight(18),
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.whiteColor,
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.shadowColor,
-                            offset: const Offset(0, 4),
-                            blurRadius: 1,
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        // crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: getProportionateScreenWidth(5),
-                              ),
-                              child: DefaultText(
-                                text: 'ОБЩАЯ СУММА:',
-                                fontWeight: FontWeight.w300,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Expanded(
-                            flex: 5,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                right: getProportionateScreenWidth(20),
-                              ),
-                              color: Colors.grey,
-                              alignment: Alignment.centerRight,
-                              child: DefaultText(
-                                text: '660.00',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: getProportionateScreenWidth(5),
-                              ),
-                              child: DefaultText(
-                                text: 'Способ оплаты:',
-                                fontWeight: FontWeight.w300,
-                                fontSize: 11,
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Expanded(
-                            flex: 6,
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  flex: 5,
-                                  child: GestureDetector(
-                                    onTap: () => model.setCash(),
-                                    child: Container(
-                                      width: constraints.maxWidth * 0.25,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: model.isCash
-                                              ? AppColors.greenColor
-                                              : AppColors.greyColor,
-                                        ),
-                                        color: AppColors.primaryColor
-                                            .withOpacity(0),
-                                      ),
-                                      child: DefaultText(
-                                        text: 'Наличными',
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 10,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const Spacer(),
-                                Expanded(
-                                  flex: 5,
-                                  child: GestureDetector(
-                                    onTap: () => model.setCash(),
-                                    child: Container(
-                                      width: constraints.maxWidth * 0.25,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: model.isCash
-                                              ? AppColors.greyColor
-                                              : AppColors.greenColor,
-                                        ),
-                                        color: AppColors.primaryColor
-                                            .withOpacity(0),
-                                      ),
-                                      child: DefaultText(
-                                        text: 'Картой',
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 10,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Spacer(),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: getProportionateScreenWidth(5),
-                              ),
-                              child: DefaultText(
-                                text: 'НАЛИЧНЫЕ',
-                                fontWeight: FontWeight.w300,
-                                fontSize: 11,
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Flexible(
-                            flex: 3,
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: getProportionateScreenWidth(5),
-                                ),
-                                child: SizedBox(
-                                  width: constraints.maxHeight * 0.25,
-                                  child: TextField(
-                                    controller: model.cashController,
-                                    cursorColor: AppColors.systemBlackColor,
-                                    textAlign: TextAlign.right,
-                                    style: GoogleFonts.roboto(
-                                      textStyle: const TextStyle(
-                                        color: AppColors.systemBlackColor,
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 10,
-                                      ),
-                                    ),
-                                    keyboardType: TextInputType.number,
-                                    decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.zero,
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: AppColors.systemBlackColor),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: AppColors.systemBlackColor),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: getProportionateScreenWidth(5),
-                              ),
-                              child: DefaultText(
-                                text: 'СДАЧА',
-                                fontWeight: FontWeight.w300,
-                                fontSize: 11,
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Flexible(
-                            flex: 3,
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: getProportionateScreenWidth(5),
-                                ),
-                                child: Container(
-                                  width: constraints.maxWidth * 0.25,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(4),
-                                    border: Border.all(
-                                      color: AppColors.systemBlackColor,
-                                    ),
-                                  ),
-                                  alignment: Alignment.centerRight,
-                                  padding: EdgeInsets.only(
-                                    right: getProportionateScreenWidth(4),
-                                  ),
-                                  child: DefaultText(
-                                    text: '340',
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Expanded(
-                            flex: 3,
-                            child: Container(
-                              width: constraints.maxWidth * 0.25,
-                              alignment: Alignment.center,
-                              decoration: const BoxDecoration(
-                                color: AppColors.greyColor,
-                              ),
-                              child: DefaultText(
-                                text: 'ЧЕК',
-                                color: AppColors.whiteColor,
-                                fontWeight: FontWeight.w300,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-              const Spacer(
-                flex: 2,
               ),
             ],
           ),
