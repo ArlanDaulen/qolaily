@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:qolaily/app/client/placeholder_client.dart';
+import 'package:qolaily/app/client/auth.dart';
 import 'package:qolaily/base/base_bloc.dart';
 import 'package:qolaily/pages/home/ui/home_page.dart';
 import 'package:qolaily/pages/index/ui/index_page.dart';
@@ -25,8 +25,8 @@ class LoginProvider extends BaseBloc {
 
   login(BuildContext context) async {
     setLoading(true);
-    Response response = await PlaceHolderClient()
-        .login(emailController.text, passwordController.text);
+    Response response =
+        await Auth().login(emailController.text, passwordController.text);
     log(response.headers.length.toString());
     if (response.statusCode == 200) {
       Navigator.pushAndRemoveUntil(

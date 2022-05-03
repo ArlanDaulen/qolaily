@@ -24,13 +24,14 @@ class CustomDrawer extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenWidth(48),
+              vertical: getProportionateScreenHeight(20),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Flexible(
-                  flex: 2,
+                  flex: 3,
                   child: DrawerHeader(
                     margin: EdgeInsets.only(
                       top: getProportionateScreenHeight(20),
@@ -49,7 +50,7 @@ class CustomDrawer extends StatelessWidget {
                               style: GoogleFonts.yesevaOne(
                                 textStyle: TextStyle(
                                   color: AppColors.whiteColor,
-                                  fontSize: getProportionateScreenHeight(36),
+                                  fontSize: getProportionateScreenHeight(28),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -59,7 +60,7 @@ class CustomDrawer extends StatelessWidget {
                               style: GoogleFonts.yesevaOne(
                                 textStyle: TextStyle(
                                   color: AppColors.whiteColor,
-                                  fontSize: getProportionateScreenHeight(14),
+                                  fontSize: getProportionateScreenHeight(12),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -74,17 +75,18 @@ class CustomDrawer extends StatelessWidget {
                   height: getProportionateScreenHeight(20),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Icon(
                       CupertinoIcons.person,
                       color: AppColors.whiteColor,
                     ),
-                    SizedBox(
-                      width: getProportionateScreenWidth(15),
-                    ),
+                    // SizedBox(
+                    //   width: getProportionateScreenWidth(15),
+                    // ),
                     DropdownButton<String>(
                       value: model.dropDownValue,
+                      isDense: true,
                       underline: const SizedBox(
                         height: 0,
                       ),

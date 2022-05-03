@@ -1,9 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:qolaily/base/base_provider.dart';
 import 'package:qolaily/pages/good_accept/provider/good_accept_provider.dart';
 import 'package:qolaily/shared/default_text.dart';
 import 'package:qolaily/shared/size_config.dart';
 import 'package:qolaily/shared/theme.dart';
+import 'package:qolaily/shared/ui_helper.dart';
 
 class GoodsAcceptPage extends StatelessWidget {
   const GoodsAcceptPage({Key? key}) : super(key: key);
@@ -14,173 +18,228 @@ class GoodsAcceptPage extends StatelessWidget {
       onReady: (p0) => p0.init(context),
       model: GoodsAcceptProvider(),
       builder: (context, model, child) {
-        return Column(
-          children: [
-            SizedBox(
-              height: getProportionateScreenHeight(24),
-            ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(
-                  bottom: getProportionateScreenHeight(30),
-                  left: getProportionateScreenWidth(24),
-                  right: getProportionateScreenWidth(24),
-                ),
-                decoration: const BoxDecoration(
-                  color: AppColors.whiteColor,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  // crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: getProportionateScreenWidth(13),
-                        vertical: getProportionateScreenHeight(8),
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: getProportionateScreenWidth(20),
+            vertical: getProportionateScreenHeight(20),
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: model.searchController,
+                  cursorColor: AppColors.systemBlackColor,
+
+                  // onFieldSubmitted: (value) async =>
+                  //     await model.searchDoctorByName(),
+                  style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                      color: AppColors.systemBlackColor,
+                      fontWeight: FontWeight.w500,
+                      fontSize: getProportionateScreenHeight(14),
+                    ),
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: getProportionateScreenWidth(10),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: AppColors.greyColor,
                       ),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: DefaultText(
-                          text: 'ТОВАР',
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: AppColors.greyColor,
+                      ),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    hintText: "Поиск",
+                    hintStyle: GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: getProportionateScreenHeight(14),
+                      ),
+                    ),
+                    suffixIcon: const Icon(
+                      CupertinoIcons.search,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                ),
+                UIHelper.verticalSpace(20),
+                GestureDetector(
+                  onTap: () {
+                    model.toCreateProductAccept(context);
+                  },
+                  child: Container(
+                    width: 250,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(10),
+                      vertical: getProportionateScreenHeight(12),
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.greenColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(AppSvgImages.plus),
+                        UIHelper.horizontalSpace(10),
+                        DefaultText(
+                          text: 'Создать прием товаров',
+                          color: AppColors.whiteColor,
                         ),
-                      ),
+                      ],
                     ),
-                    SizedBox(
-                      height: getProportionateScreenHeight(4),
-                    ),
-                    const Divider(
-                      color: AppColors.greyColor,
-                    ),
-                    SizedBox(
-                      height: getProportionateScreenHeight(4),
-                    ),
-                    _buildController(model.barcodeController, 'Штрих-код'),
-                    SizedBox(
-                      height: getProportionateScreenHeight(10),
-                    ),
-                    _buildController(model.nameController, 'Наименование'),
-                    SizedBox(
-                      height: getProportionateScreenHeight(10),
-                    ),
-                    _buildController(
-                        model.costPriceController, 'Себестоимость'),
-                    SizedBox(
-                      height: getProportionateScreenHeight(10),
-                    ),
-                    _buildController(model.markupController, 'Наценка'),
-                    SizedBox(
-                      height: getProportionateScreenHeight(10),
-                    ),
-                    _buildController(
-                        model.sellingPriceController, 'Цена продажи'),
-                    SizedBox(
-                      height: getProportionateScreenHeight(10),
-                    ),
-                    _buildController(model.categoryController, 'Категория'),
-                    SizedBox(
-                      height: getProportionateScreenHeight(10),
-                    ),
-                    _buildController(model.quantityController, 'Количество'),
-                    SizedBox(
-                      height: getProportionateScreenHeight(40),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      width: getProportionateScreenWidth(170),
-                      padding: EdgeInsets.symmetric(
-                        vertical: getProportionateScreenHeight(12),
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.greenColor,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: AppColors.greyColor,
-                            offset: Offset(0, 2),
-                            blurRadius: 2,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.control_point,
-                            color: AppColors.whiteColor,
-                            size: 15,
-                          ),
-                          SizedBox(
-                            width: getProportionateScreenWidth(10),
-                          ),
-                          DefaultText(
-                            text: 'ДОБАВИТЬ',
-                            color: AppColors.whiteColor,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: getProportionateScreenHeight(28),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                UIHelper.verticalSpace(20),
+                ListView.separated(
+                  shrinkWrap: true,
+                  physics: const ScrollPhysics(),
+                  itemCount: 4,
+                  separatorBuilder: (_, index) => const SizedBox(
+                    height: 15,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: getProportionateScreenHeight(10),
+                      ),
+                      decoration: const BoxDecoration(
+                        color: AppColors.whiteColor,
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: getProportionateScreenWidth(12),
+                              // vertical: getProportionateScreenHeight(9),
+                            ),
+                            child: Row(
+                              children: [
+                                DefaultText(text: 'Номер:  '),
+                                DefaultText(text: '123456')
+                              ],
+                            ),
+                          ),
+                          const Divider(
+                            color: AppColors.greyColor,
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: getProportionateScreenWidth(12),
+                              vertical: getProportionateScreenHeight(9),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    DefaultText(text: 'Получатель'),
+                                    UIHelper.verticalSpace(
+                                      getProportionateScreenHeight(10),
+                                    ),
+                                    containerField('Ж. Багдат'),
+                                    UIHelper.verticalSpace(
+                                      getProportionateScreenHeight(10),
+                                    ),
+                                    DefaultText(text: 'Дата/Время'),
+                                    UIHelper.verticalSpace(
+                                      getProportionateScreenHeight(10),
+                                    ),
+                                    containerField('"15.04.2022, 12:34"'),
+                                    UIHelper.verticalSpace(
+                                      getProportionateScreenHeight(10),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    DefaultText(text: 'Общая сумма'),
+                                    UIHelper.verticalSpace(
+                                      getProportionateScreenHeight(10),
+                                    ),
+                                    containerField('350'),
+                                    UIHelper.verticalSpace(
+                                      getProportionateScreenHeight(10),
+                                    ),
+                                    DefaultText(text: 'Статус'),
+                                    UIHelper.verticalSpace(
+                                      getProportionateScreenHeight(10),
+                                    ),
+                                    containerField('Черновик'),
+                                    UIHelper.verticalSpace(
+                                      getProportionateScreenHeight(10),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          // UIHelper.verticalSpace(
+                          //   getProportionateScreenHeight(5),
+                          // ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              // IconButton(
+                              //   onPressed: () {
+                              //     // model.toEditProduct(context);
+                              //   },
+                              //   icon: SvgPicture.asset(
+                              //     AppSvgImages.edit,
+                              //     width: 25,
+                              //     height: 25,
+                              //   ),
+                              // ),
+                              // UIHelper.horizontalSpace(15),
+                              IconButton(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                  AppSvgImages.delete,
+                                  width: 20,
+                                  height: 20,
+                                ),
+                              ),
+                              UIHelper.horizontalSpace(6),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
-          ],
+          ),
         );
       },
     );
   }
 
-  Expanded _buildController(
-    TextEditingController controller,
-    String name,
-  ) {
-    return Expanded(
+  containerField(String text) {
+    return Container(
+      width: 150,
+      decoration: BoxDecoration(
+        color: AppColors.lightGreyColor,
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(color: AppColors.greyColor),
+      ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: getProportionateScreenWidth(13),
+          horizontal: getProportionateScreenWidth(7),
+          vertical: getProportionateScreenHeight(5),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            DefaultText(
-              text: name,
-              fontWeight: FontWeight.w300,
-              fontSize: 10,
-            ),
-            SizedBox(
-              height: getProportionateScreenHeight(5),
-            ),
-            Flexible(
-              child: TextField(
-                controller: controller,
-                cursorColor: AppColors.systemBlackColor,
-                style: TextStyle(
-                  color: AppColors.systemBlackColor,
-                  fontSize: getProportionateScreenHeight(10),
-                  fontWeight: FontWeight.w300,
-                ),
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(8),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.greyColor),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.greyColor),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  fillColor: AppColors.defaultBackgroundColor,
-                  filled: true,
-                ),
-              ),
-            ),
-          ],
+        child: DefaultText(
+          text: text,
+          fontSize: 12,
+          isCenter: false,
         ),
       ),
     );

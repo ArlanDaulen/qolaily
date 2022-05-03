@@ -16,8 +16,10 @@ class AppColors {
   static const Color inactiveColor = Color(0xffafb2b5);
   static const Color whiteColor = Colors.white;
   static const Color greyColor = Color(0xffD6D6D6);
+  static const Color lightGreyColor = Color(0xffF6F6F6);
   static const Color redColor = Color(0xffC04024);
   static const Color greenColor = Color(0xff449C0E);
+  static const Color yellowColor = Color(0xffE7DC7C);
   static const Color defaultBackgroundColor = Color(0xffEBEBEB);
   static Color shadowColor = const Color(0xff8A959E).withOpacity(0.12);
 }
@@ -33,8 +35,9 @@ class AppSvgImages {
   static const String home = 'assets/icons/svg/home.svg';
   static const String email = 'assets/icons/svg/email.svg';
   static const String password = 'assets/icons/svg/password.svg';
+  static const String plus = 'assets/icons/svg/add_ic.svg';
+  static const String edit = 'assets/icons/svg/edit.svg';
+  static const String delete = 'assets/icons/svg/delete.svg';
 }
 
-class AppPngImages {
- 
-}
+class AppPngImages {}

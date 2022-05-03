@@ -10,6 +10,7 @@ class DefaultButton extends StatelessWidget {
     this.color = AppColors.primaryColor,
     this.textColor = AppColors.whiteColor,
     this.width = double.maxFinite,
+    this.height = 50,
     this.isButtonEnabled = true,
     this.isWithShadow = false,
   });
@@ -18,6 +19,7 @@ class DefaultButton extends StatelessWidget {
   final Color color;
   final Color textColor;
   final double width;
+  final double height;
   final bool isButtonEnabled;
   final bool isWithShadow;
 
@@ -25,7 +27,7 @@ class DefaultButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: 50,
+      height: height,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(

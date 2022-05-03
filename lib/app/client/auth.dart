@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:qolaily/app/main/user_data.dart';
 
-class PlaceHolderClient {
+class Auth {
   final http.Client _client = http.Client();
   final _headers = {
     'Content-Type': 'application/json',
