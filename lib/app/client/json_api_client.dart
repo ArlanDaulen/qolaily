@@ -12,9 +12,10 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
   const factory PlaceHolderClient.login(String email, String password) = _Login;
   // const factory PlaceHolderClient.register(
   //     String email, String username, String password, String phone) = _Register;
+  const factory PlaceHolderClient.createProduct(String barcode, String name, String merchantId, int purchasePrice, int sellingPrice, int amount, String unitType, int categoryId) = _CreateProduct;
 
   @override
-  String get baseURL => "https://kettik-tour-app-dev.herokuapp.com/api";
+  String get baseURL => "http://34.219.97.21";
 
   @override
   Future<Map<String, dynamic>> get header async {
@@ -32,6 +33,10 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       //     '/user/registration?email=$email&fullName=$username&password=$password&phone=$phone',
       login: (String email, String password) =>
           '/user/login?email=$email&password=$password',
+      createProduct: (
+        String barcode, String name, String merchantId, 
+        int purchasePrice, int sellingPrice, int amount, 
+        String unitType, int categoryId) => '/v1/product/create',
     );
   }
 
@@ -43,6 +48,10 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       // register:
       //     (String email, String username, String password, String phone) =>
       //         'POST',
+      createProduct: (
+        String barcode, String name, String merchantId, 
+        int purchasePrice, int sellingPrice, int amount, 
+        String unitType, int categoryId) => 'POST'
     );
   }
 
