@@ -6,12 +6,14 @@ class KassaProvider extends BaseBloc {
   int count = 1;
   int price = 250;
   List<Product> products = [];
-  TextEditingController controller = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController cashController = TextEditingController();
+  bool isCash = true;
 
   init(BuildContext context) {
     setLoading(true);
     SizeConfig().init(context);
-    controller.text = 'Чудо творожок';
+    nameController.text = 'Чудо творожок';
     setLoading(false);
   }
 
@@ -34,7 +36,7 @@ class KassaProvider extends BaseBloc {
   addProduct() {
     products.add(
       Product(
-        name: controller.text,
+        name: nameController.text,
         count: count,
         price: price,
       ),
@@ -46,6 +48,11 @@ class KassaProvider extends BaseBloc {
 
   deleteProduct(int index) {
     products.removeAt(index);
+    notifyListeners();
+  }
+
+  setCash(bool value) {
+    isCash = value;
     notifyListeners();
   }
 }

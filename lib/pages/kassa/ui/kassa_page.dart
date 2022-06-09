@@ -76,7 +76,7 @@ class KassaPage extends StatelessWidget {
                         color: greyColor,
                         alignment: Alignment.centerLeft,
                         child: TextField(
-                          controller: model.controller,
+                          controller: model.nameController,
                           cursorColor: AppColors.systemBlackColor,
                           maxLines: 2,
                           style: GoogleFonts.roboto(
@@ -310,7 +310,7 @@ class KassaPage extends StatelessWidget {
                             GestureDetector(
                               onTap: () => model.deleteProduct(index),
                               child: const Icon(
-                                CupertinoIcons.trash,
+                                CupertinoIcons.trash_fill,
                                 color: Colors.grey,
                                 size: 14,
                               ),
@@ -321,6 +321,195 @@ class KassaPage extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(9),
+                  vertical: getProportionateScreenHeight(18),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Column(
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: double.maxFinite,
+                            padding: EdgeInsets.symmetric(
+                              vertical: getProportionateScreenHeight(10),
+                              horizontal: getProportionateScreenWidth(10),
+                            ),
+                            decoration: BoxDecoration(
+                              color: greyColor,
+                            ),
+                            child: Row(
+                              children: [
+                                DefaultText(
+                                  text: 'ОБЩАЯ СУММА:',
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                                Spacer(),
+                                DefaultText(
+                                  text: '660.00',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w400,
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: getProportionateScreenHeight(10)),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: DefaultText(
+                              text: 'Способ оплаты:',
+                              fontSize: 11,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => model.setCash(true),
+                            child: Container(
+                              width: getProportionateScreenWidth(88),
+                              padding: EdgeInsets.symmetric(
+                                vertical: getProportionateScreenHeight(8),
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: model.isCash
+                                      ? AppColors.greenColor
+                                      : greyColor,
+                                  width: model.isCash ? 2 : 1,
+                                ),
+                              ),
+                              child: DefaultText(
+                                text: 'Наличными',
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(8),
+                          ),
+                          GestureDetector(
+                            onTap: () => model.setCash(false),
+                            child: Container(
+                              width: getProportionateScreenWidth(88),
+                              padding: EdgeInsets.symmetric(
+                                vertical: getProportionateScreenHeight(8),
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: model.isCash
+                                      ? greyColor
+                                      : AppColors.greenColor,
+                                  width: model.isCash ? 1 : 2,
+                                ),
+                              ),
+                              child: DefaultText(
+                                text: 'Картой',
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    Expanded(
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          DefaultText(
+                            text: 'НАЛИЧНЫЕ',
+                            fontSize: 13,
+                            fontWeight: FontWeight.w300,
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(8),
+                          ),
+                          Container(
+                            // width: getProportionateScreenWidth(80),
+                            padding: EdgeInsets.symmetric(
+                              // vertical: getProportionateScreenHeight(6),
+                              horizontal: getProportionateScreenWidth(5),
+                            ),
+                            alignment: Alignment.topRight,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: AppColors.systemBlackColor,
+                                width: 2,
+                              ),
+                            ),
+                            child: TextField(
+                              textAlign: TextAlign.right,
+                              controller: model.cashController,
+                              decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                isDense: true,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: getProportionateScreenHeight(8)),
+                          DefaultText(
+                            text: 'СДАЧА',
+                            fontSize: 13,
+                            fontWeight: FontWeight.w300,
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(8),
+                          ),
+                          Container(
+                            // width: getProportionateScreenWidth(80),
+                            padding: EdgeInsets.symmetric(
+                              vertical: getProportionateScreenHeight(10),
+                              horizontal: getProportionateScreenWidth(5),
+                            ),
+                            alignment: Alignment.topRight,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: AppColors.systemBlackColor,
+                                width: 2,
+                              ),
+                            ),
+                            child: DefaultText(
+                              text: '340',
+                              // fontWeight: FontWeight.w300,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(8),
+                          ),
+                          Container(
+                            // width: getProportionateScreenWidth(80),
+                            padding: EdgeInsets.symmetric(
+                              vertical: getProportionateScreenHeight(10),
+                              horizontal: getProportionateScreenWidth(5),
+                            ),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: Color(0xff696D79),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: greyColor,
+                                  offset: Offset(2, 4),
+                                  blurRadius: 1,
+                                ),
+                              ],
+                            ),
+                            child: DefaultText(
+                              text: 'ЧЕК',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: AppColors.whiteColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
