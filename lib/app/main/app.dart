@@ -21,9 +21,6 @@ class MyApp extends StatelessWidget {
           stream: model.connectionStatusController.stream,
           builder: (context, snapshot) {
             return MaterialApp(
-              // localizationsDelegates: context.localizationDelegates,
-              // supportedLocales: context.supportedLocales,
-              // locale: context.locale,
               debugShowCheckedModeBanner: false,
               title: 'Kettik',
               navigatorKey: GlobalVariable.navState,
@@ -32,7 +29,6 @@ class MyApp extends StatelessWidget {
                 bottomSheetTheme: BottomSheetThemeData(
                   backgroundColor: AppColors.primaryColor.withOpacity(0),
                 ),
-                // backgroundColor: Colors.white,
                 fontFamily: 'Manrope',
               ),
               home: snapshot.data == ConnectivityResult.none ||

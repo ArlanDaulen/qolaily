@@ -2,12 +2,8 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:connectivity/connectivity.dart';
-// import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:qolaily/pages/auth/ui/login_page.dart';
 import 'package:qolaily/pages/index/ui/index_page.dart';
-import 'package:qolaily/pages/onboarding_page.dart';
-
 import '../../base/base_bloc.dart';
 import 'user_data.dart';
 

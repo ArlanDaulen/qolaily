@@ -7,8 +7,6 @@ import 'package:qolaily/pages/good_accept/ui/good_accept_page.dart';
 import 'package:qolaily/pages/home/ui/home_page.dart';
 import 'package:qolaily/pages/index/provider/index_provider.dart';
 import 'package:qolaily/pages/index/ui/drawer.dart';
-import 'package:qolaily/pages/kassa/ui/old_kassa_page.dart';
-import 'package:qolaily/pages/partners/ui/partners_page.dart';
 import 'package:qolaily/pages/revision/ui/revision_page.dart';
 
 import '../../../shared/default_text.dart';
