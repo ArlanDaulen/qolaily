@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qolaily/base/base_provider.dart';
 import 'package:qolaily/pages/categories/provider/categories_provider.dart';
 import 'package:qolaily/shared/default_button.dart';
+import 'package:qolaily/shared/loading_view.dart';
 
 import '../../../shared/default_text.dart';
 import '../../../shared/size_config.dart';
@@ -22,176 +23,189 @@ class CategoriesPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenWidth(24),
             ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: getProportionateScreenHeight(24),
-                ),
-                InkWell(
-                  onTap: () {
-                    showAlertDialog(
-                      context,
-                      model.nameController,
-                      model.characteristicController,
-                      model,
-                    );
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: getProportionateScreenWidth(200),
-                    padding: EdgeInsets.symmetric(
-                      vertical: getProportionateScreenHeight(12),
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColors.greenColor,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: AppColors.greyColor,
-                          offset: Offset(0, 2),
-                          blurRadius: 2,
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(
-                          Icons.control_point,
-                          color: AppColors.whiteColor,
-                          size: 15,
-                        ),
-                        SizedBox(
-                          width: getProportionateScreenWidth(10),
-                        ),
-                        DefaultText(
-                          text: 'Создать категорию',
-                          color: AppColors.whiteColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(17),
-                ),
-                Container(
-                  width: double.maxFinite,
-                  decoration: const BoxDecoration(
-                    color: AppColors.whiteColor,
-                  ),
-                  child: Column(
+            child: model.isLoading
+                ? const LoadingView()
+                : Column(
                     children: [
+                      SizedBox(
+                        height: getProportionateScreenHeight(24),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          showAlertDialog(
+                            context,
+                            model.nameController,
+                            model.characteristicController,
+                            model,
+                            0,
+                          );
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: getProportionateScreenWidth(200),
+                          padding: EdgeInsets.symmetric(
+                            vertical: getProportionateScreenHeight(12),
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.greenColor,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: AppColors.greyColor,
+                                offset: Offset(0, 2),
+                                blurRadius: 2,
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.control_point,
+                                color: AppColors.whiteColor,
+                                size: 15,
+                              ),
+                              SizedBox(
+                                width: getProportionateScreenWidth(10),
+                              ),
+                              DefaultText(
+                                text: 'Создать категорию',
+                                color: AppColors.whiteColor,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: getProportionateScreenHeight(17),
+                      ),
                       Container(
-                        height: getProportionateScreenHeight(50),
-                        color: AppColors.greyColor,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        width: double.maxFinite,
+                        decoration: const BoxDecoration(
+                          color: AppColors.whiteColor,
+                        ),
+                        child: Column(
                           children: [
-                            Expanded(
-                              child: DefaultText(text: 'КАТЕГОРИИ'),
+                            Container(
+                              height: getProportionateScreenHeight(50),
+                              color: AppColors.greyColor,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: DefaultText(text: 'КАТЕГОРИИ'),
+                                  ),
+                                  Expanded(
+                                    child: DefaultText(text: 'КОЛ-ВО ТОВАРОВ'),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Expanded(
-                              child: DefaultText(text: 'КОЛ-ВО ТОВАРОВ'),
-                            ),
+                            ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: model.categoriesModel!.data!.length,
+                              separatorBuilder: (_, index) => const Divider(
+                                color: AppColors.greyColor,
+                              ),
+                              itemBuilder: (_, index) => SizedBox(
+                                height: getProportionateScreenHeight(40),
+                                child: InkWell(
+                                  onTap: () {
+                                    showAlertDialog(
+                                      context,
+                                      model.nameController,
+                                      model.characteristicController,
+                                      model,
+                                      index,
+                                      isCreate: false,
+                                    );
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: DefaultText(
+                                          text: model.categoriesModel!
+                                              .data![index].categoryName!,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: DefaultText(
+                                          text: model.categoriesModel!
+                                              .data![index].productsCount!
+                                              .toString(),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
-                      ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: 10,
-                        separatorBuilder: (_, index) => const Divider(
-                          color: AppColors.greyColor,
-                        ),
-                        itemBuilder: (_, index) => SizedBox(
-                          height: getProportionateScreenHeight(40),
-                          child: InkWell(
-                            onTap: () {
-                              showAlertDialog(
-                                context,
-                                model.nameController,
-                                model.characteristicController,
-                                model,
-                                isCreate: false,
-                              );
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: DefaultText(text: 'Чай и кофе'),
-                                ),
-                                Expanded(
-                                  child: DefaultText(text: '8'),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      )
+                      SizedBox(
+                        height: getProportionateScreenHeight(30),
+                      ),
+                      // Container(
+                      //   padding: EdgeInsets.only(
+                      //     bottom: getProportionateScreenHeight(36),
+                      //   ),
+                      //   width: double.maxFinite,
+                      //   decoration: const BoxDecoration(
+                      //     color: AppColors.whiteColor,
+                      //   ),
+                      //   child: Column(
+                      //     crossAxisAlignment: CrossAxisAlignment.start,
+                      //     children: [
+                      //       Container(
+                      //         alignment: Alignment.center,
+                      //         height: getProportionateScreenHeight(50),
+                      //         color: AppColors.greyColor,
+                      //         width: double.maxFinite,
+                      //         child: DefaultText(
+                      //           text: 'РЕДАКТИРОВАТЬ',
+                      //         ),
+                      //       ),
+                      //       SizedBox(
+                      //         height: getProportionateScreenHeight(25),
+                      //       ),
+                      //       _buildController('Наименование', model.nameController),
+                      //       SizedBox(
+                      //         height: getProportionateScreenHeight(20),
+                      //       ),
+                      //       _buildController(
+                      //           'Характеристика', model.characteristicController),
+                      //       SizedBox(
+                      //         height: getProportionateScreenHeight(20),
+                      //       ),
+                      //       Container(
+                      //         width: getProportionateScreenWidth(170),
+                      //         height: getProportionateScreenHeight(40),
+                      //         decoration: BoxDecoration(
+                      //           color: const Color(0xff929292),
+                      //           borderRadius: BorderRadius.circular(8),
+                      //         ),
+                      //         alignment: Alignment.center,
+                      //         child: DefaultText(
+                      //           text: 'Редактировать',
+                      //           color: AppColors.whiteColor,
+                      //           fontSize: 12,
+                      //         ),
+                      //       ),
+                      //       SizedBox(
+                      //         height: getProportionateScreenHeight(40),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(30),
-                ),
-                // Container(
-                //   padding: EdgeInsets.only(
-                //     bottom: getProportionateScreenHeight(36),
-                //   ),
-                //   width: double.maxFinite,
-                //   decoration: const BoxDecoration(
-                //     color: AppColors.whiteColor,
-                //   ),
-                //   child: Column(
-                //     crossAxisAlignment: CrossAxisAlignment.start,
-                //     children: [
-                //       Container(
-                //         alignment: Alignment.center,
-                //         height: getProportionateScreenHeight(50),
-                //         color: AppColors.greyColor,
-                //         width: double.maxFinite,
-                //         child: DefaultText(
-                //           text: 'РЕДАКТИРОВАТЬ',
-                //         ),
-                //       ),
-                //       SizedBox(
-                //         height: getProportionateScreenHeight(25),
-                //       ),
-                //       _buildController('Наименование', model.nameController),
-                //       SizedBox(
-                //         height: getProportionateScreenHeight(20),
-                //       ),
-                //       _buildController(
-                //           'Характеристика', model.characteristicController),
-                //       SizedBox(
-                //         height: getProportionateScreenHeight(20),
-                //       ),
-                //       Container(
-                //         width: getProportionateScreenWidth(170),
-                //         height: getProportionateScreenHeight(40),
-                //         decoration: BoxDecoration(
-                //           color: const Color(0xff929292),
-                //           borderRadius: BorderRadius.circular(8),
-                //         ),
-                //         alignment: Alignment.center,
-                //         child: DefaultText(
-                //           text: 'Редактировать',
-                //           color: AppColors.whiteColor,
-                //           fontSize: 12,
-                //         ),
-                //       ),
-                //       SizedBox(
-                //         height: getProportionateScreenHeight(40),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-              ],
-            ),
           ),
         );
       },
@@ -248,7 +262,7 @@ class CategoriesPage extends StatelessWidget {
   }
 
   showAlertDialog(context, TextEditingController nController,
-      TextEditingController chController, CategoriesProvider model,
+      TextEditingController chController, CategoriesProvider model, int index,
       {isCreate = true}) {
     showDialog(
       context: context,
@@ -285,7 +299,10 @@ class CategoriesPage extends StatelessWidget {
                 DefaultButton(
                   press: () => isCreate
                       ? model.createCatergory(context)
-                      : model.updateCategory(context),
+                      : model.updateCategory(
+                          context,
+                          model.categoriesModel!.data![index].id!,
+                        ),
                   text: 'Применить',
                   color: AppColors.primaryColor,
                   width: model.size!.width * 0.4,

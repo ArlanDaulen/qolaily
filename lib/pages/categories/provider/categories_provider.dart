@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:qolaily/app/client/category.dart';
+import 'package:qolaily/app/data/models/categories_model.dart';
 import 'package:qolaily/app/data/models/category_create_response_model.dart';
 import 'package:qolaily/base/base_bloc.dart';
 import 'package:qolaily/shared/default_text.dart';
@@ -14,13 +15,22 @@ class CategoriesProvider extends BaseBloc {
   TextEditingController characteristicController = TextEditingController();
   Size? size;
 
+  CategoriesModel? categoriesModel;
+
   CategoryService _service = CategoryService();
 
-  init(BuildContext context) {
+  init(BuildContext context) async {
     setLoading(true);
     SizeConfig().init(context);
     size = MediaQuery.of(context).size;
+    await getAllCategories();
     setLoading(false);
+  }
+
+  Future<void> getAllCategories() async {
+    final response = await _service.getAllCategories('adjksfjasj');
+    categoriesModel = response;
+    notifyListeners();
   }
 
   Future<void> createCatergory(BuildContext context) async {
@@ -43,11 +53,11 @@ class CategoriesProvider extends BaseBloc {
     );
   }
 
-  Future<void> updateCategory(BuildContext context) async {
+  Future<void> updateCategory(BuildContext context, int id) async {
     CategoryResponseModel categoryModel = await _service.updateCategory(
       nameController.text,
       characteristicController.text,
-      14,
+      id,
     );
     Navigator.pop(context);
     log({categoryModel.id ?? 'No ID'}.toString());

@@ -2,21 +2,37 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
+import 'package:qolaily/app/data/models/categories_model.dart';
 import 'package:qolaily/app/data/models/category_create_response_model.dart';
 
 class CategoryService {
   final client = http.Client();
   String baseUrl = 'http://34.216.151.246/v1/';
 
+  Future<CategoriesModel> getAllCategories(String merchantId) async {
+    final response = await client.post(
+      Uri.parse(
+        baseUrl + 'product/category/filter',
+      ),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({"merchant_id": merchantId}),
+    );
+    log(response.statusCode.toString());
+    if (response.statusCode == 200) {
+      final model = CategoriesModel.fromJson(
+        {'data': json.decode(response.body)},
+      );
+      return model;
+    } else {
+      return CategoriesModel();
+    }
+  }
+
   Future<CategoryResponseModel> createCategory(
       String name, String description) async {
     final response = await client.post(
-      Uri.parse(
-        baseUrl + 'product/category/create',
-      ),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      Uri.parse(baseUrl + 'product/category/create'),
+      headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         "merchant_id": "adjksfjasj",
         "category_name": name,
@@ -38,12 +54,8 @@ class CategoryService {
       String name, String description, int id) async {
     log(id.toString());
     final response = await client.put(
-      Uri.parse(
-       baseUrl + 'product/category/$id',
-      ),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      Uri.parse(baseUrl + 'product/category/$id'),
+      headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         "merchant_id": "adjksfjasj",
         "category_name": name,
