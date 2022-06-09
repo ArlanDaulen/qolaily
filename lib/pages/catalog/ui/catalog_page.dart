@@ -138,65 +138,74 @@ class CatalogPage extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    DefaultText(text: 'Наименование'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                    containerField(
-                                        'Творог "Домик в деревне", 250г'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                    DefaultText(text: 'Себестоимость'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                    containerField('350'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                    DefaultText(text: 'Цена продажи'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                    containerField('480'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                  ],
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      DefaultText(text: 'Наименование'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                      containerField(
+                                          'Творог "Домик в деревне", 250г'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                      DefaultText(text: 'Себестоимость'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                      containerField('350'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                      DefaultText(text: 'Цена продажи'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                      containerField('480'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    DefaultText(text: 'Наименование'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                    containerField(
-                                        'Творог "Домик в деревне", 250г'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                    DefaultText(text: 'Себестоимость'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                    containerField('350'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                    DefaultText(text: 'Цена продажи'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                    containerField('480'),
-                                    UIHelper.verticalSpace(
-                                      getProportionateScreenHeight(10),
-                                    ),
-                                  ],
+                                SizedBox(
+                                  width: getProportionateScreenWidth(20),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      DefaultText(text: 'Наименование'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                      containerField(
+                                          'Творог "Домик в деревне", 250г'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                      DefaultText(text: 'Себестоимость'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                      containerField('350'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                      DefaultText(text: 'Цена продажи'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                      containerField('480'),
+                                      UIHelper.verticalSpace(
+                                        getProportionateScreenHeight(10),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -244,7 +253,7 @@ class CatalogPage extends StatelessWidget {
 
   containerField(String text) {
     return Container(
-      width: 150,
+      width: double.maxFinite,
       decoration: BoxDecoration(
         color: AppColors.lightGreyColor,
         borderRadius: BorderRadius.circular(5),

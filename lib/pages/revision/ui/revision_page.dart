@@ -144,50 +144,66 @@ class RevisionPage extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            DefaultText(text: 'Получатель'),
-                                            UIHelper.verticalSpace(
-                                              getProportionateScreenHeight(10),
-                                            ),
-                                            containerField('Ж. Багдат'),
-                                            UIHelper.verticalSpace(
-                                              getProportionateScreenHeight(10),
-                                            ),
-                                            DefaultText(text: 'Дата/Время'),
-                                            UIHelper.verticalSpace(
-                                              getProportionateScreenHeight(10),
-                                            ),
-                                            containerField(
-                                                '"15.04.2022, 12:34"'),
-                                            UIHelper.verticalSpace(
-                                              getProportionateScreenHeight(10),
-                                            ),
-                                          ],
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              DefaultText(text: 'Получатель'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                              containerField('Ж. Багдат'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                              DefaultText(text: 'Дата/Время'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                              containerField(
+                                                  '"15.04.2022, 12:34"'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            DefaultText(text: 'Общая сумма'),
-                                            UIHelper.verticalSpace(
-                                              getProportionateScreenHeight(10),
-                                            ),
-                                            containerField('350'),
-                                            UIHelper.verticalSpace(
-                                              getProportionateScreenHeight(10),
-                                            ),
-                                            DefaultText(text: 'Статус'),
-                                            UIHelper.verticalSpace(
-                                              getProportionateScreenHeight(10),
-                                            ),
-                                            containerField('Черновик'),
-                                            UIHelper.verticalSpace(
-                                              getProportionateScreenHeight(10),
-                                            ),
-                                          ],
+                                        SizedBox(
+                                          width:
+                                              getProportionateScreenWidth(20),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              DefaultText(text: 'Общая сумма'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                              containerField('350'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                              DefaultText(text: 'Статус'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                              containerField('Черновик'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -236,7 +252,7 @@ class RevisionPage extends StatelessWidget {
 
   containerField(String text) {
     return Container(
-      width: 150,
+      width: double.maxFinite,
       decoration: BoxDecoration(
         color: AppColors.lightGreyColor,
         borderRadius: BorderRadius.circular(5),
