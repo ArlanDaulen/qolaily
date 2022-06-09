@@ -29,8 +29,12 @@ class CategoriesPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    showAlertDialog(context, 'Создать', model.nameController,
-                        model.characteristicController, model);
+                    showAlertDialog(
+                      context,
+                      model.nameController,
+                      model.characteristicController,
+                      model,
+                    );
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -102,16 +106,17 @@ class CategoriesPage extends StatelessWidget {
                         separatorBuilder: (_, index) => const Divider(
                           color: AppColors.greyColor,
                         ),
-                        itemBuilder: (_, index) => Container(
+                        itemBuilder: (_, index) => SizedBox(
                           height: getProportionateScreenHeight(40),
                           child: InkWell(
                             onTap: () {
                               showAlertDialog(
-                                  context,
-                                  'Редактировать',
-                                  model.nameController,
-                                  model.characteristicController,
-                                  model);
+                                context,
+                                model.nameController,
+                                model.characteristicController,
+                                model,
+                                isCreate: false,
+                              );
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -242,8 +247,9 @@ class CategoriesPage extends StatelessWidget {
     );
   }
 
-  showAlertDialog(context, String title, TextEditingController nController,
-      TextEditingController chController, CategoriesProvider model) {
+  showAlertDialog(context, TextEditingController nController,
+      TextEditingController chController, CategoriesProvider model,
+      {isCreate = true}) {
     showDialog(
       context: context,
       builder: (context) {
@@ -262,7 +268,7 @@ class CategoriesPage extends StatelessWidget {
                   color: AppColors.greyColor,
                   width: double.maxFinite,
                   child: DefaultText(
-                    text: title,
+                    text: isCreate ? 'Создать' : 'Редактировать',
                   ),
                 ),
                 SizedBox(
@@ -277,11 +283,11 @@ class CategoriesPage extends StatelessWidget {
                   height: getProportionateScreenHeight(20),
                 ),
                 DefaultButton(
-                  press: () {
-                    Navigator.pop(context);
-                  },
+                  press: () => isCreate
+                      ? model.createCatergory(context)
+                      : model.updateCategory(context),
                   text: 'Применить',
-                  color: AppColors.greyColor,
+                  color: AppColors.primaryColor,
                   width: model.size!.width * 0.4,
                   height: getProportionateScreenHeight(26),
                 ),
