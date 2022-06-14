@@ -23,6 +23,10 @@ class _$PlaceHolderClientTearOff {
       password,
     );
   }
+
+  _FilterProduct filterProduct() {
+    return const _FilterProduct();
+  }
 }
 
 /// @nodoc
@@ -30,44 +34,43 @@ const $PlaceHolderClient = _$PlaceHolderClientTearOff();
 
 /// @nodoc
 mixin _$PlaceHolderClient {
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) login,
+    required TResult Function() filterProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
+    required TResult Function(_FilterProduct value) filterProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PlaceHolderClientCopyWith<PlaceHolderClient> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -76,7 +79,6 @@ abstract class $PlaceHolderClientCopyWith<$Res> {
   factory $PlaceHolderClientCopyWith(
           PlaceHolderClient value, $Res Function(PlaceHolderClient) then) =
       _$PlaceHolderClientCopyWithImpl<$Res>;
-  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -87,31 +89,12 @@ class _$PlaceHolderClientCopyWithImpl<$Res>
   final PlaceHolderClient _value;
   // ignore: unused_field
   final $Res Function(PlaceHolderClient) _then;
-
-  @override
-  $Res call({
-    Object? email = freezed,
-    Object? password = freezed,
-  }) {
-    return _then(_value.copyWith(
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: password == freezed
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$LoginCopyWith<$Res>
-    implements $PlaceHolderClientCopyWith<$Res> {
+abstract class _$LoginCopyWith<$Res> {
   factory _$LoginCopyWith(_Login value, $Res Function(_Login) then) =
       __$LoginCopyWithImpl<$Res>;
-  @override
   $Res call({String email, String password});
 }
 
@@ -183,6 +166,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) login,
+    required TResult Function() filterProduct,
   }) {
     return login(email, password);
   }
@@ -191,6 +175,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
   }) {
     return login?.call(email, password);
   }
@@ -199,6 +184,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -211,6 +197,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
+    required TResult Function(_FilterProduct value) filterProduct,
   }) {
     return login(this);
   }
@@ -219,6 +206,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
   }) {
     return login?.call(this);
   }
@@ -227,6 +215,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -240,11 +229,113 @@ abstract class _Login extends PlaceHolderClient {
   const factory _Login(String email, String password) = _$_Login;
   const _Login._() : super._();
 
-  @override
   String get email => throw _privateConstructorUsedError;
-  @override
   String get password => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$LoginCopyWith<_Login> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$FilterProductCopyWith<$Res> {
+  factory _$FilterProductCopyWith(
+          _FilterProduct value, $Res Function(_FilterProduct) then) =
+      __$FilterProductCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$FilterProductCopyWithImpl<$Res>
+    extends _$PlaceHolderClientCopyWithImpl<$Res>
+    implements _$FilterProductCopyWith<$Res> {
+  __$FilterProductCopyWithImpl(
+      _FilterProduct _value, $Res Function(_FilterProduct) _then)
+      : super(_value, (v) => _then(v as _FilterProduct));
+
+  @override
+  _FilterProduct get _value => super._value as _FilterProduct;
+}
+
+/// @nodoc
+
+class _$_FilterProduct extends _FilterProduct {
+  const _$_FilterProduct() : super._();
+
+  @override
+  String toString() {
+    return 'PlaceHolderClient.filterProduct()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _FilterProduct);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) login,
+    required TResult Function() filterProduct,
+  }) {
+    return filterProduct();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+  }) {
+    return filterProduct?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    required TResult orElse(),
+  }) {
+    if (filterProduct != null) {
+      return filterProduct();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_FilterProduct value) filterProduct,
+  }) {
+    return filterProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+  }) {
+    return filterProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    required TResult orElse(),
+  }) {
+    if (filterProduct != null) {
+      return filterProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FilterProduct extends PlaceHolderClient {
+  const factory _FilterProduct() = _$_FilterProduct;
+  const _FilterProduct._() : super._();
 }
