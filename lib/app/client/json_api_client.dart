@@ -12,10 +12,11 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
   const factory PlaceHolderClient.login(String email, String password) = _Login;
   // const factory PlaceHolderClient.register(
   //     String email, String username, String password, String phone) = _Register;
-  const factory PlaceHolderClient.createProduct(String barcode, String name, String merchantId, int purchasePrice, int sellingPrice, int amount, String unitType, int categoryId) = _CreateProduct;
+  // const factory PlaceHolderClient.createProduct(String barcode, String name, String merchantId, int purchasePrice, int sellingPrice, int amount, String unitType, int categoryId) = _CreateProduct;
+  // const factory PlaceHolderClient.createProduct() = _CreateProduct;
 
   @override
-  String get baseURL => "http://34.219.97.21";
+  String get baseURL => "http://34.216.151.246";
 
   @override
   Future<Map<String, dynamic>> get header async {
@@ -27,37 +28,38 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
 
   @override
   String get path {
-    return this.when<String>(
+    return when<String>(
       // register: (String email, String username, String password,
       //         String phone) =>
       //     '/user/registration?email=$email&fullName=$username&password=$password&phone=$phone',
       login: (String email, String password) =>
           '/user/login?email=$email&password=$password',
-      createProduct: (
-        String barcode, String name, String merchantId, 
-        int purchasePrice, int sellingPrice, int amount, 
-        String unitType, int categoryId) => '/v1/product/create',
+      // createProduct: (
+      //   String barcode, String name, String merchantId,
+      //   int purchasePrice, int sellingPrice, int amount,
+      //   String unitType, int categoryId) => '/v1/product/create',
+      // createProduct: () => '/v1/product/create',
     );
   }
 
   @override
   String get method {
-    return this.maybeWhen<String>(
-      orElse: () => 'GET',
-      login: (String email, String password) => 'POST',
-      // register:
-      //     (String email, String username, String password, String phone) =>
-      //         'POST',
-      createProduct: (
-        String barcode, String name, String merchantId, 
-        int purchasePrice, int sellingPrice, int amount, 
-        String unitType, int categoryId) => 'POST'
-    );
+    return maybeWhen<String>(
+        orElse: () => 'GET', login: (String email, String password) => 'POST'
+        // register:
+        //     (String email, String username, String password, String phone) =>
+        //         'POST',
+        // createProduct: (
+        //   String barcode, String name, String merchantId,
+        //   int purchasePrice, int sellingPrice, int amount,
+        //   String unitType, int categoryId) => 'POST'
+        // createProduct: () => 'POST'
+        );
   }
 
   @override
   dynamic get body {
-    return this.maybeWhen(
+    return maybeWhen(
       orElse: () {
         return null;
       },
@@ -70,10 +72,24 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
 
   @override
   Map<String, dynamic>? get queryParameters {
-    return this.maybeWhen(
+    return maybeWhen(
       orElse: () {
         return null;
       },
     );
   }
 }
+
+//     createProduct: (
+//       String barcode, String name, String merchantId,
+//       int purchasePrice, int sellingPrice, int amount,
+//       String unitType, String categoryName) => {
+//         "barcode": barcode,
+//         "name": name,
+// "merchant_id": merchantId,
+//   "purchase_price": purchasePrice,
+//   "selling_price": sellingPrice,
+//   "amount": amount,
+//   "unit_type": unitType,
+//   "category_name": categoryName,
+//       }
