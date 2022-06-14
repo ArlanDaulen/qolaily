@@ -1,6 +1,30 @@
+import 'dart:developer';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserData {
+  void setMerchantId(String? id) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('merchant_id', id!);
+    log('MerchantID: $id');
+  }
+
+  Future<String> getMerchantId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('merchant_id') ?? '';
+  }
+
+  void setIIN(String? iin) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('iin', iin!);
+    log('IIN: $iin');
+  }
+
+  Future<String> getIIN() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('iin') ?? 'No IIN';
+  }
+
   void setToken(String? token) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('token', token!);
