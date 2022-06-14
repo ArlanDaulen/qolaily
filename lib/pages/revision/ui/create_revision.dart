@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,68 +21,68 @@ class CreateRevision extends StatelessWidget {
       model: CreateRevisionProvider(),
       onReady: (p0) => p0.init(context),
       builder: (context, model, child) {
-        return model.isLoading
-            ? const LoadingView()
-            : Scaffold(
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(
-                    getProportionateScreenHeight(125),
+        return Scaffold(
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(
+              getProportionateScreenHeight(125),
+            ),
+            child: Container(
+              color: AppColors.primaryColor,
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: getProportionateScreenHeight(50),
                   ),
-                  child: Container(
-                    color: AppColors.primaryColor,
-                    alignment: Alignment.center,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: getProportionateScreenHeight(50),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Qolaily',
+                        style: GoogleFonts.yesevaOne(
+                          textStyle: TextStyle(
+                            color: AppColors.whiteColor,
+                            fontSize: getProportionateScreenHeight(36),
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Qolaily',
-                              style: GoogleFonts.yesevaOne(
-                                textStyle: TextStyle(
-                                  color: AppColors.whiteColor,
-                                  fontSize: getProportionateScreenHeight(36),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              'online-kassa',
-                              style: GoogleFonts.yesevaOne(
-                                textStyle: TextStyle(
-                                  color: AppColors.whiteColor,
-                                  fontSize: getProportionateScreenHeight(14),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
+                      ),
+                      Text(
+                        'online-kassa',
+                        style: GoogleFonts.yesevaOne(
+                          textStyle: TextStyle(
+                            color: AppColors.whiteColor,
+                            fontSize: getProportionateScreenHeight(14),
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        Row(
-                          children: [
-                            IconButton(
-                              onPressed: () => Navigator.pop(context),
-                              icon: const Icon(
-                                Icons.arrow_back_ios_new_outlined,
-                                color: AppColors.whiteColor,
-                              ),
-                            ),
-                            DefaultText(
-                              text: 'Ревизия',
-                              color: AppColors.whiteColor,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ),
-                body: SingleChildScrollView(
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: const Icon(
+                          Icons.arrow_back_ios_new_outlined,
+                          color: AppColors.whiteColor,
+                        ),
+                      ),
+                      DefaultText(
+                        text: 'Ревизия',
+                        color: AppColors.whiteColor,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+          body: model.isLoading
+              ? const LoadingView()
+              : SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: Container(
                     width: model.size!.width,
@@ -124,172 +126,171 @@ class CreateRevision extends StatelessWidget {
                         UIHelper.verticalSpace(
                           getProportionateScreenHeight(15),
                         ),
-                        ListView.separated(
-                          padding: const EdgeInsets.all(0),
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 4,
-                          separatorBuilder: (_, index) => const SizedBox(
-                            height: 15,
+                        Container(
+                          // width: 400,
+                          // height: 400,
+                          padding: EdgeInsets.symmetric(
+                            vertical: getProportionateScreenHeight(10),
                           ),
-                          itemBuilder: (context, index) {
-                            return Container(
-                              // width: 400,
-                              // height: 400,
-                              padding: EdgeInsets.symmetric(
-                                vertical: getProportionateScreenHeight(10),
+                          decoration: const BoxDecoration(
+                            color: AppColors.whiteColor,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: getProportionateScreenWidth(12),
+                                  // vertical: getProportionateScreenHeight(9),
+                                ),
+                                child: Row(
+                                  children: [
+                                    DefaultText(text: 'No.  '),
+                                    DefaultText(text: '1')
+                                  ],
+                                ),
                               ),
-                              decoration: const BoxDecoration(
-                                color: AppColors.whiteColor,
+                              const Divider(
+                                color: AppColors.greyColor,
                               ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          getProportionateScreenWidth(12),
-                                      // vertical: getProportionateScreenHeight(9),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        DefaultText(text: 'No.  '),
-                                        DefaultText(text: '1')
-                                      ],
-                                    ),
-                                  ),
-                                  const Divider(
-                                    color: AppColors.greyColor,
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          getProportionateScreenWidth(12),
-                                      vertical: getProportionateScreenHeight(5),
-                                    ),
-                                    child: Column(
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: getProportionateScreenWidth(12),
+                                  vertical: getProportionateScreenHeight(5),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  UIHelper.verticalSpace(
-                                                    getProportionateScreenHeight(
-                                                        10),
-                                                  ),
-                                                  _buildController(
-                                                      model.barcodeController,
-                                                      'Штрихкод'),
-                                                  UIHelper.verticalSpace(
-                                                    getProportionateScreenHeight(
-                                                        10),
-                                                  ),
-                                                  _buildController(
-                                                      model.amountController,
-                                                      'Кол-во'),
-                                                  UIHelper.verticalSpace(
-                                                    getProportionateScreenHeight(
-                                                        10),
-                                                  ),
-                                                  _buildController(
-                                                      model.oddsController,
-                                                      'Разница'),
-                                                  UIHelper.verticalSpace(
-                                                    getProportionateScreenHeight(
-                                                        10),
-                                                  ),
-                                                ],
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
                                               ),
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  UIHelper.verticalSpace(
-                                                    getProportionateScreenHeight(
-                                                        10),
-                                                  ),
-                                                  _buildController(
-                                                      model.nameController,
-                                                      'Наименование'),
-                                                  UIHelper.verticalSpace(
-                                                    getProportionateScreenHeight(
-                                                        10),
-                                                  ),
-                                                  _buildController(
-                                                      model.balanceController,
-                                                      'Остаток'),
-                                                  UIHelper.verticalSpace(
-                                                    getProportionateScreenHeight(
-                                                        10),
-                                                  ),
-                                                  _buildController(
-                                                      model.costPriceController,
-                                                      'Себестоим.'),
-                                                  UIHelper.verticalSpace(
-                                                    getProportionateScreenHeight(
-                                                        10),
-                                                  ),
-                                                ],
+                                              _buildController(
+                                                  model.barcodeController,
+                                                  'Штрихкод'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
                                               ),
-                                            ),
-                                          ],
+                                              _buildController(
+                                                  model.amountController,
+                                                  'Кол-во'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                              _buildController(
+                                                  model.oddsController,
+                                                  'Разница'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        // UIHelper.verticalSpace(10),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: _buildController(
-                                                  model.marginController,
-                                                  'Наценка'),
-                                            ),
-                                            Expanded(
-                                              child: _buildController(
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                              _buildController(
+                                                  model.nameController,
+                                                  'Наименование'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                              _buildController(
+                                                  model.balanceController,
+                                                  'Остаток'),
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                              _buildController(
                                                   model.costPriceController,
                                                   'Себестоим.'),
-                                            ),
-                                            Expanded(
-                                              child: _buildController(
-                                                  model.costPriceController,
-                                                  'Себестоим.'),
-                                            ),
-                                          ],
+                                              UIHelper.verticalSpace(
+                                                getProportionateScreenHeight(
+                                                    10),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
-                                  ),
-                                  UIHelper.verticalSpace(
-                                    getProportionateScreenHeight(5),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: SvgPicture.asset(
-                                          AppSvgImages.delete,
-                                          width: 25,
-                                          height: 25,
+                                    // UIHelper.verticalSpace(10),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: _buildController(
+                                              model.marginController,
+                                              'Наценка'),
                                         ),
-                                      ),
-                                      UIHelper.horizontalSpace(10),
-                                    ],
-                                  ),
-                                ],
+                                        Expanded(
+                                          child: _buildController(
+                                              model.priceController,
+                                              'Цена.'),
+                                        ),
+                                        Expanded(
+                                          child: _buildController(
+                                              model.totalController,
+                                              'Итого.'),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            );
-                          },
+                              // UIHelper.verticalSpace(
+                              //   getProportionateScreenHeight(5),
+                              // ),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.end,
+                              //   children: [
+                              //     IconButton(
+                              //       onPressed: () {},
+                              //       icon: SvgPicture.asset(
+                              //         AppSvgImages.delete,
+                              //         width: 25,
+                              //         height: 25,
+                              //       ),
+                              //     ),
+                              //     UIHelper.horizontalSpace(10),
+                              //   ],
+                              // ),
+                            ],
+                          ),
                         ),
+                        // ListView.separated(
+                        //   padding: const EdgeInsets.all(0),
+                        //   shrinkWrap: true,
+                        //   physics: const NeverScrollableScrollPhysics(),
+                        //   itemCount: 4,
+                        //   separatorBuilder: (_, index) => const SizedBox(
+                        //     height: 15,
+                        //   ),
+                        //   itemBuilder: (context, index) {
+                        //     return ;
+                        //   },
+                        // ),
                         UIHelper.verticalSpace(
                           getProportionateScreenHeight(20),
                         ),
@@ -321,7 +322,7 @@ class CreateRevision extends StatelessWidget {
                                   horizontal: getProportionateScreenWidth(25),
                                 ),
                                 child: DefaultText(
-                                  text: '27 000 ₸',
+                                  text: '',
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -346,7 +347,10 @@ class CreateRevision extends StatelessWidget {
                                 ),
                                 SizedBox(width: 20),
                                 DefaultButton(
-                                  press: () {},
+                                  press: () {
+                                    log('dawfwafaw');
+                                    model.addProduct(context);
+                                  },
                                   text: 'Провести ревизию',
                                   color: AppColors.greenColor,
                                   width: model.size!.width * 0.35,
@@ -373,7 +377,7 @@ class CreateRevision extends StatelessWidget {
                     ),
                   ),
                 ),
-              );
+        );
       },
     );
   }

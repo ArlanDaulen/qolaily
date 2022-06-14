@@ -9,6 +9,7 @@ import 'package:qolaily/shared/loading_view.dart';
 import 'package:qolaily/shared/size_config.dart';
 import 'package:qolaily/shared/theme.dart';
 import 'package:qolaily/shared/ui_helper.dart';
+import 'package:intl/intl.dart';
 
 class RevisionPage extends StatelessWidget {
   const RevisionPage({Key? key}) : super(key: key);
@@ -19,92 +20,90 @@ class RevisionPage extends StatelessWidget {
       model: RevisionProvider(),
       onReady: (p0) => p0.init(context),
       builder: (context, model, child) {
-        return model.isLoading
-            ? const LoadingView()
-            : Scaffold(
-                body: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(20),
-                    vertical: getProportionateScreenHeight(20),
+        return Scaffold(
+          body: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenWidth(20),
+              vertical: getProportionateScreenHeight(20),
+            ),
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: model.searchController,
+                  cursorColor: AppColors.systemBlackColor,
+                  style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                      color: AppColors.systemBlackColor,
+                      fontWeight: FontWeight.w500,
+                      fontSize: getProportionateScreenHeight(14),
+                    ),
                   ),
-                  child: SingleChildScrollView(
-                    child: Column(
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: getProportionateScreenWidth(10),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: AppColors.greyColor,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: AppColors.greyColor,
+                      ),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    hintText: "Поиск",
+                    hintStyle: GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: getProportionateScreenHeight(14),
+                      ),
+                    ),
+                    suffixIcon: const Icon(
+                      CupertinoIcons.search,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                ),
+                UIHelper.verticalSpace(20),
+                GestureDetector(
+                  onTap: () {
+                    model.toCreateRevision(context);
+                  },
+                  child: Container(
+                    width: 250,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(10),
+                      vertical: getProportionateScreenHeight(12),
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.greenColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextFormField(
-                          controller: model.searchController,
-                          cursorColor: AppColors.systemBlackColor,
-
-                          // onFieldSubmitted: (value) async =>
-                          //     await model.searchDoctorByName(),
-                          style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
-                              color: AppColors.systemBlackColor,
-                              fontWeight: FontWeight.w500,
-                              fontSize: getProportionateScreenHeight(14),
-                            ),
-                          ),
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                              vertical: 0,
-                              horizontal: getProportionateScreenWidth(10),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.greyColor,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: AppColors.greyColor,
-                              ),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            hintText: "Поиск",
-                            hintStyle: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: getProportionateScreenHeight(14),
-                              ),
-                            ),
-                            suffixIcon: const Icon(
-                              CupertinoIcons.search,
-                              color: AppColors.primaryColor,
-                            ),
-                          ),
+                        SvgPicture.asset(AppSvgImages.plus),
+                        UIHelper.horizontalSpace(10),
+                        DefaultText(
+                          text: 'Создать ревизию',
+                          color: AppColors.whiteColor,
                         ),
-                        UIHelper.verticalSpace(20),
-                        GestureDetector(
-                          onTap: () {
-                            model.toCreateRevision(context);
-                          },
-                          child: Container(
-                            width: 250,
-                            padding: EdgeInsets.symmetric(
-                              horizontal: getProportionateScreenWidth(10),
-                              vertical: getProportionateScreenHeight(12),
-                            ),
-                            decoration: BoxDecoration(
-                              color: AppColors.greenColor,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(AppSvgImages.plus),
-                                UIHelper.horizontalSpace(10),
-                                DefaultText(
-                                  text: 'Создать ревизию',
-                                  color: AppColors.whiteColor,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        UIHelper.verticalSpace(20),
-                        ListView.separated(
+                      ],
+                    ),
+                  ),
+                ),
+                model.isLoading
+                    ? const LoadingView()
+                    : Expanded(
+                        child: ListView.separated(
                           shrinkWrap: true,
-                          physics: const ScrollPhysics(),
-                          itemCount: 4,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: model.revisionResponseModel!.data!.length,
+                          padding: EdgeInsets.symmetric(
+                              vertical: getProportionateScreenHeight(20)),
                           separatorBuilder: (_, index) => const SizedBox(
                             height: 15,
                           ),
@@ -122,12 +121,17 @@ class RevisionPage extends StatelessWidget {
                                     padding: EdgeInsets.symmetric(
                                       horizontal:
                                           getProportionateScreenWidth(12),
-                                      // vertical: getProportionateScreenHeight(9),
                                     ),
                                     child: Row(
                                       children: [
                                         DefaultText(text: 'Номер:  '),
-                                        DefaultText(text: '123456')
+                                        DefaultText(
+                                          text: model
+                                                  .revisionResponseModel!
+                                                  .data![index]
+                                                  .documentNumber ??
+                                              '1212121212',
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -149,12 +153,19 @@ class RevisionPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              DefaultText(text: 'Получатель'),
+                                              DefaultText(text: 'Сотрудник'),
                                               UIHelper.verticalSpace(
                                                 getProportionateScreenHeight(
                                                     10),
                                               ),
-                                              containerField('Ж. Багдат'),
+                                              containerField(model
+                                                          .revisionResponseModel!
+                                                          .data![index]
+                                                          .employee! ==
+                                                      ''
+                                                  ? 'Не указан'
+                                                  : model.revisionResponseModel!
+                                                      .data![index].employee!),
                                               UIHelper.verticalSpace(
                                                 getProportionateScreenHeight(
                                                     10),
@@ -165,7 +176,14 @@ class RevisionPage extends StatelessWidget {
                                                     10),
                                               ),
                                               containerField(
-                                                  '"15.04.2022, 12:34"'),
+                                                DateFormat('dd.MM.yyyy, hh:mm')
+                                                    .format(
+                                                  DateTime.parse(model
+                                                      .revisionResponseModel!
+                                                      .data![index]
+                                                      .providedTime!),
+                                                ),
+                                              ),
                                               UIHelper.verticalSpace(
                                                 getProportionateScreenHeight(
                                                     10),
@@ -187,7 +205,7 @@ class RevisionPage extends StatelessWidget {
                                                 getProportionateScreenHeight(
                                                     10),
                                               ),
-                                              containerField('350'),
+                                              containerField('0'),
                                               UIHelper.verticalSpace(
                                                 getProportionateScreenHeight(
                                                     10),
@@ -197,7 +215,12 @@ class RevisionPage extends StatelessWidget {
                                                 getProportionateScreenHeight(
                                                     10),
                                               ),
-                                              containerField('Черновик'),
+                                              containerField(
+                                                statusSort(model
+                                                    .revisionResponseModel!
+                                                    .data![index]
+                                                    .status!),
+                                              ),
                                               UIHelper.verticalSpace(
                                                 getProportionateScreenHeight(
                                                     10),
@@ -208,29 +231,13 @@ class RevisionPage extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  // UIHelper.verticalSpace(
-                                  //   getProportionateScreenHeight(5),
-                                  // ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      // IconButton(
-                                      //   onPressed: () {
-                                      //     // model.toEditProduct(context);
-                                      //   },
-                                      //   icon: SvgPicture.asset(
-                                      //     AppSvgImages.edit,
-                                      //     width: 25,
-                                      //     height: 25,
-                                      //   ),
-                                      // ),
-                                      // UIHelper.horizontalSpace(15),
                                       IconButton(
                                         onPressed: () {},
                                         icon: SvgPicture.asset(
                                           AppSvgImages.delete,
-                                          width: 20,
-                                          height: 20,
                                         ),
                                       ),
                                       UIHelper.horizontalSpace(6),
@@ -241,11 +248,11 @@ class RevisionPage extends StatelessWidget {
                             );
                           },
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-              );
+                      ),
+              ],
+            ),
+          ),
+        );
       },
     );
   }
@@ -270,5 +277,16 @@ class RevisionPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String statusSort(String status) {
+    switch (status) {
+      case 'provided':
+        return 'Предоставлен';
+      case 'draft':
+        return 'Черновик';
+      default:
+        return '';
+    }
   }
 }
