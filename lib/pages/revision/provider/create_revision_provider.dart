@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:qolaily/app/client/revision.dart';
 import 'package:qolaily/base/base_bloc.dart';
 import 'package:qolaily/shared/size_config.dart';
 
@@ -17,10 +20,36 @@ class CreateRevisionProvider extends BaseBloc {
   TextEditingController totalController = TextEditingController();
   Size? size;
 
-  init(BuildContext context) {
+  RevisionService _service = RevisionService();
+
+  int? inventoryId;
+
+  init(BuildContext context) async {
     setLoading(true);
     SizeConfig().init(context);
     size = MediaQuery.of(context).size;
+    await createInventory();
     setLoading(false);
+  }
+
+  createInventory() async {
+    inventoryId = await _service.create('salam');
+    notifyListeners();
+    log(inventoryId.toString());
+  }
+
+  addProduct(BuildContext context) async {
+    final repo = await _service.addRevision(
+      context,
+      barcodeController.text,
+      nameController.text,
+      int.parse(balanceController.text),
+      int.parse(amountController.text),
+      inventoryId,
+      int.parse(costPriceController.text),
+      int.parse(priceController.text),
+      int.parse(totalController.text),
+    );
+    Navigator.pop(context);
   }
 }
