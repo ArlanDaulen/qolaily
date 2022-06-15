@@ -71,7 +71,8 @@ class GoodsAcceptPage extends StatelessWidget {
                 UIHelper.verticalSpace(20),
                 GestureDetector(
                   onTap: () {
-                    model.toCreateProductAccept(context);
+                    // model.toCreateProductAccept(context);
+                    model.createWaybill(context);
                   },
                   child: Container(
                     width: 250,
@@ -100,7 +101,7 @@ class GoodsAcceptPage extends StatelessWidget {
                 ListView.separated(
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
-                  itemCount: 4,
+                  itemCount: model.waybillModel.length,
                   separatorBuilder: (_, index) => const SizedBox(
                     height: 15,
                   ),
@@ -122,7 +123,13 @@ class GoodsAcceptPage extends StatelessWidget {
                             child: Row(
                               children: [
                                 DefaultText(text: 'Номер:  '),
-                                DefaultText(text: '123456')
+                                DefaultText(
+                                  text:
+                                      model.waybillModel[index].documentNumber!,
+                                  // text: model.waybillModel!.data![index]
+                                  //         .documentNumber ??
+                                  //     '123456'
+                                )
                               ],
                             ),
                           ),
@@ -146,7 +153,8 @@ class GoodsAcceptPage extends StatelessWidget {
                                       UIHelper.verticalSpace(
                                         getProportionateScreenHeight(10),
                                       ),
-                                      containerField('Ж. Багдат'),
+                                      containerField(model.getName(
+                                          model.waybillModel[index].employee)),
                                       UIHelper.verticalSpace(
                                         getProportionateScreenHeight(10),
                                       ),
@@ -154,7 +162,9 @@ class GoodsAcceptPage extends StatelessWidget {
                                       UIHelper.verticalSpace(
                                         getProportionateScreenHeight(10),
                                       ),
-                                      containerField('"15.04.2022, 12:34"'),
+                                      // containerField('"15.04.2022, 12:34"'),
+                                      containerField(
+                                          model.waybillModel[index].createdOn!),
                                       UIHelper.verticalSpace(
                                         getProportionateScreenHeight(10),
                                       ),
@@ -173,7 +183,9 @@ class GoodsAcceptPage extends StatelessWidget {
                                       UIHelper.verticalSpace(
                                         getProportionateScreenHeight(10),
                                       ),
-                                      containerField('350'),
+                                      containerField(model
+                                          .waybillModel[index].totalSum
+                                          .toString()),
                                       UIHelper.verticalSpace(
                                         getProportionateScreenHeight(10),
                                       ),
@@ -181,7 +193,10 @@ class GoodsAcceptPage extends StatelessWidget {
                                       UIHelper.verticalSpace(
                                         getProportionateScreenHeight(10),
                                       ),
-                                      containerField('Черновик'),
+                                      containerField(
+                                          model.waybillModel[index].status ??
+                                              'Черновик'),
+                                      // containerField('text'),
                                       UIHelper.verticalSpace(
                                         getProportionateScreenHeight(10),
                                       ),

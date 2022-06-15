@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:qolaily/app/main/user_data.dart';
 import 'package:qolaily/core/network/interfaces/base_client_generator.dart';
@@ -18,6 +19,10 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
   const factory PlaceHolderClient.filterProduct() = _FilterProduct;
 
   // waybill: Прием товаров
+  const factory PlaceHolderClient.filterWaybill() = _FilterWaybill;
+  const factory PlaceHolderClient.createWaybill() = _CreateWaybill;
+  const factory PlaceHolderClient.addProductToWaybill(
+      Map<String, dynamic> data) = _AddProductToWaybill;
 
   // inventory: Ревизия
 
@@ -35,52 +40,79 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
   @override
   String get path {
     return when<String>(
-        // register: (String email, String username, String password,
-        //         String phone) =>
-        //     '/user/registration?email=$email&fullName=$username&password=$password&phone=$phone',
-        login: (String email, String password) =>
-            '/user/login?email=$email&password=$password',
-        // createProduct: (
-        //   String barcode, String name, String merchantId,
-        //   int purchasePrice, int sellingPrice, int amount,
-        //   String unitType, int categoryId) => '/v1/product/create',
-        // createProduct: () => '/v1/product/create',
-        filterProduct: () => '/v1/product/filter');
+      // register: (String email, String username, String password,
+      //         String phone) =>
+      //     '/user/registration?email=$email&fullName=$username&password=$password&phone=$phone',
+      login: (String email, String password) =>
+          '/user/login?email=$email&password=$password',
+      // createProduct: (
+      //   String barcode, String name, String merchantId,
+      //   int purchasePrice, int sellingPrice, int amount,
+      //   String unitType, int categoryId) => '/v1/product/create',
+      // createProduct: () => '/v1/product/create',
+      filterProduct: () => '/v1/product/filter',
+      // Waybill - прием товаров
+      filterWaybill: () => '/v1/waybill/filter',
+      createWaybill: () => '/v1/waybill/create',
+      addProductToWaybill: (Map<String, dynamic> data) =>
+          '/v1/waybill/add/product',
+    );
   }
 
   @override
   String get method {
     return maybeWhen<String>(
-        orElse: () => 'GET',
-        login: (String email, String password) => 'POST',
-        // register:
-        //     (String email, String username, String password, String phone) =>
-        //         'POST',
-        // createProduct: (
-        //   String barcode, String name, String merchantId,
-        //   int purchasePrice, int sellingPrice, int amount,
-        //   String unitType, int categoryId) => 'POST'
-        // createProduct: () => 'POST',
-        filterProduct: () => 'POST');
+      orElse: () => 'GET',
+      login: (String email, String password) => 'POST',
+      // register:
+      //     (String email, String username, String password, String phone) =>
+      //         'POST',
+      // createProduct: (
+      //   String barcode, String name, String merchantId,
+      //   int purchasePrice, int sellingPrice, int amount,
+      //   String unitType, int categoryId) => 'POST'
+      // createProduct: () => 'POST',
+      filterProduct: () => 'POST',
+      filterWaybill: () => 'POST',
+      createWaybill: () => 'POST',
+      addProductToWaybill: (Map<String, dynamic> data) => 'POST',
+    );
   }
 
   @override
   dynamic get body {
     return maybeWhen(
-        orElse: () {
-          return null;
-        },
-        login: (String email, String password) => null,
-        // register:
-        //     (String email, String username, String password, String phone) =>
-        //         null,
-        filterProduct: () => {
-              "merchant_id": "helloworld",
-              "name": "",
-              "barcode": "",
-              "from": 0,
-              "size": 0
-            });
+      orElse: () {
+        return null;
+      },
+      login: (String email, String password) => null,
+      // register:
+      //     (String email, String username, String password, String phone) =>
+      //         null,
+      filterProduct: () => {
+        "merchant_id": "helloworld",
+        "name": "",
+        "barcode": "",
+        "from": 0,
+        "size": 0
+      },
+      filterWaybill: () => {"merchant_id": "kdfjksjf"},
+      createWaybill: () => {
+        "merchant_id": "kdfjksjf",
+        "employee": "kfdjkjf",
+      },
+      addProductToWaybill: (Map<String, dynamic> data) {
+        return FormData.fromMap(data);
+        // "barcode": "jdfksdsjfksjd",
+        // "name": "dfjaksjdfkj",
+        // "received_amount": 2,
+        // "amount": 1,
+        // "waybill_id": 3,
+        // "purchase_price": 500,
+        // "selling_price": 2000,
+        // "total": 500
+      },
+    );
   }
 
   @override
