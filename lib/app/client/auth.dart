@@ -15,7 +15,7 @@ class Auth {
   Future login(String username, String password) async {
     try {
       http.Response response = await _client.post(
-        Uri.parse('http://34.219.97.21/v1/auth/login'),
+        Uri.parse('http://34.216.151.246/v1/auth/login'),
         body: jsonEncode({"username": username, "password": password}),
         headers: _headers,
       );
@@ -29,6 +29,21 @@ class Auth {
       //   log(response.headers[i].toString());
       // }
       return response;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future auth(String token) async {
+    try {
+      http.Response response = await _client.post(
+          Uri.parse(
+            'http://34.216.151.246/v1/auth/validation',
+          ),
+          headers: {'Authorization': 'Bearer $token'});
+      _userData.setMerchantId(json.decode(response.body)['merchant_id']);
+      _userData.setIIN(json.decode(response.body)['IIN']);
+      log(response.statusCode.toString());
     } catch (e) {
       throw Exception(e);
     }

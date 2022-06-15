@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:qolaily/pages/auth/ui/login_page.dart';
 import 'package:qolaily/pages/index/ui/index_page.dart';
 import '../../base/base_bloc.dart';
 import 'user_data.dart';
@@ -47,7 +48,8 @@ class MyAppModel extends BaseBloc {
 
   Widget getHomeScreen() {
     // if (isAuthenticated) {
-    return IndexPage();
+    // return IndexPage();
+    return LoginPage();
     // } else {
     // return const LoginPage();
     // }

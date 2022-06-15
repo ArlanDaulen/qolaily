@@ -29,6 +29,8 @@ class LoginProvider extends BaseBloc {
         await Auth().login(emailController.text, passwordController.text);
     log(response.headers.length.toString());
     if (response.statusCode == 200) {
+      await Auth()
+          .auth(response.headers.values.toList()[5].toString().substring(7));
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
