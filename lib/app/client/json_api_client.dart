@@ -3,13 +3,15 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:qolaily/app/main/user_data.dart';
 import 'package:qolaily/core/network/interfaces/base_client_generator.dart';
+import 'package:qolaily/main.dart';
 part 'json_api_client.freezed.dart';
 // part 'json_api_client_generated.dart';
 
 @freezed
 class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
   static final UserData _userData = UserData();
-  static final merchantId = _userData.getMerchantId();
+  // static final merchantId = _userData.getMerchantId();
+
   // Routes
   const PlaceHolderClient._() : super();
   const factory PlaceHolderClient.login(String email, String password) = _Login;
@@ -27,8 +29,11 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       Map<String, dynamic> data) = _AddProductToWaybill;
   const factory PlaceHolderClient.deleteWaybill(String merchantId, int id) =
       _DeleteWaybill;
-  // const factory PlaceHolderClient.
+  const factory PlaceHolderClient.getWaybillProducts(int id) =
+      _GetWaybillProducts;
   // inventory: Ревизия
+  const factory PlaceHolderClient.getRevisionProducts(int id) =
+      _GetRevisionProducts;
   const factory PlaceHolderClient.deleteRevision(String merchantId, int id) =
       _DeleteRevision;
 
@@ -64,6 +69,8 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
             '/v1/waybill/add/product',
         deleteWaybill: (String merchantId, int id) =>
             '/v1/waybill/$merchantId/$id',
+        getWaybillProducts: (_) => '/v1/waybill/product/get',
+        getRevisionProducts: (_) => '/v1/inventory/product/get',
         deleteRevision: (String merchantId, int id) =>
             '/v1/inventory/$merchantId/$id');
   }
@@ -86,6 +93,8 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       createWaybill: () => 'POST',
       addProductToWaybill: (Map<String, dynamic> data) => 'POST',
       deleteWaybill: (String merchantId, int id) => 'DELETE',
+      getWaybillProducts: (_) => 'POST',
+      getRevisionProducts: (_) => 'POST',
       deleteRevision: (String merchantId, int id) => 'DELETE',
     );
   }
@@ -115,6 +124,7 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       },
       addProductToWaybill: (Map<String, dynamic> data) {
         return FormData.fromMap(data);
+
         // "barcode": "jdfksdsjfksjd",
         // "name": "dfjaksjdfkj",
         // "received_amount": 2,
@@ -123,6 +133,12 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
         // "purchase_price": 500,
         // "selling_price": 2000,
         // "total": 500
+      },
+      getWaybillProducts: (int id) => {
+        "waybill_id": id,
+      },
+      getRevisionProducts: (int id) => {
+        "inventory_id": id,
       },
     );
   }

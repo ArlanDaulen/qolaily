@@ -1,12 +1,16 @@
 // import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:qolaily/app/main/user_data.dart';
 
 import 'app/main/app.dart';
 import 'app/main/app_model.dart';
 
+String? merchantId;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  merchantId = await UserData().getMerchantId();
 
   /// Set device orientation
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

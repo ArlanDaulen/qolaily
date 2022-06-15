@@ -395,7 +395,8 @@ class CreateProductAccept extends StatelessWidget {
                                           model.incrementCount();
                                         },
                                         icon: SvgPicture.asset(
-                                          AppSvgImages.delete,
+                                          AppSvgImages.plus,
+                                          color: AppColors.systemBlackColor,
                                           width: 25,
                                           height: 25,
                                         ),

@@ -1,14 +1,14 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:qolaily/app/data/models/waybill_products_model.dart';
-import 'package:qolaily/app/data/services/waybill_service.dart';
+import 'package:qolaily/app/client/revision.dart';
+import 'package:qolaily/app/data/models/revision_products_model.dart';
 import 'package:qolaily/base/base_bloc.dart';
 import 'package:qolaily/core/freezed/network_error.dart';
 import 'package:qolaily/core/freezed/result.dart';
 import 'package:qolaily/shared/size_config.dart';
 
-class ListOfProductsProvider extends BaseBloc {
+class RevisionProductsProvider extends BaseBloc {
   TextEditingController barcodeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController amountController = TextEditingController(); // кол-во
@@ -21,23 +21,24 @@ class ListOfProductsProvider extends BaseBloc {
       TextEditingController(); // цена продажи
   TextEditingController totalPriceController = TextEditingController(); // итого
   Size? size;
-  final WaybillService _waybillService = WaybillService();
-  List<WaybillProductsModel> waybillModel = [];
+  final RevisionService _waybillService = RevisionService();
+  // List<WaybillProductsModel> waybillModel = [];
+  List<RevisionProductsModel> revisionModel = [];
 
   init(context, int id) async {
     setLoading(true);
     SizeConfig().init(context);
     size = MediaQuery.of(context).size;
-    await getWaybillProducts(id);
+    await getRevisionProducts(id);
     setLoading(false);
   }
 
-  getWaybillProducts(int id) async {
-    Result<List<WaybillProductsModel>, NetworkError> waybillResponse =
-        await _waybillService.getWaybillProducts(id);
+  getRevisionProducts(int id) async {
+    Result<List<RevisionProductsModel>, NetworkError> revisionResponse =
+        await _waybillService.getRevisionProducts(id);
 
-    waybillResponse.when(success: (response) {
-      waybillModel = response;
+    revisionResponse.when(success: (response) {
+      revisionModel = response;
       log("Success filterWaybill (provider)");
     }, failure: (error) {
       log("Error filter waybill (provider)");

@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qolaily/base/base_provider.dart';
-import 'package:qolaily/pages/good_accept/provider/list_of_products_provider.dart';
-import 'package:qolaily/shared/default_button.dart';
+import 'package:qolaily/pages/revision/provider/list_of_revision_products_provider.dart';
 import 'package:qolaily/shared/default_text.dart';
 import 'package:qolaily/shared/loading_view.dart';
 import 'package:qolaily/shared/size_config.dart';
 import 'package:qolaily/shared/theme.dart';
 import 'package:qolaily/shared/ui_helper.dart';
 
-class ListOfProducts extends StatelessWidget {
-  const ListOfProducts({Key? key, required this.id}) : super(key: key);
+class ListOfRevisionProducts extends StatelessWidget {
+  const ListOfRevisionProducts({Key? key, required this.id}) : super(key: key);
 
   final int id;
 
   @override
   Widget build(BuildContext context) {
-    return BaseProvider<ListOfProductsProvider>(
-      model: ListOfProductsProvider(),
+    return BaseProvider<RevisionProductsProvider>(
+      model: RevisionProductsProvider(),
       onReady: (p0) => p0.init(context, id),
       builder: (context, model, child) {
         return model.isLoading
@@ -72,7 +71,7 @@ class ListOfProducts extends StatelessWidget {
                               ),
                             ),
                             DefaultText(
-                              text: 'Прием товаров',
+                              text: 'Список ревизии',
                               color: AppColors.whiteColor,
                               fontWeight: FontWeight.w400,
                             ),
@@ -107,7 +106,7 @@ class ListOfProducts extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              DefaultText(text: '    Список прием товаров'),
+                              DefaultText(text: '    Список ревизии'),
                               SizedBox(
                                 height: getProportionateScreenHeight(10),
                               ),
@@ -147,7 +146,7 @@ class ListOfProducts extends StatelessWidget {
                                           ),
                                           child: Text(
                                             // model.waybillModel.createdOn,
-                                            'date',
+                                            '16/07/2022',
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               color: AppColors.systemBlackColor,
@@ -188,7 +187,9 @@ class ListOfProducts extends StatelessWidget {
                           padding: const EdgeInsets.all(0),
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: model.waybillModel.length,
+                          itemCount: 1
+                          // model.waybillModel.length
+                          ,
                           separatorBuilder: (_, index) => const SizedBox(
                             height: 15,
                           ),
@@ -250,9 +251,11 @@ class ListOfProducts extends StatelessWidget {
                                                   //     model.barcodeController,
                                                   //     'Штрихкод'),
                                                   _buildContainer(
-                                                      'Штрихкод',
-                                                      model.waybillModel[index]
-                                                          .barcode!),
+                                                    'Штрихкод',
+                                                    model.revisionModel[index]
+                                                        .barcode!,
+                                                    // '',
+                                                  ),
                                                   UIHelper.verticalSpace(
                                                     getProportionateScreenHeight(
                                                         10),
@@ -261,10 +264,11 @@ class ListOfProducts extends StatelessWidget {
                                                   //     model.amountController,
                                                   //     'Кол-во'),
                                                   _buildContainer(
-                                                      'Кол-во',
-                                                      model.waybillModel[index]
-                                                          .receivedAmount!
-                                                          .toString()),
+                                                    'Кол-во',
+                                                    model.revisionModel[index]
+                                                        .actualAmount!
+                                                        .toString(),
+                                                  ),
                                                   UIHelper.verticalSpace(
                                                     getProportionateScreenHeight(
                                                         10),
@@ -292,9 +296,10 @@ class ListOfProducts extends StatelessWidget {
                                                   //     model.nameController,
                                                   //     'Наименование'),
                                                   _buildContainer(
-                                                      'Наименование',
-                                                      model.waybillModel[index]
-                                                          .name!),
+                                                    'Наименование',
+                                                    model.revisionModel[index]
+                                                        .name!,
+                                                  ),
                                                   UIHelper.verticalSpace(
                                                     getProportionateScreenHeight(
                                                         10),
@@ -303,10 +308,11 @@ class ListOfProducts extends StatelessWidget {
                                                   //     model.balanceController,
                                                   //     'Остаток'),
                                                   _buildContainer(
-                                                      'Оcтаток',
-                                                      model.waybillModel[index]
-                                                          .amount!
-                                                          .toString()),
+                                                    'Оcтаток',
+                                                    model.revisionModel[index]
+                                                        .amount!
+                                                        .toString(),
+                                                  ),
                                                   UIHelper.verticalSpace(
                                                     getProportionateScreenHeight(
                                                         10),
@@ -332,10 +338,11 @@ class ListOfProducts extends StatelessWidget {
                                                   //     model.costPriceController,
                                                   //     'Себестоим.'),
                                                   _buildContainer(
-                                                      'Себестоим.',
-                                                      model.waybillModel[index]
-                                                          .purchasePrice!
-                                                          .toString()),
+                                                'Себестоим.',
+                                                model.revisionModel[index]
+                                                    .purchasePrice!
+                                                    .toString(),
+                                              ),
                                             ),
                                             Expanded(
                                               child:
@@ -343,10 +350,11 @@ class ListOfProducts extends StatelessWidget {
                                                   //     model.sellingPriceController,
                                                   //     'Цена продажи'),
                                                   _buildContainer(
-                                                      'Цена продажи',
-                                                      model.waybillModel[index]
-                                                          .sellingPrice!
-                                                          .toString()),
+                                                'Цена продажи',
+                                                model.revisionModel[index]
+                                                    .sellingPrice!
+                                                    .toString(),
+                                              ),
                                             ),
                                             Expanded(
                                               child:
@@ -354,10 +362,11 @@ class ListOfProducts extends StatelessWidget {
                                                   //     model.totalPriceController,
                                                   //     'Итого'),
                                                   _buildContainer(
-                                                      'Итого',
-                                                      model.waybillModel[index]
-                                                          .total!
-                                                          .toString()),
+                                                'Итого',
+                                                model
+                                                    .revisionModel[index].total!
+                                                    .toString(),
+                                              ),
                                             ),
                                           ],
                                         ),

@@ -43,6 +43,7 @@ class GoodsAcceptProvider extends BaseBloc {
     }, failure: (error) {
       log("Error filter waybill (provider)");
     });
+    notifyListeners();
   }
 
   createWaybill(context) async {
@@ -104,8 +105,12 @@ class GoodsAcceptProvider extends BaseBloc {
                 )));
   }
 
-  toWaybillProductsPage(context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const ListOfProducts()));
+  toWaybillProductsPage(context, int index) {
+    // int? id = waybillModel[index].id;
+    // _userData.setWaybillId(id);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ListOfProducts(id: waybillModel[index].id!)));
   }
 }

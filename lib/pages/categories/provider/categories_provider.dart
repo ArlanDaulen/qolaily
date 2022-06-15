@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:qolaily/app/client/category.dart';
 import 'package:qolaily/app/data/models/categories_model.dart';
 import 'package:qolaily/app/data/models/category_create_response_model.dart';
+import 'package:qolaily/app/main/user_data.dart';
 import 'package:qolaily/base/base_bloc.dart';
 import 'package:qolaily/shared/default_text.dart';
 import 'package:qolaily/shared/theme.dart';
@@ -19,6 +20,8 @@ class CategoriesProvider extends BaseBloc {
 
   CategoryService _service = CategoryService();
 
+  UserData _userData = UserData();
+
   init(BuildContext context) async {
     setLoading(true);
     SizeConfig().init(context);
@@ -28,7 +31,8 @@ class CategoriesProvider extends BaseBloc {
   }
 
   Future<void> getAllCategories() async {
-    final response = await _service.getAllCategories('adjksfjasj');
+    final response =
+        await _service.getAllCategories(await _userData.getMerchantId());
     categoriesModel = response;
     notifyListeners();
   }

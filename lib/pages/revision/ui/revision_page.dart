@@ -108,144 +108,155 @@ class RevisionPage extends StatelessWidget {
                             height: 15,
                           ),
                           itemBuilder: (context, index) {
-                            return Container(
-                              padding: EdgeInsets.symmetric(
-                                vertical: getProportionateScreenHeight(10),
-                              ),
-                              decoration: const BoxDecoration(
-                                color: AppColors.whiteColor,
-                              ),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          getProportionateScreenWidth(12),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        DefaultText(text: 'Номер:  '),
-                                        DefaultText(
-                                          text: model
-                                                  .revisionResponseModel!
-                                                  .data![index]
-                                                  .documentNumber ??
-                                              '1212121212',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const Divider(
-                                    color: AppColors.greyColor,
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          getProportionateScreenWidth(12),
-                                      vertical: getProportionateScreenHeight(9),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              DefaultText(text: 'Сотрудник'),
-                                              UIHelper.verticalSpace(
-                                                getProportionateScreenHeight(
-                                                    10),
-                                              ),
-                                              containerField(model
-                                                          .revisionResponseModel!
-                                                          .data![index]
-                                                          .employee! ==
-                                                      ''
-                                                  ? 'Не указан'
-                                                  : model.revisionResponseModel!
-                                                      .data![index].employee!),
-                                              UIHelper.verticalSpace(
-                                                getProportionateScreenHeight(
-                                                    10),
-                                              ),
-                                              DefaultText(text: 'Дата/Время'),
-                                              UIHelper.verticalSpace(
-                                                getProportionateScreenHeight(
-                                                    10),
-                                              ),
-                                              containerField(
-                                                DateFormat('dd.MM.yyyy, hh:mm')
-                                                    .format(
-                                                  DateTime.parse(model
-                                                      .revisionResponseModel!
-                                                      .data![index]
-                                                      .providedTime!),
-                                                ),
-                                              ),
-                                              UIHelper.verticalSpace(
-                                                getProportionateScreenHeight(
-                                                    10),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width:
-                                              getProportionateScreenWidth(20),
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              DefaultText(text: 'Общая сумма'),
-                                              UIHelper.verticalSpace(
-                                                getProportionateScreenHeight(
-                                                    10),
-                                              ),
-                                              containerField('0'),
-                                              UIHelper.verticalSpace(
-                                                getProportionateScreenHeight(
-                                                    10),
-                                              ),
-                                              DefaultText(text: 'Статус'),
-                                              UIHelper.verticalSpace(
-                                                getProportionateScreenHeight(
-                                                    10),
-                                              ),
-                                              containerField(
-                                                statusSort(model
+                            return GestureDetector(
+                              onTap: () {
+                                model.toRevisionProductsPage(context, index);
+                              },
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: getProportionateScreenHeight(10),
+                                ),
+                                decoration: const BoxDecoration(
+                                  color: AppColors.whiteColor,
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            getProportionateScreenWidth(12),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          DefaultText(text: 'Номер:  '),
+                                          DefaultText(
+                                            text: model
                                                     .revisionResponseModel!
                                                     .data![index]
-                                                    .status!),
-                                              ),
-                                              UIHelper.verticalSpace(
-                                                getProportionateScreenHeight(
-                                                    10),
-                                              ),
-                                            ],
+                                                    .documentNumber ??
+                                                '1212121212',
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const Divider(
+                                      color: AppColors.greyColor,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            getProportionateScreenWidth(12),
+                                        vertical:
+                                            getProportionateScreenHeight(9),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                DefaultText(text: 'Сотрудник'),
+                                                UIHelper.verticalSpace(
+                                                  getProportionateScreenHeight(
+                                                      10),
+                                                ),
+                                                containerField(model
+                                                            .revisionResponseModel!
+                                                            .data![index]
+                                                            .employee! ==
+                                                        ''
+                                                    ? 'Не указан'
+                                                    : model
+                                                        .revisionResponseModel!
+                                                        .data![index]
+                                                        .employee!),
+                                                UIHelper.verticalSpace(
+                                                  getProportionateScreenHeight(
+                                                      10),
+                                                ),
+                                                DefaultText(text: 'Дата/Время'),
+                                                UIHelper.verticalSpace(
+                                                  getProportionateScreenHeight(
+                                                      10),
+                                                ),
+                                                containerField(
+                                                  DateFormat(
+                                                          'dd.MM.yyyy, hh:mm')
+                                                      .format(
+                                                    DateTime.parse(model
+                                                        .revisionResponseModel!
+                                                        .data![index]
+                                                        .providedTime!),
+                                                  ),
+                                                ),
+                                                UIHelper.verticalSpace(
+                                                  getProportionateScreenHeight(
+                                                      10),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width:
+                                                getProportionateScreenWidth(20),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                DefaultText(
+                                                    text: 'Общая сумма'),
+                                                UIHelper.verticalSpace(
+                                                  getProportionateScreenHeight(
+                                                      10),
+                                                ),
+                                                containerField('0'),
+                                                UIHelper.verticalSpace(
+                                                  getProportionateScreenHeight(
+                                                      10),
+                                                ),
+                                                DefaultText(text: 'Статус'),
+                                                UIHelper.verticalSpace(
+                                                  getProportionateScreenHeight(
+                                                      10),
+                                                ),
+                                                containerField(
+                                                  statusSort(model
+                                                      .revisionResponseModel!
+                                                      .data![index]
+                                                      .status!),
+                                                ),
+                                                UIHelper.verticalSpace(
+                                                  getProportionateScreenHeight(
+                                                      10),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {
+                                            model.deleteRevision(
+                                                index, context);
+                                          },
+                                          icon: SvgPicture.asset(
+                                            AppSvgImages.delete,
                                           ),
                                         ),
+                                        UIHelper.horizontalSpace(6),
                                       ],
                                     ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          model.deleteRevision(index, context);
-                                        },
-                                        icon: SvgPicture.asset(
-                                          AppSvgImages.delete,
-                                        ),
-                                      ),
-                                      UIHelper.horizontalSpace(6),
-                                    ],
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             );
                           },

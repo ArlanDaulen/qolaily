@@ -84,7 +84,8 @@ class CreateProductAcceptProvider extends BaseBloc {
     if (statusCode == 200) {
       // indexProvider!.setNavIndex(0);
       // notifyListeners();
-      Navigator.pop(context);
+      // Navigator.pop(context);
+      Navigator.of(context).pop(await provider.filterWaybill());
     }
 
     // p.when(success: (response) {

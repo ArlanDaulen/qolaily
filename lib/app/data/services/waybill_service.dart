@@ -5,6 +5,7 @@ import 'package:qolaily/app/client/json_api_client.dart';
 import 'package:qolaily/app/data/models/waybill_add_product.dart';
 import 'package:qolaily/app/data/models/waybill_create_model.dart';
 import 'package:qolaily/app/data/models/waybill_model.dart';
+import 'package:qolaily/app/data/models/waybill_products_model.dart';
 import 'package:qolaily/core/freezed/network_error.dart';
 import 'package:qolaily/core/freezed/result.dart';
 import 'package:qolaily/core/network/layers/network_executer.dart';
@@ -69,5 +70,28 @@ class WaybillService {
       String merchantID, int id) async {
     return NetworkExecuter.execute(
         route: PlaceHolderClient.deleteWaybill(merchantID, id));
+  }
+
+  // Future<int> getProducts(int id) async {
+  //   final response = await http.post(
+  //       Uri.parse('http://34.216.151.246/v1/waybill/product/get'),
+  //       headers: {'Content-Type': 'application/json'},
+  //       body: jsonEncode({"waybill_id": id}));
+
+  //   log(response.statusCode.toString());
+
+  //   if (response.statusCode == 200) {
+  //     log("Success 667");
+  //   } else {
+  //     log('Failure 667');
+  //   }
+  //   return response.statusCode;
+  // }
+
+  Future<Result<List<WaybillProductsModel>, NetworkError>> getWaybillProducts(
+      int id) async {
+    return NetworkExecuter.execute(
+        route: PlaceHolderClient.getWaybillProducts(id),
+        responseType: WaybillProductsModel());
   }
 }

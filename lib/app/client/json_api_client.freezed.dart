@@ -49,6 +49,18 @@ class _$PlaceHolderClientTearOff {
     );
   }
 
+  _GetWaybillProducts getWaybillProducts(int id) {
+    return _GetWaybillProducts(
+      id,
+    );
+  }
+
+  _GetRevisionProducts getRevisionProducts(int id) {
+    return _GetRevisionProducts(
+      id,
+    );
+  }
+
   _DeleteRevision deleteRevision(String merchantId, int id) {
     return _DeleteRevision(
       merchantId,
@@ -70,6 +82,8 @@ mixin _$PlaceHolderClient {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(int id) getWaybillProducts,
+    required TResult Function(int id) getRevisionProducts,
     required TResult Function(String merchantId, int id) deleteRevision,
   }) =>
       throw _privateConstructorUsedError;
@@ -81,6 +95,8 @@ mixin _$PlaceHolderClient {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
   }) =>
       throw _privateConstructorUsedError;
@@ -92,6 +108,8 @@ mixin _$PlaceHolderClient {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) =>
@@ -104,6 +122,8 @@ mixin _$PlaceHolderClient {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_GetWaybillProducts value) getWaybillProducts,
+    required TResult Function(_GetRevisionProducts value) getRevisionProducts,
     required TResult Function(_DeleteRevision value) deleteRevision,
   }) =>
       throw _privateConstructorUsedError;
@@ -115,6 +135,8 @@ mixin _$PlaceHolderClient {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +148,8 @@ mixin _$PlaceHolderClient {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) =>
@@ -238,6 +262,8 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(int id) getWaybillProducts,
+    required TResult Function(int id) getRevisionProducts,
     required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return login(email, password);
@@ -252,6 +278,8 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return login?.call(email, password);
@@ -266,6 +294,8 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -284,6 +314,8 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_GetWaybillProducts value) getWaybillProducts,
+    required TResult Function(_GetRevisionProducts value) getRevisionProducts,
     required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return login(this);
@@ -298,6 +330,8 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return login?.call(this);
@@ -312,6 +346,8 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -385,6 +421,8 @@ class _$_FilterProduct extends _FilterProduct with DiagnosticableTreeMixin {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(int id) getWaybillProducts,
+    required TResult Function(int id) getRevisionProducts,
     required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return filterProduct();
@@ -399,6 +437,8 @@ class _$_FilterProduct extends _FilterProduct with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return filterProduct?.call();
@@ -413,6 +453,8 @@ class _$_FilterProduct extends _FilterProduct with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -431,6 +473,8 @@ class _$_FilterProduct extends _FilterProduct with DiagnosticableTreeMixin {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_GetWaybillProducts value) getWaybillProducts,
+    required TResult Function(_GetRevisionProducts value) getRevisionProducts,
     required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return filterProduct(this);
@@ -445,6 +489,8 @@ class _$_FilterProduct extends _FilterProduct with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return filterProduct?.call(this);
@@ -459,6 +505,8 @@ class _$_FilterProduct extends _FilterProduct with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -527,6 +575,8 @@ class _$_FilterWaybill extends _FilterWaybill with DiagnosticableTreeMixin {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(int id) getWaybillProducts,
+    required TResult Function(int id) getRevisionProducts,
     required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return filterWaybill();
@@ -541,6 +591,8 @@ class _$_FilterWaybill extends _FilterWaybill with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return filterWaybill?.call();
@@ -555,6 +607,8 @@ class _$_FilterWaybill extends _FilterWaybill with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -573,6 +627,8 @@ class _$_FilterWaybill extends _FilterWaybill with DiagnosticableTreeMixin {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_GetWaybillProducts value) getWaybillProducts,
+    required TResult Function(_GetRevisionProducts value) getRevisionProducts,
     required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return filterWaybill(this);
@@ -587,6 +643,8 @@ class _$_FilterWaybill extends _FilterWaybill with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return filterWaybill?.call(this);
@@ -601,6 +659,8 @@ class _$_FilterWaybill extends _FilterWaybill with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -669,6 +729,8 @@ class _$_CreateWaybill extends _CreateWaybill with DiagnosticableTreeMixin {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(int id) getWaybillProducts,
+    required TResult Function(int id) getRevisionProducts,
     required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return createWaybill();
@@ -683,6 +745,8 @@ class _$_CreateWaybill extends _CreateWaybill with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return createWaybill?.call();
@@ -697,6 +761,8 @@ class _$_CreateWaybill extends _CreateWaybill with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -715,6 +781,8 @@ class _$_CreateWaybill extends _CreateWaybill with DiagnosticableTreeMixin {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_GetWaybillProducts value) getWaybillProducts,
+    required TResult Function(_GetRevisionProducts value) getRevisionProducts,
     required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return createWaybill(this);
@@ -729,6 +797,8 @@ class _$_CreateWaybill extends _CreateWaybill with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return createWaybill?.call(this);
@@ -743,6 +813,8 @@ class _$_CreateWaybill extends _CreateWaybill with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -840,6 +912,8 @@ class _$_AddProductToWaybill extends _AddProductToWaybill
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(int id) getWaybillProducts,
+    required TResult Function(int id) getRevisionProducts,
     required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return addProductToWaybill(data);
@@ -854,6 +928,8 @@ class _$_AddProductToWaybill extends _AddProductToWaybill
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return addProductToWaybill?.call(data);
@@ -868,6 +944,8 @@ class _$_AddProductToWaybill extends _AddProductToWaybill
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -886,6 +964,8 @@ class _$_AddProductToWaybill extends _AddProductToWaybill
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_GetWaybillProducts value) getWaybillProducts,
+    required TResult Function(_GetRevisionProducts value) getRevisionProducts,
     required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return addProductToWaybill(this);
@@ -900,6 +980,8 @@ class _$_AddProductToWaybill extends _AddProductToWaybill
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return addProductToWaybill?.call(this);
@@ -914,6 +996,8 @@ class _$_AddProductToWaybill extends _AddProductToWaybill
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -1027,6 +1111,8 @@ class _$_DeleteWaybill extends _DeleteWaybill with DiagnosticableTreeMixin {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(int id) getWaybillProducts,
+    required TResult Function(int id) getRevisionProducts,
     required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return deleteWaybill(merchantId, id);
@@ -1041,6 +1127,8 @@ class _$_DeleteWaybill extends _DeleteWaybill with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return deleteWaybill?.call(merchantId, id);
@@ -1055,6 +1143,8 @@ class _$_DeleteWaybill extends _DeleteWaybill with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -1073,6 +1163,8 @@ class _$_DeleteWaybill extends _DeleteWaybill with DiagnosticableTreeMixin {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_GetWaybillProducts value) getWaybillProducts,
+    required TResult Function(_GetRevisionProducts value) getRevisionProducts,
     required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return deleteWaybill(this);
@@ -1087,6 +1179,8 @@ class _$_DeleteWaybill extends _DeleteWaybill with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return deleteWaybill?.call(this);
@@ -1101,6 +1195,8 @@ class _$_DeleteWaybill extends _DeleteWaybill with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -1119,6 +1215,380 @@ abstract class _DeleteWaybill extends PlaceHolderClient {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$DeleteWaybillCopyWith<_DeleteWaybill> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$GetWaybillProductsCopyWith<$Res> {
+  factory _$GetWaybillProductsCopyWith(
+          _GetWaybillProducts value, $Res Function(_GetWaybillProducts) then) =
+      __$GetWaybillProductsCopyWithImpl<$Res>;
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$GetWaybillProductsCopyWithImpl<$Res>
+    extends _$PlaceHolderClientCopyWithImpl<$Res>
+    implements _$GetWaybillProductsCopyWith<$Res> {
+  __$GetWaybillProductsCopyWithImpl(
+      _GetWaybillProducts _value, $Res Function(_GetWaybillProducts) _then)
+      : super(_value, (v) => _then(v as _GetWaybillProducts));
+
+  @override
+  _GetWaybillProducts get _value => super._value as _GetWaybillProducts;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_GetWaybillProducts(
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GetWaybillProducts extends _GetWaybillProducts
+    with DiagnosticableTreeMixin {
+  const _$_GetWaybillProducts(this.id) : super._();
+
+  @override
+  final int id;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PlaceHolderClient.getWaybillProducts(id: $id)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PlaceHolderClient.getWaybillProducts'))
+      ..add(DiagnosticsProperty('id', id));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GetWaybillProducts &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$GetWaybillProductsCopyWith<_GetWaybillProducts> get copyWith =>
+      __$GetWaybillProductsCopyWithImpl<_GetWaybillProducts>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) login,
+    required TResult Function() filterProduct,
+    required TResult Function() filterWaybill,
+    required TResult Function() createWaybill,
+    required TResult Function(Map<String, dynamic> data) addProductToWaybill,
+    required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(int id) getWaybillProducts,
+    required TResult Function(int id) getRevisionProducts,
+    required TResult Function(String merchantId, int id) deleteRevision,
+  }) {
+    return getWaybillProducts(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
+    TResult Function(String merchantId, int id)? deleteRevision,
+  }) {
+    return getWaybillProducts?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
+    TResult Function(String merchantId, int id)? deleteRevision,
+    required TResult orElse(),
+  }) {
+    if (getWaybillProducts != null) {
+      return getWaybillProducts(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_FilterProduct value) filterProduct,
+    required TResult Function(_FilterWaybill value) filterWaybill,
+    required TResult Function(_CreateWaybill value) createWaybill,
+    required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+    required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_GetWaybillProducts value) getWaybillProducts,
+    required TResult Function(_GetRevisionProducts value) getRevisionProducts,
+    required TResult Function(_DeleteRevision value) deleteRevision,
+  }) {
+    return getWaybillProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
+    TResult Function(_DeleteRevision value)? deleteRevision,
+  }) {
+    return getWaybillProducts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
+    TResult Function(_DeleteRevision value)? deleteRevision,
+    required TResult orElse(),
+  }) {
+    if (getWaybillProducts != null) {
+      return getWaybillProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetWaybillProducts extends PlaceHolderClient {
+  const factory _GetWaybillProducts(int id) = _$_GetWaybillProducts;
+  const _GetWaybillProducts._() : super._();
+
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$GetWaybillProductsCopyWith<_GetWaybillProducts> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$GetRevisionProductsCopyWith<$Res> {
+  factory _$GetRevisionProductsCopyWith(_GetRevisionProducts value,
+          $Res Function(_GetRevisionProducts) then) =
+      __$GetRevisionProductsCopyWithImpl<$Res>;
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$GetRevisionProductsCopyWithImpl<$Res>
+    extends _$PlaceHolderClientCopyWithImpl<$Res>
+    implements _$GetRevisionProductsCopyWith<$Res> {
+  __$GetRevisionProductsCopyWithImpl(
+      _GetRevisionProducts _value, $Res Function(_GetRevisionProducts) _then)
+      : super(_value, (v) => _then(v as _GetRevisionProducts));
+
+  @override
+  _GetRevisionProducts get _value => super._value as _GetRevisionProducts;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_GetRevisionProducts(
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GetRevisionProducts extends _GetRevisionProducts
+    with DiagnosticableTreeMixin {
+  const _$_GetRevisionProducts(this.id) : super._();
+
+  @override
+  final int id;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PlaceHolderClient.getRevisionProducts(id: $id)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'PlaceHolderClient.getRevisionProducts'))
+      ..add(DiagnosticsProperty('id', id));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GetRevisionProducts &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$GetRevisionProductsCopyWith<_GetRevisionProducts> get copyWith =>
+      __$GetRevisionProductsCopyWithImpl<_GetRevisionProducts>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) login,
+    required TResult Function() filterProduct,
+    required TResult Function() filterWaybill,
+    required TResult Function() createWaybill,
+    required TResult Function(Map<String, dynamic> data) addProductToWaybill,
+    required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(int id) getWaybillProducts,
+    required TResult Function(int id) getRevisionProducts,
+    required TResult Function(String merchantId, int id) deleteRevision,
+  }) {
+    return getRevisionProducts(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
+    TResult Function(String merchantId, int id)? deleteRevision,
+  }) {
+    return getRevisionProducts?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
+    TResult Function(String merchantId, int id)? deleteRevision,
+    required TResult orElse(),
+  }) {
+    if (getRevisionProducts != null) {
+      return getRevisionProducts(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_FilterProduct value) filterProduct,
+    required TResult Function(_FilterWaybill value) filterWaybill,
+    required TResult Function(_CreateWaybill value) createWaybill,
+    required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+    required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_GetWaybillProducts value) getWaybillProducts,
+    required TResult Function(_GetRevisionProducts value) getRevisionProducts,
+    required TResult Function(_DeleteRevision value) deleteRevision,
+  }) {
+    return getRevisionProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
+    TResult Function(_DeleteRevision value)? deleteRevision,
+  }) {
+    return getRevisionProducts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
+    TResult Function(_DeleteRevision value)? deleteRevision,
+    required TResult orElse(),
+  }) {
+    if (getRevisionProducts != null) {
+      return getRevisionProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetRevisionProducts extends PlaceHolderClient {
+  const factory _GetRevisionProducts(int id) = _$_GetRevisionProducts;
+  const _GetRevisionProducts._() : super._();
+
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$GetRevisionProductsCopyWith<_GetRevisionProducts> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1214,6 +1684,8 @@ class _$_DeleteRevision extends _DeleteRevision with DiagnosticableTreeMixin {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(int id) getWaybillProducts,
+    required TResult Function(int id) getRevisionProducts,
     required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return deleteRevision(merchantId, id);
@@ -1228,6 +1700,8 @@ class _$_DeleteRevision extends _DeleteRevision with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return deleteRevision?.call(merchantId, id);
@@ -1242,6 +1716,8 @@ class _$_DeleteRevision extends _DeleteRevision with DiagnosticableTreeMixin {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(int id)? getWaybillProducts,
+    TResult Function(int id)? getRevisionProducts,
     TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
@@ -1260,6 +1736,8 @@ class _$_DeleteRevision extends _DeleteRevision with DiagnosticableTreeMixin {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_GetWaybillProducts value) getWaybillProducts,
+    required TResult Function(_GetRevisionProducts value) getRevisionProducts,
     required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return deleteRevision(this);
@@ -1274,6 +1752,8 @@ class _$_DeleteRevision extends _DeleteRevision with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return deleteRevision?.call(this);
@@ -1288,6 +1768,8 @@ class _$_DeleteRevision extends _DeleteRevision with DiagnosticableTreeMixin {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_GetWaybillProducts value)? getWaybillProducts,
+    TResult Function(_GetRevisionProducts value)? getRevisionProducts,
     TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {

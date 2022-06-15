@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:qolaily/app/client/json_api_client.dart';
+import 'package:qolaily/app/data/models/revision_products_model.dart';
 import 'package:qolaily/app/data/models/revision_response_model.dart';
 import 'package:qolaily/app/main/user_data.dart';
 import 'package:qolaily/core/freezed/network_error.dart';
@@ -99,6 +100,13 @@ class RevisionService {
       ),
     );
     log('Delete product: ${response.statusCode}');
+  }
+
+  Future<Result<List<RevisionProductsModel>, NetworkError>> getRevisionProducts(
+      int id) async {
+    return NetworkExecuter.execute(
+        route: PlaceHolderClient.getRevisionProducts(id),
+        responseType: RevisionProductsModel());
   }
 
   // Future<Result<dynamic, NetworkError>> deleteRevision(

@@ -111,7 +111,7 @@ class GoodsAcceptPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        model.toWaybillProductsPage(context);
+                        model.toWaybillProductsPage(context, index);
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(

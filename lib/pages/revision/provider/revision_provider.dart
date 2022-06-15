@@ -4,6 +4,7 @@ import 'package:qolaily/app/data/models/revision_response_model.dart';
 import 'package:qolaily/app/main/user_data.dart';
 import 'package:qolaily/base/base_bloc.dart';
 import 'package:qolaily/pages/revision/ui/create_revision.dart';
+import 'package:qolaily/pages/revision/ui/list_of_revision_products.dart';
 
 import '../../../shared/size_config.dart';
 
@@ -50,5 +51,15 @@ class RevisionProvider extends BaseBloc {
         ),
       ),
     );
+  }
+
+  toRevisionProductsPage(context, int index) {
+    // int? id = waybillModel[index].id;
+    // _userData.setWaybillId(id);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ListOfRevisionProducts(
+                id: revisionResponseModel!.data![index].id!)));
   }
 }
