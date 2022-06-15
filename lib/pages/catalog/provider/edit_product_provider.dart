@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:qolaily/app/client/catalog.dart';
+import 'package:qolaily/app/data/models/catalog_model.dart';
 import 'package:qolaily/base/base_bloc.dart';
 import 'package:qolaily/pages/catalog/provider/catalog_provider.dart';
 import 'package:qolaily/shared/size_config.dart';
@@ -21,31 +22,34 @@ class EditProductProvider extends BaseBloc {
   CatalogProvider? catalogProvider;
   CatalogService _service = CatalogService();
 
-  init(BuildContext context, CatalogProvider _pr) {
+  init(BuildContext context, CatalogProvider _pr, Products product) {
     setLoading(true);
     SizeConfig().init(context);
     catalogProvider = _pr;
+    barcodeController.text = product.barcode!;
+    nameController.text = product.name!;
+    costPriceController.text = product.purchasePrice!.toString();
+    sellingPriceController.text = product.purchasePrice!.toString();
+    categoryController.text = product.categoryName!.toString();
+    quantityController.text = product.amount!.toString();
     setLoading(false);
   }
 
-  update(int id, int categoryId, String categoryName, int stockId, BuildContext context) async {
-    log("Id: " + id.toString());
-    log("categoryID: " + categoryId.toString());
-    log("stockId: " + stockId.toString());
-  
+  update(Products product, BuildContext context) async {
     final response = await _service.update(
-        id,
+        product.id!.toInt(),
         barcodeController.text,
         nameController.text,
-        categoryId.toString(),
-        stockId.toString(),
+        product.categoryId.toString(),
+        product.stockId.toString(),
         costPriceController.text,
         sellingPriceController.text,
         quantityController.text,
-        categoryName);
+        product.categoryName!);
 
     if (response == 200) {
       await catalogProvider!.getAllProducts();
+      Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: DefaultText(

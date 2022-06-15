@@ -236,17 +236,8 @@ class CatalogPage extends StatelessWidget {
                                     IconButton(
                                       onPressed: () {
                                         model.toEditProduct(
-                                            model.catalogModel!.products![index]
-                                                .id!
-                                                .toInt(),
-                                            model.catalogModel!.products![index]
-                                                .categoryId!
-                                                .toInt(),
-                                                model.catalogModel!.products![index]
-                                                .categoryName!,
-                                            model.catalogModel!.products![index]
-                                                .stockId!
-                                                .toInt(),
+                                            model
+                                                .catalogModel!.products![index],
                                             context);
                                       },
                                       icon: SvgPicture.asset(

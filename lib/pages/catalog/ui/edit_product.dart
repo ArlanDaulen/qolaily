@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qolaily/app/data/models/catalog_model.dart';
 import 'package:qolaily/base/base_provider.dart';
 import 'package:qolaily/pages/catalog/provider/catalog_provider.dart';
 import 'package:qolaily/pages/catalog/provider/edit_product_provider.dart';
@@ -12,25 +13,19 @@ class EditProduct extends StatelessWidget {
   const EditProduct({
     Key? key,
     required this.catalogProvider,
-    required this.id,
-    required this.categoryId,
-    required this.stockId,
-    required this.categoryName,
+    required this.product,
   }) : super(key: key);
   final CatalogProvider catalogProvider;
-  final int id;
-  final int categoryId;
-  final int stockId;
-  final String categoryName;
+  final Products product;
 
   @override
   Widget build(BuildContext context) {
     return BaseProvider<EditProductProvider>(
       model: EditProductProvider(),
-      onReady: (p0) => p0.init(context, catalogProvider),
+      onReady: (p0) => p0.init(context, catalogProvider, product),
       builder: (context, model, child) {
         return model.isLoading
-            ? LoadingView()
+            ? const LoadingView()
             : Scaffold(
                 resizeToAvoidBottomInset: false,
                 appBar: PreferredSize(
@@ -167,8 +162,7 @@ class EditProduct extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                model.update(id, categoryId, categoryName,
-                                    stockId, context);
+                                model.update(product, context);
                               },
                               child: Container(
                                 alignment: Alignment.center,

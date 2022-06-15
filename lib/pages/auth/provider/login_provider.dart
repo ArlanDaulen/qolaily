@@ -16,11 +16,17 @@ class LoginProvider extends BaseBloc {
   GlobalKey formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool isPasswordVisible = false;
 
   init(BuildContext context) {
     setLoading(true);
     SizeConfig().init(context);
     setLoading(false);
+  }
+
+  setVisibility() {
+    isPasswordVisible = !isPasswordVisible;
+    notifyListeners();
   }
 
   login(BuildContext context) async {

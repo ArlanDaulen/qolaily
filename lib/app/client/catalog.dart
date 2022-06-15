@@ -21,7 +21,7 @@ class CatalogService {
           "name": "",
           "barcode": "",
           "from": 0,
-          "size": 0
+          "size": 200
         },
       ),
     );

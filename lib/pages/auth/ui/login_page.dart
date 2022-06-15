@@ -184,6 +184,7 @@ class LoginPage extends StatelessWidget {
                                           controller: model.passwordController,
                                           cursorColor:
                                               AppColors.systemBlackColor,
+                                          obscureText: true,
                                           style: GoogleFonts.roboto(
                                             textStyle: const TextStyle(
                                               color: AppColors.systemBlackColor,
@@ -202,6 +203,7 @@ class LoginPage extends StatelessWidget {
                                           ),
                                         ),
                                       ),
+                                      
                                     ],
                                   ),
                                 ),

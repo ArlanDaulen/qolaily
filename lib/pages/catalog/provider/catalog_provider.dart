@@ -70,17 +70,13 @@ class CatalogProvider extends BaseBloc {
                 )));
   }
 
-  toEditProduct(
-      int id, int categoryId, String categoryName, int stockId, context) {
+  toEditProduct(Products product, context) {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => EditProduct(
                   catalogProvider: this,
-                  id: id,
-                  categoryId: categoryId,
-                  categoryName: categoryName,
-                  stockId: stockId,
+                  product: product,
                 )));
   }
 }
