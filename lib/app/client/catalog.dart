@@ -75,21 +75,21 @@ class CatalogService {
   }
 
   Future<int> update(
-    int id,
-    String barcode,
-    String name,
-    String categoryId,
-    String stockId,
-    String purchasePrice,
-    String sellingPrice,
-    String amount,
-  ) async {
+      int id,
+      String barcode,
+      String name,
+      String categoryId,
+      String stockId,
+      String purchasePrice,
+      String sellingPrice,
+      String amount,
+      String categoryName) async {
     final merchantId = await _userData.getMerchantId();
     final response = await client.put(
       Uri.parse(
         baseUrl + 'product/$id',
       ),
-      headers: {},
+      headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         "id": id,
         "barcode": barcode,
@@ -100,7 +100,8 @@ class CatalogService {
         "purchase_price": tooInt(purchasePrice),
         "selling_price": tooInt(purchasePrice),
         "amount": tooInt(amount),
-        "unit_type": "piecedfs"
+        "unit_type": "piece",
+        "category_name": categoryName
       }),
     );
 

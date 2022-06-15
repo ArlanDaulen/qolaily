@@ -242,6 +242,8 @@ class CatalogPage extends StatelessWidget {
                                             model.catalogModel!.products![index]
                                                 .categoryId!
                                                 .toInt(),
+                                                model.catalogModel!.products![index]
+                                                .categoryName!,
                                             model.catalogModel!.products![index]
                                                 .stockId!
                                                 .toInt(),

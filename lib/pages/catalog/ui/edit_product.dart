@@ -9,17 +9,19 @@ import 'package:qolaily/shared/size_config.dart';
 import 'package:qolaily/shared/theme.dart';
 
 class EditProduct extends StatelessWidget {
-  const EditProduct(
-      {Key? key,
-      required this.catalogProvider,
-      required this.id,
-      required this.categoryId,
-      required this.stockId})
-      : super(key: key);
+  const EditProduct({
+    Key? key,
+    required this.catalogProvider,
+    required this.id,
+    required this.categoryId,
+    required this.stockId,
+    required this.categoryName,
+  }) : super(key: key);
   final CatalogProvider catalogProvider;
   final int id;
   final int categoryId;
   final int stockId;
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class EditProduct extends StatelessWidget {
         return model.isLoading
             ? LoadingView()
             : Scaffold(
+                resizeToAvoidBottomInset: false,
                 appBar: PreferredSize(
                   preferredSize: Size.fromHeight(
                     getProportionateScreenHeight(125),
@@ -164,7 +167,8 @@ class EditProduct extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                model.update(id, categoryId, stockId, context);
+                                model.update(id, categoryId, categoryName,
+                                    stockId, context);
                               },
                               child: Container(
                                 alignment: Alignment.center,

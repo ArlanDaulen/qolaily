@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:qolaily/app/client/catalog.dart';
 import 'package:qolaily/base/base_bloc.dart';
@@ -26,7 +28,11 @@ class EditProductProvider extends BaseBloc {
     setLoading(false);
   }
 
-  update(int id, int categoryId, int stockId, BuildContext context) async {
+  update(int id, int categoryId, String categoryName, int stockId, BuildContext context) async {
+    log("Id: " + id.toString());
+    log("categoryID: " + categoryId.toString());
+    log("stockId: " + stockId.toString());
+  
     final response = await _service.update(
         id,
         barcodeController.text,
@@ -35,7 +41,8 @@ class EditProductProvider extends BaseBloc {
         stockId.toString(),
         costPriceController.text,
         sellingPriceController.text,
-        quantityController.text);
+        quantityController.text,
+        categoryName);
 
     if (response == 200) {
       await catalogProvider!.getAllProducts();

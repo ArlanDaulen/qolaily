@@ -70,7 +70,8 @@ class CatalogProvider extends BaseBloc {
                 )));
   }
 
-  toEditProduct(int id, int categoryId, int stockId, context) {
+  toEditProduct(
+      int id, int categoryId, String categoryName, int stockId, context) {
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -78,6 +79,7 @@ class CatalogProvider extends BaseBloc {
                   catalogProvider: this,
                   id: id,
                   categoryId: categoryId,
+                  categoryName: categoryName,
                   stockId: stockId,
                 )));
   }
