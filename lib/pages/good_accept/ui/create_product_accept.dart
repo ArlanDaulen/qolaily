@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qolaily/base/base_provider.dart';
 import 'package:qolaily/pages/good_accept/provider/create_product_accept_provider.dart';
+import 'package:qolaily/pages/good_accept/provider/good_accept_provider.dart';
 import 'package:qolaily/shared/default_button.dart';
 import 'package:qolaily/shared/default_text.dart';
 import 'package:qolaily/shared/loading_view.dart';
@@ -11,7 +12,10 @@ import 'package:qolaily/shared/theme.dart';
 import 'package:qolaily/shared/ui_helper.dart';
 
 class CreateProductAccept extends StatelessWidget {
-  const CreateProductAccept({Key? key}) : super(key: key);
+  const CreateProductAccept({Key? key, required this.provider})
+      : super(key: key);
+
+  final GoodsAcceptProvider provider;
 
   @override
   Widget build(BuildContext context) {
@@ -109,20 +113,124 @@ class CreateProductAccept extends StatelessWidget {
                               SizedBox(
                                 height: getProportionateScreenHeight(10),
                               ),
-                              _buildController(model.dateController, 'Дата'),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: getProportionateScreenWidth(13),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    DefaultText(
+                                      text: 'Дата',
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 10,
+                                    ),
+                                    SizedBox(
+                                      height: getProportionateScreenHeight(5),
+                                    ),
+                                    SizedBox(
+                                      // width: 300,
+                                      height: 30,
+                                      child: Container(
+                                        width: double.maxFinite,
+                                        decoration: BoxDecoration(
+                                          color:
+                                              AppColors.defaultBackgroundColor,
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal:
+                                                getProportionateScreenWidth(8),
+                                            vertical:
+                                                getProportionateScreenHeight(7),
+                                          ),
+                                          child: Text(
+                                            provider
+                                                .waybillCreateModel!.createdOn!,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              color: AppColors.systemBlackColor,
+                                              fontSize:
+                                                  getProportionateScreenHeight(
+                                                      10),
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // _buildController(provider.waybillCreateModel!.createdOn!, 'Дата'),
                               SizedBox(
                                 height: getProportionateScreenHeight(10),
                               ),
-                              _buildController(model.invoiceNumberController,
-                                  'Номер накладной'),
+                              // _buildController(model.invoiceNumberController,
+                              //     'Номер накладной'),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: getProportionateScreenWidth(13),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    DefaultText(
+                                      text: 'Номер наклодной',
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 10,
+                                    ),
+                                    SizedBox(
+                                      height: getProportionateScreenHeight(5),
+                                    ),
+                                    SizedBox(
+                                      // width: 300,
+                                      height: 30,
+                                      child: Container(
+                                        width: double.maxFinite,
+                                        decoration: BoxDecoration(
+                                          color:
+                                              AppColors.defaultBackgroundColor,
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal:
+                                                getProportionateScreenWidth(8),
+                                            vertical:
+                                                getProportionateScreenHeight(7),
+                                          ),
+                                          child: Text(
+                                            provider.waybillCreateModel!
+                                                .documentNumber!,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              color: AppColors.systemBlackColor,
+                                              fontSize:
+                                                  getProportionateScreenHeight(
+                                                      10),
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               SizedBox(
                                 height: getProportionateScreenHeight(10),
                               ),
-                              _buildController(
-                                  model.commentController, 'Комментарий'),
-                              SizedBox(
-                                height: getProportionateScreenHeight(10),
-                              ),
+                              // _buildController(
+                              //     model.commentController, 'Комментарий'),
+                              // SizedBox(
+                              //   height: getProportionateScreenHeight(10),
+                              // ),
                             ],
                           ),
                         ),
@@ -133,7 +241,7 @@ class CreateProductAccept extends StatelessWidget {
                           padding: const EdgeInsets.all(0),
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 4,
+                          itemCount: 1,
                           separatorBuilder: (_, index) => const SizedBox(
                             height: 15,
                           ),
@@ -205,13 +313,13 @@ class CreateProductAccept extends StatelessWidget {
                                                     getProportionateScreenHeight(
                                                         10),
                                                   ),
-                                                  _buildController(
-                                                      model.oddsController,
-                                                      'Разница'),
-                                                  UIHelper.verticalSpace(
-                                                    getProportionateScreenHeight(
-                                                        10),
-                                                  ),
+                                                  // _buildController(
+                                                  //     model.oddsController,
+                                                  //     'Разница'),
+                                                  // UIHelper.verticalSpace(
+                                                  //   getProportionateScreenHeight(
+                                                  //       10),
+                                                  // ),
                                                 ],
                                               ),
                                             ),
@@ -238,13 +346,13 @@ class CreateProductAccept extends StatelessWidget {
                                                     getProportionateScreenHeight(
                                                         10),
                                                   ),
-                                                  _buildController(
-                                                      model.costPriceController,
-                                                      'Себестоим.'),
-                                                  UIHelper.verticalSpace(
-                                                    getProportionateScreenHeight(
-                                                        10),
-                                                  ),
+                                                  // _buildController(
+                                                  //     model.costPriceController,
+                                                  //     'Себестоим.'),
+                                                  // UIHelper.verticalSpace(
+                                                  //   getProportionateScreenHeight(
+                                                  //       10),
+                                                  // ),
                                                 ],
                                               ),
                                             ),
@@ -255,18 +363,18 @@ class CreateProductAccept extends StatelessWidget {
                                           children: [
                                             Expanded(
                                               child: _buildController(
-                                                  model.marginController,
-                                                  'Наценка'),
-                                            ),
-                                            Expanded(
-                                              child: _buildController(
                                                   model.costPriceController,
                                                   'Себестоим.'),
                                             ),
                                             Expanded(
                                               child: _buildController(
-                                                  model.costPriceController,
-                                                  'Себестоим.'),
+                                                  model.sellingPriceController,
+                                                  'Цена продажи'),
+                                            ),
+                                            Expanded(
+                                              child: _buildController(
+                                                  model.totalPriceController,
+                                                  'Итого'),
                                             ),
                                           ],
                                         ),
@@ -306,15 +414,20 @@ class CreateProductAccept extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 DefaultButton(
-                                  press: () {},
+                                  press: () {
+                                    Navigator.pop(context);
+                                  },
                                   text: 'Сохранить как черновик',
                                   color: AppColors.greyColor,
                                   width: model.size!.width * 0.38,
                                 ),
-                                SizedBox(width: 20),
+                                const SizedBox(width: 20),
                                 DefaultButton(
-                                  press: () {},
-                                  text: 'Провести ревизию',
+                                  press: () {
+                                    model.addProductToWaybill(
+                                        context, provider);
+                                  },
+                                  text: 'Провести прием товаров',
                                   color: AppColors.greenColor,
                                   width: model.size!.width * 0.35,
                                 ),

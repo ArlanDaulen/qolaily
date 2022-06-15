@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:qolaily/app/data/models/waybill_create_model.dart';
 import 'package:qolaily/app/data/models/waybill_model.dart';
 import 'package:qolaily/app/data/services/waybill_service.dart';
+import 'package:qolaily/app/main/user_data.dart';
 import 'package:qolaily/base/base_bloc.dart';
 import 'package:qolaily/core/freezed/network_error.dart';
 import 'package:qolaily/core/freezed/result.dart';
@@ -17,12 +18,14 @@ class GoodsAcceptProvider extends BaseBloc {
   final WaybillService _waybillService = WaybillService();
   List<WaybillModel> waybillModel = [];
   WaybillCreateModel? waybillCreateModel;
+  final UserData _userData = UserData();
 
   init(BuildContext context) async {
     setLoading(true);
     SizeConfig().init(context);
     size = MediaQuery.of(context).size;
     await filterWaybill();
+    notifyListeners();
     setLoading(false);
   }
 
@@ -44,9 +47,13 @@ class GoodsAcceptProvider extends BaseBloc {
 
     p.when(success: (response) {
       waybillCreateModel = response;
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const CreateProductAccept()));
+      _userData.setWaybillId(waybillCreateModel!.id);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => CreateProductAccept(provider: this)));
       log('Success in createWaybill (provider)');
+      log('New Waybill ID: ${_userData.getWaybillId()}');
     }, failure: (error) {
       log('Error in createWaybill (provider). Error: $error');
     });
@@ -63,7 +70,9 @@ class GoodsAcceptProvider extends BaseBloc {
   }
 
   toCreateProductAccept(context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const CreateProductAccept()));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => CreateProductAccept(provider: this)));
   }
 }

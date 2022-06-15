@@ -14,6 +14,17 @@ class UserData {
     return prefs.getString('merchant_id') ?? '';
   }
 
+  void setWaybillId(int? id) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setInt('waybill_id', id!);
+    log('Waybill ID: $id');
+  }
+
+  Future<int?> getWaybillId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getInt('waybill_id');
+  }
+
   void setIIN(String? iin) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('iin', iin!);

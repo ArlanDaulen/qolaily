@@ -36,8 +36,10 @@ class _$PlaceHolderClientTearOff {
     return const _CreateWaybill();
   }
 
-  _AddProductToWaybill addProductToWaybill() {
-    return const _AddProductToWaybill();
+  _AddProductToWaybill addProductToWaybill(Map<String, dynamic> data) {
+    return _AddProductToWaybill(
+      data,
+    );
   }
 }
 
@@ -52,7 +54,7 @@ mixin _$PlaceHolderClient {
     required TResult Function() filterProduct,
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
-    required TResult Function() addProductToWaybill,
+    required TResult Function(Map<String, dynamic> data) addProductToWaybill,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,7 +63,7 @@ mixin _$PlaceHolderClient {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,7 +72,7 @@ mixin _$PlaceHolderClient {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -199,7 +201,7 @@ class _$_Login extends _Login {
     required TResult Function() filterProduct,
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
-    required TResult Function() addProductToWaybill,
+    required TResult Function(Map<String, dynamic> data) addProductToWaybill,
   }) {
     return login(email, password);
   }
@@ -211,7 +213,7 @@ class _$_Login extends _Login {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
   }) {
     return login?.call(email, password);
   }
@@ -223,7 +225,7 @@ class _$_Login extends _Login {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -327,7 +329,7 @@ class _$_FilterProduct extends _FilterProduct {
     required TResult Function() filterProduct,
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
-    required TResult Function() addProductToWaybill,
+    required TResult Function(Map<String, dynamic> data) addProductToWaybill,
   }) {
     return filterProduct();
   }
@@ -339,7 +341,7 @@ class _$_FilterProduct extends _FilterProduct {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
   }) {
     return filterProduct?.call();
   }
@@ -351,7 +353,7 @@ class _$_FilterProduct extends _FilterProduct {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     required TResult orElse(),
   }) {
     if (filterProduct != null) {
@@ -450,7 +452,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     required TResult Function() filterProduct,
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
-    required TResult Function() addProductToWaybill,
+    required TResult Function(Map<String, dynamic> data) addProductToWaybill,
   }) {
     return filterWaybill();
   }
@@ -462,7 +464,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
   }) {
     return filterWaybill?.call();
   }
@@ -474,7 +476,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     required TResult orElse(),
   }) {
     if (filterWaybill != null) {
@@ -573,7 +575,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     required TResult Function() filterProduct,
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
-    required TResult Function() addProductToWaybill,
+    required TResult Function(Map<String, dynamic> data) addProductToWaybill,
   }) {
     return createWaybill();
   }
@@ -585,7 +587,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
   }) {
     return createWaybill?.call();
   }
@@ -597,7 +599,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     required TResult orElse(),
   }) {
     if (createWaybill != null) {
@@ -657,6 +659,7 @@ abstract class _$AddProductToWaybillCopyWith<$Res> {
   factory _$AddProductToWaybillCopyWith(_AddProductToWaybill value,
           $Res Function(_AddProductToWaybill) then) =
       __$AddProductToWaybillCopyWithImpl<$Res>;
+  $Res call({Map<String, dynamic> data});
 }
 
 /// @nodoc
@@ -669,25 +672,50 @@ class __$AddProductToWaybillCopyWithImpl<$Res>
 
   @override
   _AddProductToWaybill get _value => super._value as _AddProductToWaybill;
+
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_AddProductToWaybill(
+      data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_AddProductToWaybill extends _AddProductToWaybill {
-  const _$_AddProductToWaybill() : super._();
+  const _$_AddProductToWaybill(this.data) : super._();
+
+  @override
+  final Map<String, dynamic> data;
 
   @override
   String toString() {
-    return 'PlaceHolderClient.addProductToWaybill()';
+    return 'PlaceHolderClient.addProductToWaybill(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _AddProductToWaybill);
+    return identical(this, other) ||
+        (other is _AddProductToWaybill &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddProductToWaybillCopyWith<_AddProductToWaybill> get copyWith =>
+      __$AddProductToWaybillCopyWithImpl<_AddProductToWaybill>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -696,9 +724,9 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     required TResult Function() filterProduct,
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
-    required TResult Function() addProductToWaybill,
+    required TResult Function(Map<String, dynamic> data) addProductToWaybill,
   }) {
-    return addProductToWaybill();
+    return addProductToWaybill(data);
   }
 
   @override
@@ -708,9 +736,9 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
   }) {
-    return addProductToWaybill?.call();
+    return addProductToWaybill?.call(data);
   }
 
   @override
@@ -720,11 +748,11 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     TResult Function()? filterProduct,
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
-    TResult Function()? addProductToWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     required TResult orElse(),
   }) {
     if (addProductToWaybill != null) {
-      return addProductToWaybill();
+      return addProductToWaybill(data);
     }
     return orElse();
   }
@@ -771,6 +799,12 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
 }
 
 abstract class _AddProductToWaybill extends PlaceHolderClient {
-  const factory _AddProductToWaybill() = _$_AddProductToWaybill;
+  const factory _AddProductToWaybill(Map<String, dynamic> data) =
+      _$_AddProductToWaybill;
   const _AddProductToWaybill._() : super._();
+
+  Map<String, dynamic> get data => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$AddProductToWaybillCopyWith<_AddProductToWaybill> get copyWith =>
+      throw _privateConstructorUsedError;
 }

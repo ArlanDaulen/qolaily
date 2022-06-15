@@ -107,7 +107,7 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
         // "name": "dfjaksjdfkj",
         // "received_amount": 2,
         // "amount": 1,
-        // "waybill_id": 3,
+        // "waybill_id": _userData.getWaybillId(),
         // "purchase_price": 500,
         // "selling_price": 2000,
         // "total": 500

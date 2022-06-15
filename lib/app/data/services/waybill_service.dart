@@ -1,4 +1,5 @@
 import 'package:qolaily/app/client/json_api_client.dart';
+import 'package:qolaily/app/data/models/waybill_add_product.dart';
 import 'package:qolaily/app/data/models/waybill_create_model.dart';
 import 'package:qolaily/app/data/models/waybill_model.dart';
 import 'package:qolaily/core/freezed/network_error.dart';
@@ -16,5 +17,11 @@ class WaybillService {
     return NetworkExecuter.execute(
         route: const PlaceHolderClient.createWaybill(),
         responseType: WaybillCreateModel());
+  }
+
+  Future<Result<dynamic, NetworkError>> addProductToWaybill(
+      Map<String, dynamic> data) async {
+    return NetworkExecuter.execute(
+        route: PlaceHolderClient.addProductToWaybill(data));
   }
 }
