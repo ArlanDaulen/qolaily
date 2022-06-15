@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qolaily/base/base_provider.dart';
 import 'package:qolaily/pages/catalog/provider/add_product_provider.dart';
+import 'package:qolaily/pages/catalog/provider/catalog_provider.dart';
 import 'package:qolaily/pages/index/ui/drawer.dart';
 import 'package:qolaily/shared/default_text.dart';
 import 'package:qolaily/shared/loading_view.dart';
@@ -9,17 +10,19 @@ import 'package:qolaily/shared/size_config.dart';
 import 'package:qolaily/shared/theme.dart';
 
 class AddProduct extends StatelessWidget {
-  const AddProduct({Key? key}) : super(key: key);
+  const AddProduct({Key? key, required this.catalogProvider}) : super(key: key);
+  final CatalogProvider catalogProvider;
 
   @override
   Widget build(BuildContext context) {
     return BaseProvider<AddProductProvider>(
       model: AddProductProvider(),
-      onReady: (p0) => p0.init(context),
+      onReady: (p0) => p0.init(context, catalogProvider),
       builder: (context, model, child) {
         return model.isLoading
             ? const LoadingView()
             : Scaffold(
+                resizeToAvoidBottomInset: false,
                 appBar: PreferredSize(
                   preferredSize: Size.fromHeight(
                     getProportionateScreenHeight(125),
@@ -153,9 +156,7 @@ class AddProduct extends StatelessWidget {
                               height: getProportionateScreenHeight(40),
                             ),
                             GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
+                              onTap: () => model.addProducts(context),
                               child: Container(
                                 alignment: Alignment.center,
                                 width: getProportionateScreenWidth(170),

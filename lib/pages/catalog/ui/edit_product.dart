@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qolaily/base/base_provider.dart';
+import 'package:qolaily/pages/catalog/provider/catalog_provider.dart';
 import 'package:qolaily/pages/catalog/provider/edit_product_provider.dart';
 import 'package:qolaily/shared/default_text.dart';
 import 'package:qolaily/shared/loading_view.dart';
@@ -8,13 +9,23 @@ import 'package:qolaily/shared/size_config.dart';
 import 'package:qolaily/shared/theme.dart';
 
 class EditProduct extends StatelessWidget {
-  const EditProduct({Key? key}) : super(key: key);
+  const EditProduct(
+      {Key? key,
+      required this.catalogProvider,
+      required this.id,
+      required this.categoryId,
+      required this.stockId})
+      : super(key: key);
+  final CatalogProvider catalogProvider;
+  final int id;
+  final int categoryId;
+  final int stockId;
 
   @override
   Widget build(BuildContext context) {
     return BaseProvider<EditProductProvider>(
       model: EditProductProvider(),
-      onReady: (p0) => p0.init(context),
+      onReady: (p0) => p0.init(context, catalogProvider),
       builder: (context, model, child) {
         return model.isLoading
             ? LoadingView()
@@ -153,7 +164,7 @@ class EditProduct extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pop(context);
+                                model.update(id, categoryId, stockId, context);
                               },
                               child: Container(
                                 alignment: Alignment.center,
@@ -184,7 +195,7 @@ class EditProduct extends StatelessWidget {
                                       width: getProportionateScreenWidth(10),
                                     ),
                                     DefaultText(
-                                      text: 'ДОБАВИТЬ',
+                                      text: 'ИЗМЕНИТЬ',
                                       color: AppColors.whiteColor,
                                       fontWeight: FontWeight.w500,
                                       fontSize: 12,

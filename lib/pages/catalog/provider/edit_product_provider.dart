@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:qolaily/app/client/catalog.dart';
 import 'package:qolaily/base/base_bloc.dart';
+import 'package:qolaily/pages/catalog/provider/catalog_provider.dart';
 import 'package:qolaily/shared/size_config.dart';
+
+import '../../../shared/default_text.dart';
+import '../../../shared/theme.dart';
 
 class EditProductProvider extends BaseBloc {
   TextEditingController barcodeController = TextEditingController();
@@ -11,9 +16,46 @@ class EditProductProvider extends BaseBloc {
   TextEditingController categoryController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
 
-  init(BuildContext context) {
+  CatalogProvider? catalogProvider;
+  CatalogService _service = CatalogService();
+
+  init(BuildContext context, CatalogProvider _pr) {
     setLoading(true);
     SizeConfig().init(context);
+    catalogProvider = _pr;
     setLoading(false);
+  }
+
+  update(int id, int categoryId, int stockId, BuildContext context) async {
+    final response = await _service.update(
+        id,
+        barcodeController.text,
+        nameController.text,
+        categoryId.toString(),
+        stockId.toString(),
+        costPriceController.text,
+        sellingPriceController.text,
+        quantityController.text);
+
+    if (response == 200) {
+      await catalogProvider!.getAllProducts();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: DefaultText(
+            text: 'Product successfully updated',
+            color: AppColors.whiteColor,
+          ),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: DefaultText(
+            text: 'Fail to update product',
+            color: AppColors.whiteColor,
+          ),
+        ),
+      );
+    }
   }
 }
