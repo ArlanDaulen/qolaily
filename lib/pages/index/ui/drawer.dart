@@ -48,9 +48,9 @@ class CustomDrawer extends StatelessWidget {
                             Text(
                               'Qolaily',
                               style: GoogleFonts.yesevaOne(
-                                textStyle: TextStyle(
+                                textStyle: const TextStyle(
                                   color: AppColors.whiteColor,
-                                  fontSize: getProportionateScreenHeight(28),
+                                  fontSize: 26,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -58,9 +58,9 @@ class CustomDrawer extends StatelessWidget {
                             Text(
                               'online-kassa',
                               style: GoogleFonts.yesevaOne(
-                                textStyle: TextStyle(
+                                textStyle: const TextStyle(
                                   color: AppColors.whiteColor,
-                                  fontSize: getProportionateScreenHeight(12),
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -84,29 +84,31 @@ class CustomDrawer extends StatelessWidget {
                     // SizedBox(
                     //   width: getProportionateScreenWidth(15),
                     // ),
-                    DropdownButton<String>(
-                      value: model.dropDownValue,
-                      isDense: true,
-                      underline: const SizedBox(
-                        height: 0,
+                    Expanded(
+                      child: DropdownButton<String>(
+                        value: model.dropDownValue,
+                        isDense: true,
+                        underline: const SizedBox(
+                          height: 0,
+                        ),
+                        icon: const Icon(
+                          Icons.arrow_drop_down,
+                          color: AppColors.whiteColor,
+                        ),
+                        dropdownColor: AppColors.primaryColor,
+                        items: model.items.map<DropdownMenuItem<String>>((e) {
+                          return DropdownMenuItem(
+                            value: e,
+                            child: DefaultText(
+                              color: AppColors.whiteColor,
+                              fontSize: 16,
+                              text: e,
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (dynamic value) =>
+                            model.setDropDownValue(value),
                       ),
-                      icon: const Icon(
-                        Icons.arrow_drop_down,
-                        color: AppColors.whiteColor,
-                      ),
-                      dropdownColor: AppColors.primaryColor,
-                      items: model.items.map<DropdownMenuItem<String>>((e) {
-                        return DropdownMenuItem(
-                          value: e,
-                          child: DefaultText(
-                            color: AppColors.whiteColor,
-                            fontSize: 18,
-                            text: e,
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: (dynamic value) =>
-                          model.setDropDownValue(value),
                     ),
                   ],
                 ),

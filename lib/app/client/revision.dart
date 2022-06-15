@@ -14,14 +14,15 @@ class RevisionService {
   final headers = {'Content-Type': 'application/json'};
 
   Future<RevisionResponseModel> getAllRevision() async {
+    final merchantId = await _userData.getMerchantId();
     final response = await client.post(
       Uri.parse(
         baseUrl + 'inventory/filter',
       ),
       headers: headers,
-      body: jsonEncode({"merchant_id": "kdfjksjf"}),
+      body: jsonEncode({"merchant_id": merchantId}),
     );
-    log(response.statusCode.toString());
+    log('Revision filter status: ' + response.statusCode.toString());
     if (response.statusCode == 200) {
       final model = RevisionResponseModel.fromJson(
         {'data': json.decode(response.body)},
@@ -33,10 +34,11 @@ class RevisionService {
   }
 
   Future<int> create(String employee) async {
+    final merchantId = await _userData.getMerchantId();
     final response = await client.post(
       Uri.parse(baseUrl + 'inventory/create'),
       headers: headers,
-      body: jsonEncode({"merchant_id": "kdfjksjf", "emplyee": "salam"}),
+      body: jsonEncode({"merchant_id": merchantId, "emplyee": ""}),
     );
     log("CREATE: ${response.statusCode}");
     if (response.statusCode == 200) {
@@ -73,7 +75,7 @@ class RevisionService {
         "total": total
       }),
     );
-    log("ADD: ${response.statusCode}");
+    log("ADD REVISiON: ${response.statusCode}");
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
