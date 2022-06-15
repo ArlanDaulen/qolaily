@@ -27,6 +27,18 @@ class _$PlaceHolderClientTearOff {
   _FilterProduct filterProduct() {
     return const _FilterProduct();
   }
+
+  _FilterWaybill filterWaybill() {
+    return const _FilterWaybill();
+  }
+
+  _CreateWaybill createWaybill() {
+    return const _CreateWaybill();
+  }
+
+  _AddProductToWaybill addProductToWaybill() {
+    return const _AddProductToWaybill();
+  }
 }
 
 /// @nodoc
@@ -38,18 +50,27 @@ mixin _$PlaceHolderClient {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) login,
     required TResult Function() filterProduct,
+    required TResult Function() filterWaybill,
+    required TResult Function() createWaybill,
+    required TResult Function() addProductToWaybill,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email, String password)? login,
     TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? login,
     TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,18 +78,27 @@ mixin _$PlaceHolderClient {
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
     required TResult Function(_FilterProduct value) filterProduct,
+    required TResult Function(_FilterWaybill value) filterWaybill,
+    required TResult Function(_CreateWaybill value) createWaybill,
+    required TResult Function(_AddProductToWaybill value) addProductToWaybill,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Login value)? login,
     TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
     TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,6 +197,9 @@ class _$_Login extends _Login {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) login,
     required TResult Function() filterProduct,
+    required TResult Function() filterWaybill,
+    required TResult Function() createWaybill,
+    required TResult Function() addProductToWaybill,
   }) {
     return login(email, password);
   }
@@ -176,6 +209,9 @@ class _$_Login extends _Login {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email, String password)? login,
     TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
   }) {
     return login?.call(email, password);
   }
@@ -185,6 +221,9 @@ class _$_Login extends _Login {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? login,
     TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -198,6 +237,9 @@ class _$_Login extends _Login {
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
     required TResult Function(_FilterProduct value) filterProduct,
+    required TResult Function(_FilterWaybill value) filterWaybill,
+    required TResult Function(_CreateWaybill value) createWaybill,
+    required TResult Function(_AddProductToWaybill value) addProductToWaybill,
   }) {
     return login(this);
   }
@@ -207,6 +249,9 @@ class _$_Login extends _Login {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Login value)? login,
     TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
   }) {
     return login?.call(this);
   }
@@ -216,6 +261,9 @@ class _$_Login extends _Login {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
     TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -277,6 +325,9 @@ class _$_FilterProduct extends _FilterProduct {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) login,
     required TResult Function() filterProduct,
+    required TResult Function() filterWaybill,
+    required TResult Function() createWaybill,
+    required TResult Function() addProductToWaybill,
   }) {
     return filterProduct();
   }
@@ -286,6 +337,9 @@ class _$_FilterProduct extends _FilterProduct {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email, String password)? login,
     TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
   }) {
     return filterProduct?.call();
   }
@@ -295,6 +349,9 @@ class _$_FilterProduct extends _FilterProduct {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? login,
     TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
     required TResult orElse(),
   }) {
     if (filterProduct != null) {
@@ -308,6 +365,9 @@ class _$_FilterProduct extends _FilterProduct {
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
     required TResult Function(_FilterProduct value) filterProduct,
+    required TResult Function(_FilterWaybill value) filterWaybill,
+    required TResult Function(_CreateWaybill value) createWaybill,
+    required TResult Function(_AddProductToWaybill value) addProductToWaybill,
   }) {
     return filterProduct(this);
   }
@@ -317,6 +377,9 @@ class _$_FilterProduct extends _FilterProduct {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Login value)? login,
     TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
   }) {
     return filterProduct?.call(this);
   }
@@ -326,6 +389,9 @@ class _$_FilterProduct extends _FilterProduct {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
     TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     required TResult orElse(),
   }) {
     if (filterProduct != null) {
@@ -338,4 +404,373 @@ class _$_FilterProduct extends _FilterProduct {
 abstract class _FilterProduct extends PlaceHolderClient {
   const factory _FilterProduct() = _$_FilterProduct;
   const _FilterProduct._() : super._();
+}
+
+/// @nodoc
+abstract class _$FilterWaybillCopyWith<$Res> {
+  factory _$FilterWaybillCopyWith(
+          _FilterWaybill value, $Res Function(_FilterWaybill) then) =
+      __$FilterWaybillCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$FilterWaybillCopyWithImpl<$Res>
+    extends _$PlaceHolderClientCopyWithImpl<$Res>
+    implements _$FilterWaybillCopyWith<$Res> {
+  __$FilterWaybillCopyWithImpl(
+      _FilterWaybill _value, $Res Function(_FilterWaybill) _then)
+      : super(_value, (v) => _then(v as _FilterWaybill));
+
+  @override
+  _FilterWaybill get _value => super._value as _FilterWaybill;
+}
+
+/// @nodoc
+
+class _$_FilterWaybill extends _FilterWaybill {
+  const _$_FilterWaybill() : super._();
+
+  @override
+  String toString() {
+    return 'PlaceHolderClient.filterWaybill()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _FilterWaybill);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) login,
+    required TResult Function() filterProduct,
+    required TResult Function() filterWaybill,
+    required TResult Function() createWaybill,
+    required TResult Function() addProductToWaybill,
+  }) {
+    return filterWaybill();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
+  }) {
+    return filterWaybill?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
+    required TResult orElse(),
+  }) {
+    if (filterWaybill != null) {
+      return filterWaybill();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_FilterProduct value) filterProduct,
+    required TResult Function(_FilterWaybill value) filterWaybill,
+    required TResult Function(_CreateWaybill value) createWaybill,
+    required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+  }) {
+    return filterWaybill(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+  }) {
+    return filterWaybill?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    required TResult orElse(),
+  }) {
+    if (filterWaybill != null) {
+      return filterWaybill(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FilterWaybill extends PlaceHolderClient {
+  const factory _FilterWaybill() = _$_FilterWaybill;
+  const _FilterWaybill._() : super._();
+}
+
+/// @nodoc
+abstract class _$CreateWaybillCopyWith<$Res> {
+  factory _$CreateWaybillCopyWith(
+          _CreateWaybill value, $Res Function(_CreateWaybill) then) =
+      __$CreateWaybillCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$CreateWaybillCopyWithImpl<$Res>
+    extends _$PlaceHolderClientCopyWithImpl<$Res>
+    implements _$CreateWaybillCopyWith<$Res> {
+  __$CreateWaybillCopyWithImpl(
+      _CreateWaybill _value, $Res Function(_CreateWaybill) _then)
+      : super(_value, (v) => _then(v as _CreateWaybill));
+
+  @override
+  _CreateWaybill get _value => super._value as _CreateWaybill;
+}
+
+/// @nodoc
+
+class _$_CreateWaybill extends _CreateWaybill {
+  const _$_CreateWaybill() : super._();
+
+  @override
+  String toString() {
+    return 'PlaceHolderClient.createWaybill()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _CreateWaybill);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) login,
+    required TResult Function() filterProduct,
+    required TResult Function() filterWaybill,
+    required TResult Function() createWaybill,
+    required TResult Function() addProductToWaybill,
+  }) {
+    return createWaybill();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
+  }) {
+    return createWaybill?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
+    required TResult orElse(),
+  }) {
+    if (createWaybill != null) {
+      return createWaybill();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_FilterProduct value) filterProduct,
+    required TResult Function(_FilterWaybill value) filterWaybill,
+    required TResult Function(_CreateWaybill value) createWaybill,
+    required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+  }) {
+    return createWaybill(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+  }) {
+    return createWaybill?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    required TResult orElse(),
+  }) {
+    if (createWaybill != null) {
+      return createWaybill(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateWaybill extends PlaceHolderClient {
+  const factory _CreateWaybill() = _$_CreateWaybill;
+  const _CreateWaybill._() : super._();
+}
+
+/// @nodoc
+abstract class _$AddProductToWaybillCopyWith<$Res> {
+  factory _$AddProductToWaybillCopyWith(_AddProductToWaybill value,
+          $Res Function(_AddProductToWaybill) then) =
+      __$AddProductToWaybillCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$AddProductToWaybillCopyWithImpl<$Res>
+    extends _$PlaceHolderClientCopyWithImpl<$Res>
+    implements _$AddProductToWaybillCopyWith<$Res> {
+  __$AddProductToWaybillCopyWithImpl(
+      _AddProductToWaybill _value, $Res Function(_AddProductToWaybill) _then)
+      : super(_value, (v) => _then(v as _AddProductToWaybill));
+
+  @override
+  _AddProductToWaybill get _value => super._value as _AddProductToWaybill;
+}
+
+/// @nodoc
+
+class _$_AddProductToWaybill extends _AddProductToWaybill {
+  const _$_AddProductToWaybill() : super._();
+
+  @override
+  String toString() {
+    return 'PlaceHolderClient.addProductToWaybill()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _AddProductToWaybill);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) login,
+    required TResult Function() filterProduct,
+    required TResult Function() filterWaybill,
+    required TResult Function() createWaybill,
+    required TResult Function() addProductToWaybill,
+  }) {
+    return addProductToWaybill();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
+  }) {
+    return addProductToWaybill?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function()? addProductToWaybill,
+    required TResult orElse(),
+  }) {
+    if (addProductToWaybill != null) {
+      return addProductToWaybill();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_FilterProduct value) filterProduct,
+    required TResult Function(_FilterWaybill value) filterWaybill,
+    required TResult Function(_CreateWaybill value) createWaybill,
+    required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+  }) {
+    return addProductToWaybill(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+  }) {
+    return addProductToWaybill?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    required TResult orElse(),
+  }) {
+    if (addProductToWaybill != null) {
+      return addProductToWaybill(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddProductToWaybill extends PlaceHolderClient {
+  const factory _AddProductToWaybill() = _$_AddProductToWaybill;
+  const _AddProductToWaybill._() : super._();
 }
