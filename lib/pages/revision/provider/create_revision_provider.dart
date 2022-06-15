@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:qolaily/app/client/revision.dart';
 import 'package:qolaily/base/base_bloc.dart';
+import 'package:qolaily/pages/revision/provider/revision_provider.dart';
 import 'package:qolaily/shared/size_config.dart';
 
 class CreateRevisionProvider extends BaseBloc {
@@ -21,13 +22,15 @@ class CreateRevisionProvider extends BaseBloc {
   Size? size;
 
   RevisionService _service = RevisionService();
+  RevisionProvider? provider;
 
   int? inventoryId;
 
-  init(BuildContext context) async {
+  init(BuildContext context, RevisionProvider model) async {
     setLoading(true);
     SizeConfig().init(context);
     size = MediaQuery.of(context).size;
+    provider = model;
     await createInventory();
     setLoading(false);
   }
@@ -50,6 +53,7 @@ class CreateRevisionProvider extends BaseBloc {
       int.parse(priceController.text),
       int.parse(totalController.text),
     );
+    await provider!.getAllRevision();
     Navigator.pop(context);
   }
 }

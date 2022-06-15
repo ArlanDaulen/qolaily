@@ -244,7 +244,7 @@ class CreateProductAccept extends StatelessWidget {
                           padding: const EdgeInsets.all(0),
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 1,
+                          itemCount: model.count,
                           separatorBuilder: (_, index) => const SizedBox(
                             height: 15,
                           ),
@@ -270,7 +270,7 @@ class CreateProductAccept extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         DefaultText(text: 'No.  '),
-                                        DefaultText(text: '1')
+                                        DefaultText(text: '${index + 1}')
                                       ],
                                     ),
                                   ),
@@ -391,7 +391,9 @@ class CreateProductAccept extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          model.incrementCount();
+                                        },
                                         icon: SvgPicture.asset(
                                           AppSvgImages.delete,
                                           width: 25,

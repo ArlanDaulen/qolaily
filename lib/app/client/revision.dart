@@ -3,8 +3,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:qolaily/app/client/json_api_client.dart';
 import 'package:qolaily/app/data/models/revision_response_model.dart';
 import 'package:qolaily/app/main/user_data.dart';
+import 'package:qolaily/core/freezed/network_error.dart';
+import 'package:qolaily/core/freezed/result.dart';
+import 'package:qolaily/core/network/layers/network_executer.dart';
 import 'package:qolaily/shared/default_text.dart';
 
 class RevisionService {
@@ -87,4 +91,19 @@ class RevisionService {
       ),
     );
   }
+
+  Future<void> deleteRevision(String merchantId, int id) async {
+    final response = await client.delete(
+      Uri.parse(
+        baseUrl + 'inventory/$merchantId/$id',
+      ),
+    );
+    log('Delete product: ${response.statusCode}');
+  }
+
+  // Future<Result<dynamic, NetworkError>> deleteRevision(
+  //     String merchantID, int id) async {
+  //   return NetworkExecuter.execute(
+  //       route: PlaceHolderClient.deleteRevision(merchantID, id));
+  // }
 }

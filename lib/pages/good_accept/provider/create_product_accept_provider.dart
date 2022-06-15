@@ -36,6 +36,8 @@ class CreateProductAcceptProvider extends BaseBloc {
   AddProductToWaybillModel? addProductToWaybillModel;
   final UserData _userData = UserData();
 
+  int count = 1;
+
   IndexProvider? indexProvider;
 
   init(BuildContext context, IndexProvider _indexProvider) {
@@ -94,5 +96,10 @@ class CreateProductAcceptProvider extends BaseBloc {
     // }, failure: (error) {
     //   log("Error in create Product waybill. Error: $error");
     // });
+  }
+
+  incrementCount() {
+    count++;
+    notifyListeners();
   }
 }

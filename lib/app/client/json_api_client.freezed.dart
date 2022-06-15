@@ -48,6 +48,13 @@ class _$PlaceHolderClientTearOff {
       id,
     );
   }
+
+  _DeleteRevision deleteRevision(String merchantId, int id) {
+    return _DeleteRevision(
+      merchantId,
+      id,
+    );
+  }
 }
 
 /// @nodoc
@@ -63,6 +70,7 @@ mixin _$PlaceHolderClient {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(String merchantId, int id) deleteRevision,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +81,7 @@ mixin _$PlaceHolderClient {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +92,7 @@ mixin _$PlaceHolderClient {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -94,6 +104,7 @@ mixin _$PlaceHolderClient {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_DeleteRevision value) deleteRevision,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -104,6 +115,7 @@ mixin _$PlaceHolderClient {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -114,6 +126,7 @@ mixin _$PlaceHolderClient {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -172,7 +185,7 @@ class __$LoginCopyWithImpl<$Res> extends _$PlaceHolderClientCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Login extends _Login {
+class _$_Login extends _Login with DiagnosticableTreeMixin {
   const _$_Login(this.email, this.password) : super._();
 
   @override
@@ -181,8 +194,17 @@ class _$_Login extends _Login {
   final String password;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PlaceHolderClient.login(email: $email, password: $password)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PlaceHolderClient.login'))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('password', password));
   }
 
   @override
@@ -216,6 +238,7 @@ class _$_Login extends _Login {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return login(email, password);
   }
@@ -229,6 +252,7 @@ class _$_Login extends _Login {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return login?.call(email, password);
   }
@@ -242,6 +266,7 @@ class _$_Login extends _Login {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -259,6 +284,7 @@ class _$_Login extends _Login {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return login(this);
   }
@@ -272,6 +298,7 @@ class _$_Login extends _Login {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return login?.call(this);
   }
@@ -285,6 +312,7 @@ class _$_Login extends _Login {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -325,12 +353,19 @@ class __$FilterProductCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FilterProduct extends _FilterProduct {
+class _$_FilterProduct extends _FilterProduct with DiagnosticableTreeMixin {
   const _$_FilterProduct() : super._();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PlaceHolderClient.filterProduct()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'PlaceHolderClient.filterProduct'));
   }
 
   @override
@@ -350,6 +385,7 @@ class _$_FilterProduct extends _FilterProduct {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return filterProduct();
   }
@@ -363,6 +399,7 @@ class _$_FilterProduct extends _FilterProduct {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return filterProduct?.call();
   }
@@ -376,6 +413,7 @@ class _$_FilterProduct extends _FilterProduct {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
     if (filterProduct != null) {
@@ -393,6 +431,7 @@ class _$_FilterProduct extends _FilterProduct {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return filterProduct(this);
   }
@@ -406,6 +445,7 @@ class _$_FilterProduct extends _FilterProduct {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return filterProduct?.call(this);
   }
@@ -419,6 +459,7 @@ class _$_FilterProduct extends _FilterProduct {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
     if (filterProduct != null) {
@@ -454,12 +495,19 @@ class __$FilterWaybillCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FilterWaybill extends _FilterWaybill {
+class _$_FilterWaybill extends _FilterWaybill with DiagnosticableTreeMixin {
   const _$_FilterWaybill() : super._();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PlaceHolderClient.filterWaybill()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'PlaceHolderClient.filterWaybill'));
   }
 
   @override
@@ -479,6 +527,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return filterWaybill();
   }
@@ -492,6 +541,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return filterWaybill?.call();
   }
@@ -505,6 +555,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
     if (filterWaybill != null) {
@@ -522,6 +573,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return filterWaybill(this);
   }
@@ -535,6 +587,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return filterWaybill?.call(this);
   }
@@ -548,6 +601,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
     if (filterWaybill != null) {
@@ -583,12 +637,19 @@ class __$CreateWaybillCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CreateWaybill extends _CreateWaybill {
+class _$_CreateWaybill extends _CreateWaybill with DiagnosticableTreeMixin {
   const _$_CreateWaybill() : super._();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PlaceHolderClient.createWaybill()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'PlaceHolderClient.createWaybill'));
   }
 
   @override
@@ -608,6 +669,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return createWaybill();
   }
@@ -621,6 +683,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return createWaybill?.call();
   }
@@ -634,6 +697,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
     if (createWaybill != null) {
@@ -651,6 +715,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return createWaybill(this);
   }
@@ -664,6 +729,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return createWaybill?.call(this);
   }
@@ -677,6 +743,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
     if (createWaybill != null) {
@@ -725,15 +792,25 @@ class __$AddProductToWaybillCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddProductToWaybill extends _AddProductToWaybill {
+class _$_AddProductToWaybill extends _AddProductToWaybill
+    with DiagnosticableTreeMixin {
   const _$_AddProductToWaybill(this.data) : super._();
 
   @override
   final Map<String, dynamic> data;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PlaceHolderClient.addProductToWaybill(data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'PlaceHolderClient.addProductToWaybill'))
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -763,6 +840,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return addProductToWaybill(data);
   }
@@ -776,6 +854,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return addProductToWaybill?.call(data);
   }
@@ -789,6 +868,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
     if (addProductToWaybill != null) {
@@ -806,6 +886,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return addProductToWaybill(this);
   }
@@ -819,6 +900,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return addProductToWaybill?.call(this);
   }
@@ -832,6 +914,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
     if (addProductToWaybill != null) {
@@ -891,7 +974,7 @@ class __$DeleteWaybillCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DeleteWaybill extends _DeleteWaybill {
+class _$_DeleteWaybill extends _DeleteWaybill with DiagnosticableTreeMixin {
   const _$_DeleteWaybill(this.merchantId, this.id) : super._();
 
   @override
@@ -900,8 +983,17 @@ class _$_DeleteWaybill extends _DeleteWaybill {
   final int id;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PlaceHolderClient.deleteWaybill(merchantId: $merchantId, id: $id)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PlaceHolderClient.deleteWaybill'))
+      ..add(DiagnosticsProperty('merchantId', merchantId))
+      ..add(DiagnosticsProperty('id', id));
   }
 
   @override
@@ -935,6 +1027,7 @@ class _$_DeleteWaybill extends _DeleteWaybill {
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
     required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(String merchantId, int id) deleteRevision,
   }) {
     return deleteWaybill(merchantId, id);
   }
@@ -948,6 +1041,7 @@ class _$_DeleteWaybill extends _DeleteWaybill {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
   }) {
     return deleteWaybill?.call(merchantId, id);
   }
@@ -961,6 +1055,7 @@ class _$_DeleteWaybill extends _DeleteWaybill {
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
     TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
     required TResult orElse(),
   }) {
     if (deleteWaybill != null) {
@@ -978,6 +1073,7 @@ class _$_DeleteWaybill extends _DeleteWaybill {
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
     required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_DeleteRevision value) deleteRevision,
   }) {
     return deleteWaybill(this);
   }
@@ -991,6 +1087,7 @@ class _$_DeleteWaybill extends _DeleteWaybill {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
   }) {
     return deleteWaybill?.call(this);
   }
@@ -1004,6 +1101,7 @@ class _$_DeleteWaybill extends _DeleteWaybill {
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
     TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
     required TResult orElse(),
   }) {
     if (deleteWaybill != null) {
@@ -1021,5 +1119,192 @@ abstract class _DeleteWaybill extends PlaceHolderClient {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$DeleteWaybillCopyWith<_DeleteWaybill> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$DeleteRevisionCopyWith<$Res> {
+  factory _$DeleteRevisionCopyWith(
+          _DeleteRevision value, $Res Function(_DeleteRevision) then) =
+      __$DeleteRevisionCopyWithImpl<$Res>;
+  $Res call({String merchantId, int id});
+}
+
+/// @nodoc
+class __$DeleteRevisionCopyWithImpl<$Res>
+    extends _$PlaceHolderClientCopyWithImpl<$Res>
+    implements _$DeleteRevisionCopyWith<$Res> {
+  __$DeleteRevisionCopyWithImpl(
+      _DeleteRevision _value, $Res Function(_DeleteRevision) _then)
+      : super(_value, (v) => _then(v as _DeleteRevision));
+
+  @override
+  _DeleteRevision get _value => super._value as _DeleteRevision;
+
+  @override
+  $Res call({
+    Object? merchantId = freezed,
+    Object? id = freezed,
+  }) {
+    return _then(_DeleteRevision(
+      merchantId == freezed
+          ? _value.merchantId
+          : merchantId // ignore: cast_nullable_to_non_nullable
+              as String,
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeleteRevision extends _DeleteRevision with DiagnosticableTreeMixin {
+  const _$_DeleteRevision(this.merchantId, this.id) : super._();
+
+  @override
+  final String merchantId;
+  @override
+  final int id;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PlaceHolderClient.deleteRevision(merchantId: $merchantId, id: $id)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PlaceHolderClient.deleteRevision'))
+      ..add(DiagnosticsProperty('merchantId', merchantId))
+      ..add(DiagnosticsProperty('id', id));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DeleteRevision &&
+            (identical(other.merchantId, merchantId) ||
+                const DeepCollectionEquality()
+                    .equals(other.merchantId, merchantId)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(merchantId) ^
+      const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DeleteRevisionCopyWith<_DeleteRevision> get copyWith =>
+      __$DeleteRevisionCopyWithImpl<_DeleteRevision>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) login,
+    required TResult Function() filterProduct,
+    required TResult Function() filterWaybill,
+    required TResult Function() createWaybill,
+    required TResult Function(Map<String, dynamic> data) addProductToWaybill,
+    required TResult Function(String merchantId, int id) deleteWaybill,
+    required TResult Function(String merchantId, int id) deleteRevision,
+  }) {
+    return deleteRevision(merchantId, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
+  }) {
+    return deleteRevision?.call(merchantId, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
+    TResult Function(String merchantId, int id)? deleteRevision,
+    required TResult orElse(),
+  }) {
+    if (deleteRevision != null) {
+      return deleteRevision(merchantId, id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_FilterProduct value) filterProduct,
+    required TResult Function(_FilterWaybill value) filterWaybill,
+    required TResult Function(_CreateWaybill value) createWaybill,
+    required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+    required TResult Function(_DeleteWaybill value) deleteWaybill,
+    required TResult Function(_DeleteRevision value) deleteRevision,
+  }) {
+    return deleteRevision(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
+  }) {
+    return deleteRevision?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
+    TResult Function(_DeleteRevision value)? deleteRevision,
+    required TResult orElse(),
+  }) {
+    if (deleteRevision != null) {
+      return deleteRevision(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteRevision extends PlaceHolderClient {
+  const factory _DeleteRevision(String merchantId, int id) = _$_DeleteRevision;
+  const _DeleteRevision._() : super._();
+
+  String get merchantId => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$DeleteRevisionCopyWith<_DeleteRevision> get copyWith =>
       throw _privateConstructorUsedError;
 }

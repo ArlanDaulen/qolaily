@@ -235,7 +235,9 @@ class RevisionPage extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          model.deleteRevision(index, context);
+                                        },
                                         icon: SvgPicture.asset(
                                           AppSvgImages.delete,
                                         ),

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:qolaily/app/main/user_data.dart';
 import 'package:qolaily/core/network/interfaces/base_client_generator.dart';
@@ -26,7 +27,10 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       Map<String, dynamic> data) = _AddProductToWaybill;
   const factory PlaceHolderClient.deleteWaybill(String merchantId, int id) =
       _DeleteWaybill;
+  // const factory PlaceHolderClient.
   // inventory: Ревизия
+  const factory PlaceHolderClient.deleteRevision(String merchantId, int id) =
+      _DeleteRevision;
 
   @override
   String get baseURL => "http://34.216.151.246";
@@ -42,25 +46,26 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
   @override
   String get path {
     return when<String>(
-      // register: (String email, String username, String password,
-      //         String phone) =>
-      //     '/user/registration?email=$email&fullName=$username&password=$password&phone=$phone',
-      login: (String email, String password) =>
-          '/user/login?email=$email&password=$password',
-      // createProduct: (
-      //   String barcode, String name, String merchantId,
-      //   int purchasePrice, int sellingPrice, int amount,
-      //   String unitType, int categoryId) => '/v1/product/create',
-      // createProduct: () => '/v1/product/create',
-      filterProduct: () => '/v1/product/filter',
-      // Waybill - прием товаров
-      filterWaybill: () => '/v1/waybill/filter',
-      createWaybill: () => '/v1/waybill/create',
-      addProductToWaybill: (Map<String, dynamic> data) =>
-          '/v1/waybill/add/product',
-      deleteWaybill: (String merchantId, int id) =>
-          '/v1/waybill/$merchantId/$id',
-    );
+        // register: (String email, String username, String password,
+        //         String phone) =>
+        //     '/user/registration?email=$email&fullName=$username&password=$password&phone=$phone',
+        login: (String email, String password) =>
+            '/user/login?email=$email&password=$password',
+        // createProduct: (
+        //   String barcode, String name, String merchantId,
+        //   int purchasePrice, int sellingPrice, int amount,
+        //   String unitType, int categoryId) => '/v1/product/create',
+        // createProduct: () => '/v1/product/create',
+        filterProduct: () => '/v1/product/filter',
+        // Waybill - прием товаров
+        filterWaybill: () => '/v1/waybill/filter',
+        createWaybill: () => '/v1/waybill/create',
+        addProductToWaybill: (Map<String, dynamic> data) =>
+            '/v1/waybill/add/product',
+        deleteWaybill: (String merchantId, int id) =>
+            '/v1/waybill/$merchantId/$id',
+        deleteRevision: (String merchantId, int id) =>
+            '/v1/inventory/$merchantId/$id');
   }
 
   @override
@@ -81,6 +86,7 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       createWaybill: () => 'POST',
       addProductToWaybill: (Map<String, dynamic> data) => 'POST',
       deleteWaybill: (String merchantId, int id) => 'DELETE',
+      deleteRevision: (String merchantId, int id) => 'DELETE',
     );
   }
 
