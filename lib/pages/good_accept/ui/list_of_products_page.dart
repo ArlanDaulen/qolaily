@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qolaily/base/base_provider.dart';
-import 'package:qolaily/pages/good_accept/provider/create_product_accept_provider.dart';
-import 'package:qolaily/pages/good_accept/provider/good_accept_provider.dart';
-import 'package:qolaily/pages/index/provider/index_provider.dart';
+import 'package:qolaily/pages/good_accept/provider/list_of_products_provider.dart';
 import 'package:qolaily/shared/default_button.dart';
 import 'package:qolaily/shared/default_text.dart';
 import 'package:qolaily/shared/loading_view.dart';
@@ -12,19 +10,14 @@ import 'package:qolaily/shared/size_config.dart';
 import 'package:qolaily/shared/theme.dart';
 import 'package:qolaily/shared/ui_helper.dart';
 
-class CreateProductAccept extends StatelessWidget {
-  const CreateProductAccept(
-      {Key? key, required this.provider, required this.indexProvider})
-      : super(key: key);
-
-  final GoodsAcceptProvider provider;
-  final IndexProvider indexProvider;
+class ListOfProducts extends StatelessWidget {
+  const ListOfProducts({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BaseProvider<CreateProductAcceptProvider>(
-      model: CreateProductAcceptProvider(),
-      onReady: (p0) => p0.init(context, indexProvider),
+    return BaseProvider<ListOfProductsProvider>(
+      model: ListOfProductsProvider(),
+      onReady: (p0) => p0.init(context),
       builder: (context, model, child) {
         return model.isLoading
             ? const LoadingView()
@@ -151,8 +144,9 @@ class CreateProductAccept extends StatelessWidget {
                                                 getProportionateScreenHeight(7),
                                           ),
                                           child: Text(
-                                            provider
-                                                .waybillCreateModel!.createdOn!,
+                                            // provider
+                                            //     .waybillCreateModel!.createdOn!,
+                                            'date',
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               color: AppColors.systemBlackColor,
@@ -209,8 +203,9 @@ class CreateProductAccept extends StatelessWidget {
                                                 getProportionateScreenHeight(7),
                                           ),
                                           child: Text(
-                                            provider.waybillCreateModel!
-                                                .documentNumber!,
+                                            // provider.waybillCreateModel!
+                                            //     .documentNumber!,
+                                            '1223',
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               color: AppColors.systemBlackColor,
@@ -408,46 +403,6 @@ class CreateProductAccept extends StatelessWidget {
                         ),
                         UIHelper.verticalSpace(
                           getProportionateScreenHeight(20),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                DefaultButton(
-                                  press: () {
-                                    Navigator.pop(context);
-                                  },
-                                  text: 'Сохранить как черновик',
-                                  color: AppColors.greyColor,
-                                  width: model.size!.width * 0.38,
-                                ),
-                                const SizedBox(width: 20),
-                                DefaultButton(
-                                  press: () {
-                                    model.addProductToWaybill(
-                                        context, provider);
-                                  },
-                                  text: 'Провести прием товаров',
-                                  color: AppColors.greenColor,
-                                  width: model.size!.width * 0.35,
-                                ),
-                              ],
-                            ),
-                            UIHelper.verticalSpace(
-                              getProportionateScreenHeight(15),
-                            ),
-                            DefaultButton(
-                              press: () {
-                                Navigator.pop(context);
-                              },
-                              text: 'Отмена',
-                              color: AppColors.redColor,
-                              width: model.size!.width * 0.35,
-                            ),
-                          ],
                         ),
                         UIHelper.verticalSpace(
                           getProportionateScreenHeight(30),

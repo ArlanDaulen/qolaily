@@ -9,6 +9,8 @@ import 'package:qolaily/base/base_bloc.dart';
 import 'package:qolaily/core/freezed/network_error.dart';
 import 'package:qolaily/core/freezed/result.dart';
 import 'package:qolaily/pages/good_accept/ui/create_product_accept.dart';
+import 'package:qolaily/pages/good_accept/ui/list_of_products_page.dart';
+import 'package:qolaily/pages/index/provider/index_provider.dart';
 
 import '../../../shared/size_config.dart';
 
@@ -19,13 +21,15 @@ class GoodsAcceptProvider extends BaseBloc {
   List<WaybillModel> waybillModel = [];
   WaybillCreateModel? waybillCreateModel;
   final UserData _userData = UserData();
+  IndexProvider? indexProvider;
 
-  init(BuildContext context) async {
+  init(BuildContext context, IndexProvider _indexProvider) async {
     setLoading(true);
     SizeConfig().init(context);
     size = MediaQuery.of(context).size;
+    indexProvider = _indexProvider;
     await filterWaybill();
-    notifyListeners();
+    // notifyListeners();
     setLoading(false);
   }
 
@@ -51,12 +55,33 @@ class GoodsAcceptProvider extends BaseBloc {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => CreateProductAccept(provider: this)));
+              builder: (context) => CreateProductAccept(
+                    provider: this,
+                    indexProvider: indexProvider!,
+                  )));
       log('Success in createWaybill (provider)');
       log('New Waybill ID: ${_userData.getWaybillId()}');
     }, failure: (error) {
       log('Error in createWaybill (provider). Error: $error');
     });
+  }
+
+  deleteWaybill(int index, context) async {
+    // Result<dynamic, NetworkError> p = await _waybillService.deleteWaybill(
+    //     _userData.getMerchantId().toString(), waybillModel[index].id!);
+    // p.when(
+    //   success: (response) {},
+    //   failure: (error) {
+    //     log("Error DeleteWayBill: Error: $error");
+    //   },
+    // );
+    setLoading(true);
+    await _waybillService
+        .deleteWaybill(
+            _userData.getMerchantId().toString(), waybillModel[index].id!)
+        .then((_) => init(context, indexProvider!));
+    setLoading(false);
+    notifyListeners();
   }
 
   String getName(String? name) {
@@ -73,6 +98,14 @@ class GoodsAcceptProvider extends BaseBloc {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => CreateProductAccept(provider: this)));
+            builder: (context) => CreateProductAccept(
+                  provider: this,
+                  indexProvider: indexProvider!,
+                )));
+  }
+
+  toWaybillProductsPage(context) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const ListOfProducts()));
   }
 }

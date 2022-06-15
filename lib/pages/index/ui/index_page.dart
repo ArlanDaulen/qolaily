@@ -30,7 +30,9 @@ class IndexPage extends StatelessWidget {
           ),
           CatalogPage(),
           CategoriesPage(),
-          GoodsAcceptPage(),
+          GoodsAcceptPage(
+            indexProvider: p0,
+          ),
           RevisionPage(),
           // PartnersPage(),
         ];

@@ -38,6 +38,7 @@ class CategoriesProvider extends BaseBloc {
       nameController.text,
       characteristicController.text,
     );
+    await getAllCategories();
     Navigator.pop(context);
     log({categoryModel.id ?? 'No id'}.toString());
     ScaffoldMessenger.of(context).showSnackBar(
@@ -59,6 +60,7 @@ class CategoriesProvider extends BaseBloc {
       characteristicController.text,
       id,
     );
+    await getAllCategories();
     Navigator.pop(context);
     log({categoryModel.id ?? 'No ID'}.toString());
     ScaffoldMessenger.of(context).showSnackBar(

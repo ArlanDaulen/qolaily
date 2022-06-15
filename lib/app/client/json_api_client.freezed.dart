@@ -41,6 +41,13 @@ class _$PlaceHolderClientTearOff {
       data,
     );
   }
+
+  _DeleteWaybill deleteWaybill(String merchantId, int id) {
+    return _DeleteWaybill(
+      merchantId,
+      id,
+    );
+  }
 }
 
 /// @nodoc
@@ -55,6 +62,7 @@ mixin _$PlaceHolderClient {
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
+    required TResult Function(String merchantId, int id) deleteWaybill,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +72,7 @@ mixin _$PlaceHolderClient {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +82,7 @@ mixin _$PlaceHolderClient {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,6 +93,7 @@ mixin _$PlaceHolderClient {
     required TResult Function(_FilterWaybill value) filterWaybill,
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+    required TResult Function(_DeleteWaybill value) deleteWaybill,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,6 +103,7 @@ mixin _$PlaceHolderClient {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -101,6 +113,7 @@ mixin _$PlaceHolderClient {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -202,6 +215,7 @@ class _$_Login extends _Login {
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
+    required TResult Function(String merchantId, int id) deleteWaybill,
   }) {
     return login(email, password);
   }
@@ -214,6 +228,7 @@ class _$_Login extends _Login {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
   }) {
     return login?.call(email, password);
   }
@@ -226,6 +241,7 @@ class _$_Login extends _Login {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -242,6 +258,7 @@ class _$_Login extends _Login {
     required TResult Function(_FilterWaybill value) filterWaybill,
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+    required TResult Function(_DeleteWaybill value) deleteWaybill,
   }) {
     return login(this);
   }
@@ -254,6 +271,7 @@ class _$_Login extends _Login {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
   }) {
     return login?.call(this);
   }
@@ -266,6 +284,7 @@ class _$_Login extends _Login {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -330,6 +349,7 @@ class _$_FilterProduct extends _FilterProduct {
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
+    required TResult Function(String merchantId, int id) deleteWaybill,
   }) {
     return filterProduct();
   }
@@ -342,6 +362,7 @@ class _$_FilterProduct extends _FilterProduct {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
   }) {
     return filterProduct?.call();
   }
@@ -354,6 +375,7 @@ class _$_FilterProduct extends _FilterProduct {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
     required TResult orElse(),
   }) {
     if (filterProduct != null) {
@@ -370,6 +392,7 @@ class _$_FilterProduct extends _FilterProduct {
     required TResult Function(_FilterWaybill value) filterWaybill,
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+    required TResult Function(_DeleteWaybill value) deleteWaybill,
   }) {
     return filterProduct(this);
   }
@@ -382,6 +405,7 @@ class _$_FilterProduct extends _FilterProduct {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
   }) {
     return filterProduct?.call(this);
   }
@@ -394,6 +418,7 @@ class _$_FilterProduct extends _FilterProduct {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
     required TResult orElse(),
   }) {
     if (filterProduct != null) {
@@ -453,6 +478,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
+    required TResult Function(String merchantId, int id) deleteWaybill,
   }) {
     return filterWaybill();
   }
@@ -465,6 +491,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
   }) {
     return filterWaybill?.call();
   }
@@ -477,6 +504,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
     required TResult orElse(),
   }) {
     if (filterWaybill != null) {
@@ -493,6 +521,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     required TResult Function(_FilterWaybill value) filterWaybill,
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+    required TResult Function(_DeleteWaybill value) deleteWaybill,
   }) {
     return filterWaybill(this);
   }
@@ -505,6 +534,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
   }) {
     return filterWaybill?.call(this);
   }
@@ -517,6 +547,7 @@ class _$_FilterWaybill extends _FilterWaybill {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
     required TResult orElse(),
   }) {
     if (filterWaybill != null) {
@@ -576,6 +607,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
+    required TResult Function(String merchantId, int id) deleteWaybill,
   }) {
     return createWaybill();
   }
@@ -588,6 +620,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
   }) {
     return createWaybill?.call();
   }
@@ -600,6 +633,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
     required TResult orElse(),
   }) {
     if (createWaybill != null) {
@@ -616,6 +650,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     required TResult Function(_FilterWaybill value) filterWaybill,
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+    required TResult Function(_DeleteWaybill value) deleteWaybill,
   }) {
     return createWaybill(this);
   }
@@ -628,6 +663,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
   }) {
     return createWaybill?.call(this);
   }
@@ -640,6 +676,7 @@ class _$_CreateWaybill extends _CreateWaybill {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
     required TResult orElse(),
   }) {
     if (createWaybill != null) {
@@ -725,6 +762,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     required TResult Function() filterWaybill,
     required TResult Function() createWaybill,
     required TResult Function(Map<String, dynamic> data) addProductToWaybill,
+    required TResult Function(String merchantId, int id) deleteWaybill,
   }) {
     return addProductToWaybill(data);
   }
@@ -737,6 +775,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
   }) {
     return addProductToWaybill?.call(data);
   }
@@ -749,6 +788,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     TResult Function()? filterWaybill,
     TResult Function()? createWaybill,
     TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
     required TResult orElse(),
   }) {
     if (addProductToWaybill != null) {
@@ -765,6 +805,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     required TResult Function(_FilterWaybill value) filterWaybill,
     required TResult Function(_CreateWaybill value) createWaybill,
     required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+    required TResult Function(_DeleteWaybill value) deleteWaybill,
   }) {
     return addProductToWaybill(this);
   }
@@ -777,6 +818,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
   }) {
     return addProductToWaybill?.call(this);
   }
@@ -789,6 +831,7 @@ class _$_AddProductToWaybill extends _AddProductToWaybill {
     TResult Function(_FilterWaybill value)? filterWaybill,
     TResult Function(_CreateWaybill value)? createWaybill,
     TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
     required TResult orElse(),
   }) {
     if (addProductToWaybill != null) {
@@ -806,5 +849,177 @@ abstract class _AddProductToWaybill extends PlaceHolderClient {
   Map<String, dynamic> get data => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$AddProductToWaybillCopyWith<_AddProductToWaybill> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$DeleteWaybillCopyWith<$Res> {
+  factory _$DeleteWaybillCopyWith(
+          _DeleteWaybill value, $Res Function(_DeleteWaybill) then) =
+      __$DeleteWaybillCopyWithImpl<$Res>;
+  $Res call({String merchantId, int id});
+}
+
+/// @nodoc
+class __$DeleteWaybillCopyWithImpl<$Res>
+    extends _$PlaceHolderClientCopyWithImpl<$Res>
+    implements _$DeleteWaybillCopyWith<$Res> {
+  __$DeleteWaybillCopyWithImpl(
+      _DeleteWaybill _value, $Res Function(_DeleteWaybill) _then)
+      : super(_value, (v) => _then(v as _DeleteWaybill));
+
+  @override
+  _DeleteWaybill get _value => super._value as _DeleteWaybill;
+
+  @override
+  $Res call({
+    Object? merchantId = freezed,
+    Object? id = freezed,
+  }) {
+    return _then(_DeleteWaybill(
+      merchantId == freezed
+          ? _value.merchantId
+          : merchantId // ignore: cast_nullable_to_non_nullable
+              as String,
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeleteWaybill extends _DeleteWaybill {
+  const _$_DeleteWaybill(this.merchantId, this.id) : super._();
+
+  @override
+  final String merchantId;
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'PlaceHolderClient.deleteWaybill(merchantId: $merchantId, id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DeleteWaybill &&
+            (identical(other.merchantId, merchantId) ||
+                const DeepCollectionEquality()
+                    .equals(other.merchantId, merchantId)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(merchantId) ^
+      const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DeleteWaybillCopyWith<_DeleteWaybill> get copyWith =>
+      __$DeleteWaybillCopyWithImpl<_DeleteWaybill>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) login,
+    required TResult Function() filterProduct,
+    required TResult Function() filterWaybill,
+    required TResult Function() createWaybill,
+    required TResult Function(Map<String, dynamic> data) addProductToWaybill,
+    required TResult Function(String merchantId, int id) deleteWaybill,
+  }) {
+    return deleteWaybill(merchantId, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
+  }) {
+    return deleteWaybill?.call(merchantId, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function()? filterProduct,
+    TResult Function()? filterWaybill,
+    TResult Function()? createWaybill,
+    TResult Function(Map<String, dynamic> data)? addProductToWaybill,
+    TResult Function(String merchantId, int id)? deleteWaybill,
+    required TResult orElse(),
+  }) {
+    if (deleteWaybill != null) {
+      return deleteWaybill(merchantId, id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_FilterProduct value) filterProduct,
+    required TResult Function(_FilterWaybill value) filterWaybill,
+    required TResult Function(_CreateWaybill value) createWaybill,
+    required TResult Function(_AddProductToWaybill value) addProductToWaybill,
+    required TResult Function(_DeleteWaybill value) deleteWaybill,
+  }) {
+    return deleteWaybill(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
+  }) {
+    return deleteWaybill?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_FilterProduct value)? filterProduct,
+    TResult Function(_FilterWaybill value)? filterWaybill,
+    TResult Function(_CreateWaybill value)? createWaybill,
+    TResult Function(_AddProductToWaybill value)? addProductToWaybill,
+    TResult Function(_DeleteWaybill value)? deleteWaybill,
+    required TResult orElse(),
+  }) {
+    if (deleteWaybill != null) {
+      return deleteWaybill(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteWaybill extends PlaceHolderClient {
+  const factory _DeleteWaybill(String merchantId, int id) = _$_DeleteWaybill;
+  const _DeleteWaybill._() : super._();
+
+  String get merchantId => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$DeleteWaybillCopyWith<_DeleteWaybill> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -8,6 +8,7 @@ part 'json_api_client.freezed.dart';
 @freezed
 class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
   static final UserData _userData = UserData();
+  static final merchantId = _userData.getMerchantId();
   // Routes
   const PlaceHolderClient._() : super();
   const factory PlaceHolderClient.login(String email, String password) = _Login;
@@ -23,7 +24,8 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
   const factory PlaceHolderClient.createWaybill() = _CreateWaybill;
   const factory PlaceHolderClient.addProductToWaybill(
       Map<String, dynamic> data) = _AddProductToWaybill;
-
+  const factory PlaceHolderClient.deleteWaybill(String merchantId, int id) =
+      _DeleteWaybill;
   // inventory: Ревизия
 
   @override
@@ -56,6 +58,8 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       createWaybill: () => '/v1/waybill/create',
       addProductToWaybill: (Map<String, dynamic> data) =>
           '/v1/waybill/add/product',
+      deleteWaybill: (String merchantId, int id) =>
+          '/v1/waybill/$merchantId/$id',
     );
   }
 
@@ -76,6 +80,7 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       filterWaybill: () => 'POST',
       createWaybill: () => 'POST',
       addProductToWaybill: (Map<String, dynamic> data) => 'POST',
+      deleteWaybill: (String merchantId, int id) => 'DELETE',
     );
   }
 
@@ -97,6 +102,7 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
         "size": 0
       },
       filterWaybill: () => {"merchant_id": "kdfjksjf"},
+      // filterWaybill: () => {"merchant_id": merchantId},
       createWaybill: () => {
         "merchant_id": "kdfjksjf",
         "employee": "kfdjkjf",
