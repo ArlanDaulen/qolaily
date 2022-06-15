@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qolaily/app/client/revision.dart';
 import 'package:qolaily/app/data/models/revision_response_model.dart';
+import 'package:qolaily/app/main/user_data.dart';
 import 'package:qolaily/base/base_bloc.dart';
 import 'package:qolaily/pages/revision/ui/create_revision.dart';
 
@@ -12,6 +13,7 @@ class RevisionProvider extends BaseBloc {
   RevisionResponseModel? revisionResponseModel;
 
   RevisionService _service = RevisionService();
+  final UserData _userData = UserData();
 
   init(BuildContext context) async {
     setLoading(true);
@@ -26,11 +28,26 @@ class RevisionProvider extends BaseBloc {
     notifyListeners();
   }
 
+  deleteRevision(int index, context) async {
+    setLoading(true);
+    await _service.deleteRevision((await _userData.getMerchantId()),
+        revisionResponseModel!.data![index].id!);
+    await getAllRevision();
+    // await _service
+    //     .deleteRevision((await _userData.getMerchantId()).toString(),
+    //         revisionResponseModel!.data![index].id!)
+    //     .then((_) => init(context));
+    setLoading(false);
+    notifyListeners();
+  }
+
   toCreateRevision(context) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const CreateRevision(),
+        builder: (context) => CreateRevision(
+          provider: this,
+        ),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qolaily/base/base_provider.dart';
 import 'package:qolaily/pages/revision/provider/create_revision_provider.dart';
+import 'package:qolaily/pages/revision/provider/revision_provider.dart';
 import 'package:qolaily/shared/default_button.dart';
 import 'package:qolaily/shared/default_text.dart';
 import 'package:qolaily/shared/loading_view.dart';
@@ -13,13 +14,15 @@ import 'package:qolaily/shared/theme.dart';
 import 'package:qolaily/shared/ui_helper.dart';
 
 class CreateRevision extends StatelessWidget {
-  const CreateRevision({Key? key}) : super(key: key);
+  const CreateRevision({Key? key, required this.provider}) : super(key: key);
+
+  final RevisionProvider provider;
 
   @override
   Widget build(BuildContext context) {
     return BaseProvider<CreateRevisionProvider>(
       model: CreateRevisionProvider(),
-      onReady: (p0) => p0.init(context),
+      onReady: (p0) => p0.init(context, provider),
       builder: (context, model, child) {
         return Scaffold(
           appBar: PreferredSize(
@@ -246,13 +249,11 @@ class CreateRevision extends StatelessWidget {
                                         ),
                                         Expanded(
                                           child: _buildController(
-                                              model.priceController,
-                                              'Цена.'),
+                                              model.priceController, 'Цена.'),
                                         ),
                                         Expanded(
                                           child: _buildController(
-                                              model.totalController,
-                                              'Итого.'),
+                                              model.totalController, 'Итого.'),
                                         ),
                                       ],
                                     ),
